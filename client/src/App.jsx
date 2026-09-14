@@ -19,6 +19,9 @@ import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutPage';
 import GroupWorkspacePage from './pages/GroupWorkspacePage';
 import ExpenseTrackerPage from './pages/ExpenseTrackerPage';
+import DestinationPage from './pages/DestinationPage';
+import TripDashboardPage from './pages/TripDashboardPage';
+import NotificationsPage from './pages/NotificationsPage';
 
 function App() {
   return (
@@ -45,6 +48,10 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/workspace/:id" element={<GroupWorkspacePage />} />
         <Route path="/expenses" element={<ExpenseTrackerPage />} />
+        <Route path="/discover" element={<DiscoverPage />} />
+<Route path="/destination/:id" element={<DestinationPage />} />
+<Route path="/trip/:tripId" element={<TripDashboardPage />} />
+<Route path="/notifications" element={<NotificationsPage />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
