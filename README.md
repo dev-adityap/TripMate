@@ -4,6 +4,10 @@ TripMate is a full-stack travel planning web application designed to help users 
 
 The project is built using the MERN stack with AI-powered features integrated through the Gemini API.
 
+TRY NOW :
+
+https://tripmate-phi-ebon.vercel.app/
+
 ---
 
 ## ✨ Features
