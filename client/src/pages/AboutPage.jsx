@@ -44,7 +44,7 @@ const AboutPage = () => {
             "Why let great plans go to waste? Better not to avoid your travel dreams. Find like-minded people on your own terms, pick your desired destination, lock in your dates, and just go!"
           </p>
           <p>
-            TripMate provides a clean, data-rich platform where you can explore 58+ curated destinations across India, choose available batch dates, check anonymous group breakdowns, and connect with fellow travelers seamlessly.
+            TripMate provides a clean, data-rich platform where you can explore 90+ curated destinations across India, choose available batch dates, check anonymous group breakdowns, and connect with fellow travelers seamlessly.
           </p>
         </div>
 
@@ -52,7 +52,7 @@ const AboutPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-gray-100">
           <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100 text-center">
             <Compass size={20} className="mx-auto text-purple-600 mb-2" />
-            <h3 className="font-bold text-gray-900 text-xs mb-1">58 Destinations</h3>
+            <h3 className="font-bold text-gray-900 text-xs mb-1">100 Destinations</h3>
             <p className="text-[11px] text-gray-500">Treks, beaches, & hills</p>
           </div>
           <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100 text-center">

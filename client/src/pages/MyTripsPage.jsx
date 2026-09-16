@@ -1,108 +1,131 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Briefcase, MapPin, Calendar, ArrowRight, MessageSquare, Trash2 } from 'lucide-react';
-import { destinationsData } from '../data/destinations';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-const MyTripsPage = () => {
-  const [joinedBookings, setJoinedBookings] = useState([]); // Array of { id, date }
-  const navigate = useNavigate();
+export default function MyTripsPage() {
+  const { user } = useAuth();
+  const [bookedTrips, setBookedTrips] = useState([]);
 
   useEffect(() => {
-    // Read from the exact storage key used in TripDetailsPage
-    const storedBookings = JSON.parse(localStorage.getItem('joinedTripsData') || '[]');
-    setJoinedBookings(storedBookings);
+    // Fetch bookings from localStorage
+    const savedBookings = JSON.parse(localStorage.getItem('tripmate_bookings') || '{}');
+    // Convert the object into an array for easier mapping
+    const tripsArray = Object.values(savedBookings).sort((a, b) => new Date(b.bookedAt) - new Date(a.bookedAt));
+    setBookedTrips(tripsArray);
   }, []);
 
-  const handleCancelBooking = (destId) => {
-    const updated = joinedBookings.filter(b => String(b.id) !== String(destId));
-    localStorage.setItem('joinedTripsData', JSON.stringify(updated));
-    localStorage.setItem('joinedTrips', JSON.stringify(updated.map(b => b.id)));
-    setJoinedBookings(updated);
+  const handleCancelBooking = (destinationId, tripId) => {
+    if (!window.confirm('Are you sure you want to cancel this booking?')) return;
+
+    // Remove from bookings
+    const currentBookings = JSON.parse(localStorage.getItem('tripmate_bookings') || '{}');
+    delete currentBookings[destinationId];
+    localStorage.setItem('tripmate_bookings', JSON.stringify(currentBookings));
+
+    // Remove from custom trips (workspace access)
+    const currentTrips = JSON.parse(localStorage.getItem('tripmate_custom_trips') || '{}');
+    delete currentTrips[tripId];
+    localStorage.setItem('tripmate_custom_trips', JSON.stringify(currentTrips));
+
+    // Update state to remove it from the UI immediately
+    setBookedTrips(bookedTrips.filter(trip => trip.destinationId !== destinationId));
   };
 
-  // Map joined bookings to their full destination details
-  const myTripsWithDetails = joinedBookings.map(booking => {
-    const destination = destinationsData.find(d => String(d.id) === String(booking.id));
-    return { ...destination, bookedDate: booking.date };
-  }).filter(item => item.name); // Filter out any undefined matches
-
   return (
-    <div className="pl-28 pr-10 py-10 min-h-screen bg-[#f8fafc]">
-      
-      {/* Header */}
-      <div className="mb-10">
-        <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">My Joined Trips</h1>
-        <p className="text-gray-500 mt-2 font-medium">Manage your active itineraries, dates, and connect with your travel groups.</p>
-      </div>
-
-      {myTripsWithDetails.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-16 text-center max-w-xl mx-auto mt-10">
-          <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Briefcase size={28} />
+    <div className="min-h-screen bg-gray-50 pb-20 px-4 sm:px-6 lg:px-8 pt-8">
+      <div className="max-w-6xl mx-auto space-y-8">
+        
+        {/* Header Section */}
+        <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <h1 className="text-3xl font-extrabold text-gray-900">My Trips</h1>
+            <p className="text-sm text-gray-500 mt-1">
+              Welcome back, <span className="font-bold text-indigo-600">{user?.name || 'Traveler'}</span>! Here are your upcoming adventures.
+            </p>
           </div>
-          <h2 className="text-xl font-extrabold text-gray-900 mb-2">You haven't joined any trips yet.</h2>
-          <p className="text-gray-500 font-medium text-sm mb-6">Explore our 58+ curated destinations, pick your batch dates, and secure your spot!</p>
-          <button 
-            onClick={() => navigate('/discover')}
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors shadow-sm text-sm inline-flex items-center gap-2"
-          >
-            Explore Discover Page <ArrowRight size={16} />
-          </button>
+          <div className="bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-xl">
+            <p className="text-xs font-bold text-indigo-800">Total Bookings: {bookedTrips.length}</p>
+          </div>
         </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
-          {myTripsWithDetails.map((trip) => (
-            <div 
-              key={trip.id}
-              className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+
+        {/* Trips Grid */}
+        {bookedTrips.length === 0 ? (
+          <div className="bg-white rounded-3xl p-16 text-center border border-gray-100 shadow-sm space-y-5 flex flex-col items-center">
+            <div className="text-5xl">🏕️</div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900">No trips booked yet</h3>
+              <p className="text-sm text-gray-500 mt-2 max-w-md mx-auto">
+                Your itinerary is empty. Find your next adventure, join a batch, and start planning with your group!
+              </p>
+            </div>
+            <Link 
+              to="/discover" 
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-md shadow-indigo-200 text-sm mt-2"
             >
-              <div>
-                <div className="flex justify-between items-start mb-3">
-                  <div className="flex items-center gap-1.5 text-blue-600 text-xs font-bold uppercase tracking-wider">
-                    <MapPin size={14} />
-                    <span>{trip.location}</span>
-                  </div>
-                  <span className="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full">
-                    Confirmed Batch
+              Explore Destinations →
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {bookedTrips.map((trip) => (
+              <div 
+                key={trip.tripId} 
+                className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col justify-between"
+              >
+                {/* Trip Image */}
+                <div className="relative h-48 w-full bg-gray-100">
+                  <img 
+                    src={trip.image || 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80'} 
+                    alt={trip.title} 
+                    className="h-full w-full object-cover"
+                  />
+                  <span className="absolute top-4 left-4 bg-emerald-500 text-white text-[10px] font-extrabold px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-sm">
+                    Confirmed
                   </span>
                 </div>
 
-                <h3 className="text-xl font-extrabold text-gray-900 mb-3">{trip.name}</h3>
+                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                      {trip.location}
+                    </span>
+                    <h3 className="text-xl font-extrabold text-gray-900 mt-1 line-clamp-1">
+                      {trip.title}
+                    </h3>
+                    
+                    <div className="mt-4 space-y-2 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                      <div className="flex justify-between text-xs">
+                        <span className="font-bold text-gray-500">Departure Batch:</span>
+                        <span className="font-bold text-indigo-600">{trip.batch || 'Upcoming'}</span>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span className="font-bold text-gray-500">Amount Paid:</span>
+                        <span className="font-bold text-emerald-600">{trip.price}</span>
+                      </div>
+                    </div>
+                  </div>
 
-                <div className="bg-purple-50 p-3.5 rounded-2xl border border-purple-100 flex items-center gap-2.5 mb-6 text-xs font-bold text-purple-900">
-                  <Calendar size={16} className="text-purple-600" />
-                  <span>Scheduled Departure: <strong>{trip.bookedDate}</strong></span>
+                  <div className="space-y-2 pt-2">
+                    <Link 
+                      to={`/trip/${trip.tripId}`}
+                      className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl text-center text-xs transition-all shadow-sm shadow-indigo-100 flex items-center justify-center space-x-2"
+                    >
+                      <span>💬 Open Group Workspace</span>
+                    </Link>
+                    
+                    <button 
+                      onClick={() => handleCancelBooking(trip.destinationId, trip.tripId)}
+                      className="w-full bg-white border border-rose-200 hover:bg-rose-50 text-rose-500 hover:text-rose-600 font-bold py-2.5 rounded-xl transition-all text-xs cursor-pointer"
+                    >
+                      Cancel Booking
+                    </button>
+                  </div>
                 </div>
               </div>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                <button 
-                  onClick={() => navigate(`/workspace/${trip.id}`)}
-                  className="flex-1 py-3 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold rounded-xl transition-colors shadow-sm inline-flex items-center justify-center gap-2"
-                >
-                  <MessageSquare size={14} /> Group Workspace
-                </button>
-                <button 
-                  onClick={() => navigate(`/discover/${trip.id}`)}
-                  className="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold rounded-xl transition-colors"
-                >
-                  View Details
-                </button>
-                <button 
-                  onClick={() => handleCancelBooking(trip.id)}
-                  className="p-3 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-colors"
-                  title="Cancel Booking"
-                >
-                  <Trash2 size={16} />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
-};
-
-export default MyTripsPage;
+}

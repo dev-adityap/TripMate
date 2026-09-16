@@ -1,62 +1,44 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import DashboardLayout from './layouts/DashboardLayout';
-import LandingPage from './pages/LandingPage';
+// Import Components
+import Sidebar from './components/Sidebar';
+import ProtectedRoute from './components/ProtectedRoute';
+
+// Import Pages
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-
-import DashboardPage from './pages/DashboardPage';
 import DiscoverPage from './pages/DiscoverPage';
-import TripDetailsPage from './pages/TripDetailsPage';
-import MyTripsPage from './pages/MyTripsPage';
-import CalendarPage from './pages/CalendarPage';
-import FavoritesPage from './pages/FavoritesPage';
-import WishlistPage from './pages/WishlistPage';
-import MapPage from './pages/MapPage';
-import ProfilePage from './pages/ProfilePage';
-import AboutPage from './pages/AboutPage';
-import GroupWorkspacePage from './pages/GroupWorkspacePage';
-import ExpenseTrackerPage from './pages/ExpenseTrackerPage';
 import DestinationPage from './pages/DestinationPage';
-import TripDashboardPage from './pages/TripDashboardPage';
-import NotificationsPage from './pages/NotificationsPage';
+import MyTripsPage from './pages/MyTripsPage';
+import TripDetailsPage from './pages/TripDetailsPage';
+import FavoritesPage from './pages/FavoritesPage';
+import ProfilePage from './pages/ProfilePage';
+import AuthPage from './pages/AuthPage';
 
-function App() {
+export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+    <div className="flex min-h-screen bg-gray-50">
+      
+      <Sidebar />
 
-      {/* Routes wrapped with Sidebar Dashboard Layout */}
-      <Route element={<DashboardLayout />}>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        
-        {/* Dynamic route placed before static route */}
-        <Route path="/discover/:id" element={<TripDetailsPage />} />
-        <Route path="/discover" element={<DiscoverPage />} />
-        
-        <Route path="/my-trips" element={<MyTripsPage />} />
-        <Route path="/calendar" element={<CalendarPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/workspace/:id" element={<GroupWorkspacePage />} />
-        <Route path="/expenses" element={<ExpenseTrackerPage />} />
-        <Route path="/discover" element={<DiscoverPage />} />
-<Route path="/destination/:id" element={<DestinationPage />} />
-<Route path="/trip/:tripId" element={<TripDashboardPage />} />
-<Route path="/notifications" element={<NotificationsPage />} />
-      </Route>
+      {/* CHANGED: md:ml-20 applies left margin ONLY on desktop. pb-20 md:pb-0 handles mobile bottom spacing */}
+      <div className="flex-1 w-full md:ml-20 pb-20 md:pb-0 transition-all">
+        <Routes>
+          <Route path="/login" element={<AuthPage />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/discover" element={<DiscoverPage />} />
+          <Route path="/destination/:id" element={<DestinationPage />} />
+          
+          <Route path="/my-trips" element={<ProtectedRoute><MyTripsPage /></ProtectedRoute>} />
+          <Route path="/trip/:id" element={<ProtectedRoute><TripDetailsPage /></ProtectedRoute>} />
+          <Route path="/favorites" element={<ProtectedRoute><FavoritesPage /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+          
+          <Route path="*" element={<Navigate to="/home" replace />} />
+        </Routes>
+      </div>
 
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    </div>
   );
 }
-
-export default App;

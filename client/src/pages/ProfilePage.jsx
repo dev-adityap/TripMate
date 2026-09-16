@@ -1,177 +1,146 @@
 import React, { useState, useEffect } from 'react';
-import { User, Mail, ShieldCheck, Heart, Compass, Sliders, Check } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-const ProfilePage = () => {
-  const [user, setUser] = useState({
-    name: 'Aditya Panna',
-    email: 'aditya@tripmate.com',
-    age: '22',
-    gender: 'Male',
-    budget: '₹15,000 - ₹25,000',
-    preferredCategory: 'Trek & Mountains'
-  });
+export default function ProfilePage() {
+  const { user, token, logout } = useAuth();
+  const navigate = useNavigate();
 
-  const [savedSuccess, setSavedSuccess] = useState(false);
+  const [stats, setStats] = useState({ trips: 0, favorites: 0 });
+  const [bio, setBio] = useState(() => localStorage.getItem('tripmate_bio') || 'Adventure seeker & photography enthusiast.');
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    const storedPrefs = localStorage.getItem('travelPreferences');
+    // Fetch stats from local storage
+    const savedBookings = JSON.parse(localStorage.getItem('tripmate_bookings') || '{}');
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     
-    if (storedUser) {
-      const parsed = JSON.parse(storedUser);
-      setUser(prev => ({ ...prev, name: parsed.name || prev.name, email: parsed.email || prev.email, picture: parsed.picture }));
-    }
-    if (storedPrefs) {
-      setUser(prev => ({ ...prev, ...JSON.parse(storedPrefs) }));
-    }
+    setStats({
+      trips: Object.keys(savedBookings).length,
+      favorites: savedFavorites.length
+    });
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser(prev => ({ ...prev, [name]: value }));
+  const handleSaveProfile = () => {
+    localStorage.setItem('tripmate_bio', bio);
+    setIsEditing(false);
   };
 
-  const handleSave = (e) => {
-    e.preventDefault();
-    localStorage.setItem('travelPreferences', JSON.stringify({
-      age: user.age,
-      gender: user.gender,
-      budget: user.budget,
-      preferredCategory: user.preferredCategory
-    }));
-    setSavedSuccess(true);
-    setTimeout(() => setSavedSuccess(false), 3000);
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
   };
 
   return (
-    <div className="pl-28 pr-10 py-10 min-h-screen bg-[#f8fafc]">
-      
-      {/* Header */}
-      <div className="mb-10">
-        <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Account & Travel Preferences</h1>
-        <p className="text-gray-500 mt-2 font-medium">Manage your personal profile and trip matching preferences for anonymous groups.</p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-6xl">
+    <div className="min-h-screen bg-gray-50 pb-20 px-4 sm:px-6 lg:px-8 pt-8">
+      <div className="max-w-4xl mx-auto space-y-8">
         
-        {/* Left Card: Identity & Security */}
-        <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6 text-center h-fit">
-          <div className="relative w-24 h-24 mx-auto">
-            <img 
-              src={user.picture || `https://ui-avatars.com/api/?name=${user.name}&background=8b5cf6&color=fff`} 
-              alt="Profile" 
-              className="w-24 h-24 rounded-full object-cover shadow-md border-4 border-purple-50"
-            />
-          </div>
-
-          <div>
-            <h2 className="text-xl font-extrabold text-gray-900">{user.name}</h2>
-            <p className="text-xs text-gray-500 font-medium mt-1">{user.email}</p>
-          </div>
-
-          <div className="bg-emerald-50 border border-emerald-100 p-4 rounded-2xl flex items-center justify-center gap-2 text-emerald-700 text-xs font-bold">
-            <ShieldCheck size={16} /> Anonymous PII Protection Active
-          </div>
-
-          <div className="text-left pt-4 border-t border-gray-100 space-y-3">
-            <div className="flex justify-between text-xs font-bold text-gray-500">
-              <span>Account Type</span>
-              <span className="text-purple-600">Traveler / Member</span>
+        <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+            {/* Avatar */}
+            <div className="h-24 w-24 bg-indigo-600 rounded-full flex items-center justify-center text-white text-4xl font-extrabold shadow-md shadow-indigo-200 shrink-0">
+              {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
             </div>
-            <div className="flex justify-between text-xs font-bold text-gray-500">
-              <span>Privacy Standard</span>
-              <span className="text-emerald-600">Strictly Anonymous</span>
+            
+            {/* User Info */}
+            <div className="flex-1 text-center sm:text-left space-y-2">
+              <h1 className="text-3xl font-extrabold text-gray-900">{user?.name || 'Aditya Panna'}</h1>
+              <p className="text-sm font-bold text-gray-500">{user?.email || 'aditya@tripmate.com'}</p>
+              
+              <div className="pt-2">
+                {isEditing ? (
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <input 
+                      type="text" 
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                      className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-indigo-600"
+                    />
+                    <button 
+                      onClick={handleSaveProfile}
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition-all"
+                    >
+                      Save
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center sm:justify-start gap-2">
+                    <p className="text-sm text-gray-700 italic">"{bio}"</p>
+                    <button 
+                      onClick={() => setIsEditing(true)}
+                      className="text-indigo-600 hover:text-indigo-800 text-xs font-bold"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="flex gap-4 pt-4 sm:pt-0 border-t sm:border-t-0 sm:border-l border-gray-100 sm:pl-6 w-full sm:w-auto justify-center">
+              <div className="text-center">
+                <p className="text-2xl font-extrabold text-indigo-600">{stats.trips}</p>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Booked Trips</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-extrabold text-rose-500">{stats.favorites}</p>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Wishlist</p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Right Card: Travel Preferences Form */}
-        <div className="lg:col-span-2 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-          <h3 className="text-xl font-extrabold text-gray-900 mb-6 flex items-center gap-2">
-            <Sliders size={20} className="text-purple-600" /> Trip Matching Preferences
-          </h3>
-
-          <form onSubmit={handleSave} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Age</label>
-                <input 
-                  type="number" 
-                  name="age" 
-                  value={user.age} 
-                  onChange={handleChange}
-                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-gray-800 focus:outline-none focus:border-purple-500"
-                />
+        {/* Security & Settings Sections */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          {/* Preferences */}
+          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 space-y-6">
+            <h3 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3">Travel Preferences</h3>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-bold text-gray-700">Preferred Destinations</span>
+                <span className="text-xs bg-indigo-50 text-indigo-700 px-3 py-1 rounded-lg font-bold">Mountains & Treks</span>
               </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-bold text-gray-700">Dietary Requirements</span>
+                <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-lg font-bold">None</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-bold text-gray-700">Emergency Contact</span>
+                <span className="text-xs text-indigo-600 font-bold hover:underline cursor-pointer">+ Add Contact</span>
+              </div>
+            </div>
+          </div>
 
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Gender (for anonymous stats)</label>
-                <select 
-                  name="gender" 
-                  value={user.gender} 
-                  onChange={handleChange}
-                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-gray-800 focus:outline-none focus:border-purple-500"
-                >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Prefer not to say</option>
-                </select>
+          {/* Security & App Info */}
+          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 space-y-6 flex flex-col justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3">Session & Security</h3>
+              <div className="mt-4 space-y-2">
+                <p className="text-xs font-bold text-gray-500 uppercase">Active Session Token (JWT)</p>
+                <div className="bg-gray-50 border border-gray-200 p-3 rounded-xl overflow-x-auto">
+                  <code className="text-[10px] text-indigo-600 font-mono break-all whitespace-normal">
+                    {token || 'No active token found.'}
+                  </code>
+                </div>
+                <p className="text-[10px] text-emerald-600 font-bold mt-1">✓ Your connection is secure.</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Preferred Budget Range</label>
-                <select 
-                  name="budget" 
-                  value={user.budget} 
-                  onChange={handleChange}
-                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-gray-800 focus:outline-none focus:border-purple-500"
-                >
-                  <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000 (Budget)</option>
-                  <option value="₹10,000 - ₹20,000">₹10,000 - ₹20,000 (Standard)</option>
-                  <option value="₹20,000 - ₹35,000+">₹20,000 - ₹35,000+ (Premium)</option>
-                </select>
-              </div>
+            <button 
+              onClick={handleLogout}
+              className="w-full mt-6 bg-rose-50 hover:bg-rose-100 border border-rose-100 text-rose-600 font-bold py-3 rounded-xl transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+              </svg>
+              Sign Out
+            </button>
+          </div>
 
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Preferred Travel Category</label>
-                <select 
-                  name="preferredCategory" 
-                  value={user.preferredCategory} 
-                  onChange={handleChange}
-                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-gray-800 focus:outline-none focus:border-purple-500"
-                >
-                  <option value="Trek & Mountains">Trek & Mountains</option>
-                  <option value="Beach & Coastal">Beach & Coastal</option>
-                  <option value="Heritage & Culture">Heritage & Culture</option>
-                  <option value="Nature & Wildlife">Nature & Wildlife</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="pt-4 flex items-center justify-between border-t border-gray-100">
-              {savedSuccess ? (
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 px-4 py-2 rounded-xl">
-                  <Check size={16} /> Preferences Saved Successfully!
-                </span>
-              ) : (
-                <span className="text-xs text-gray-400 font-medium">Used for curated group discovery</span>
-              )}
-
-              <button 
-                type="submit"
-                className="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-sm transition-colors text-sm"
-              >
-                Save Preferences
-              </button>
-            </div>
-          </form>
         </div>
-
       </div>
     </div>
   );
-};
-
-export default ProfilePage;
+}

@@ -1,57 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useAuth } from '../context/AuthContext';
 
-const Navbar = () => {
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-
-  // Check Local Storage as soon as the Navbar loads
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    setUser(null); // Instantly updates the UI
-    navigate('/');
-  };
+export default function Navbar() {
+  const { user, logout } = useAuth();
 
   return (
-    <nav className="flex justify-between items-center p-6 bg-white shadow-sm">
-      <div className="flex gap-6 items-center">
-        {/* Replace this with your actual logo/styling if needed */}
-        <Link to="/" className="text-xl font-bold text-purple-600 flex items-center gap-2">
-          <span>◎</span> TripMate
-        </Link>
-        <Link to="/" className="text-gray-600 hover:text-purple-600 font-medium">Home</Link>
-        <Link to="/discover" className="text-gray-600 hover:text-purple-600 font-medium">Discover</Link>
+    <div className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-100">
+      {/* Search or Branding if needed */}
+      <div className="flex items-center space-x-3">
+        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Secure Session Active</span>
       </div>
 
-      <div className="flex gap-4 items-center">
-        {user ? (
-          <>
-            <span className="font-semibold text-gray-700">Hi, {user.name.split(' ')[0]}</span>
-            <button 
-              onClick={handleLogout}
-              className="bg-gray-100 text-gray-700 px-5 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors"
-            >
-              Log Out
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to="/login" className="font-semibold text-gray-700 hover:text-purple-600">Log In</Link>
-            <Link to="/register" className="bg-purple-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-purple-700 transition-colors shadow-sm">
-              Sign Up
-            </Link>
-          </>
-        )}
+      {/* User Profile & JWT Dropdown Indicator */}
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3 bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-2xl">
+          <div className="bg-indigo-600 text-white font-bold text-xs h-8 w-8 rounded-xl flex items-center justify-center">
+            {user?.name ? user.name.charAt(0) : 'A'}
+          </div>
+          <div className="text-left hidden sm:block">
+            <p className="text-xs font-extrabold text-gray-800">{user?.name || 'Aditya Panna'}</p>
+            <p className="text-[10px] text-emerald-600 font-bold">● JWT Authenticated</p>
+          </div>
+        </div>
+
+        <button 
+          onClick={logout}
+          className="bg-gray-100 hover:bg-rose-50 text-gray-600 hover:text-rose-600 text-xs font-bold px-3 py-2 rounded-xl transition-all cursor-pointer"
+          title="Sign Out"
+        >
+          Logout
+        </button>
       </div>
-    </nav>
+    </div>
   );
-};
-
-export default Navbar;
+}

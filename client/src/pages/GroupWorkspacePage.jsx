@@ -1,197 +1,137 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Send, Bot, User, ArrowLeft, ShieldCheck, Calendar, MapPin, Sparkles } from 'lucide-react';
-import { destinationsData } from '../data/destinations';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { mockDestinations as destinations, mockTrips } from '../data/mockDatabase';
 
-const GroupWorkspacePage = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const chatEndRef = useRef(null);
-
-  const destination = destinationsData.find(d => String(d.id) === String(id) || String(d._id) === String(id)) || destinationsData[0];
-
-  const [messages, setMessages] = useState([
-    { id: 1, sender: 'TripMate AI 🤖', text: `Yo! I'm your group co-pilot for ${destination.name}. Keep it real, don't flake on the dates, and hit me up if you need anything!`, time: '10:00 AM', isAI: true },
-    { id: 2, sender: 'Member #01', text: 'Super excited for this trek! Has everyone sorted their gear?', time: '10:02 AM', isAI: false },
-    { id: 3, sender: 'Member #03', text: 'Almost done. Just picking up waterproof jackets today.', time: '10:05 AM', isAI: false }
-  ]);
-
-  const [inputText, setInputText] = useState('');
+export default function GroupWorkspacePage() {
+  const { id } = useParams(); // e.g., 'trip-d2' or 'd2'
+  const [workspaceTitle, setWorkspaceTitle] = useState('Trip Workspace');
+  const [itinerary, setItinerary] = useState([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem(`workspace_chat_${id}`);
-    if (stored) {
-      setMessages(JSON.parse(stored));
+    let resolvedTitle = 'Trip Workspace';
+    let resolvedItinerary = [];
+
+    // Clean the ID (e.g., 'trip-d2' -> 'd2', or 'trip-1' -> '1')
+    const cleanId = id ? id.replace('trip-', '') : '';
+
+    // 1. ABSOLUTE SOURCE OF TRUTH: Find destination directly from mockDestinations
+    const foundDest = destinations.find(
+      (d) => String(d.id) === String(cleanId) || String(d.id) === String(id)
+    );
+
+    if (foundDest) {
+      const destName = foundDest.name || foundDest.title;
+      resolvedTitle = `${destName} Trip Workspace`;
+      
+      // Pull itinerary from destination if available, or generate default
+      resolvedItinerary = foundDest.itinerary || [
+        { day: 1, title: 'Arrival & Base Camp Briefing', description: 'Meet the team, check gear, and prepare for the expedition.' },
+        { day: 2, title: 'Trail Ascent & Wilderness Walk', description: 'Trek through dense forests and scenic viewpoints with the group.' },
+        { day: 3, title: 'Summit Day & Celebration', description: 'Reach the summit for breathtaking sunrise views before heading back.' }
+      ];
+    } else {
+      // 2. Fallback to mockTrips if not a standard destination ID
+      const foundMockTrip = mockTrips.find((t) => t.id === id || t.destinationId === cleanId);
+      if (foundMockTrip) {
+        resolvedTitle = `${foundMockTrip.title} Workspace`;
+        resolvedItinerary = foundMockTrip.itinerary || [];
+      } else {
+        resolvedTitle = 'Expedition Trip Workspace';
+        resolvedItinerary = [
+          { day: 1, title: 'Arrival & Briefing', description: 'Meet your group members and check gear.' },
+          { day: 2, title: 'Trail Trekking', description: 'Embark on the core expedition route.' }
+        ];
+      }
     }
+
+    setWorkspaceTitle(resolvedTitle);
+    setItinerary(resolvedItinerary);
   }, [id]);
 
-  const saveMessages = (updated) => {
-    setMessages(updated);
-    localStorage.setItem(`workspace_chat_${id}`, JSON.stringify(updated));
-  };
-
-  const scrollToBottom = () => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if (!inputText.trim()) return;
-
-    const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const userMsg = {
-      id: Date.now(),
-      sender: 'You (Aditya)',
-      text: inputText,
-      time: timeStr,
-      isAI: false
-    };
-
-    const updatedWithUser = [...messages, userMsg];
-    saveMessages(updatedWithUser);
-    setInputText('');
-
-    // Call your live backend AI API route
-    fetch('http://localhost:5000/api/ai/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: userMsg.text, destinationName: destination.name })
-    })
-    .then(res => res.json())
-    .then(data => {
-      const aiMsg = {
-        id: Date.now() + 1,
-        sender: 'TripMate AI 🤖',
-        text: data.reply,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        isAI: true
-      };
-      saveMessages([...updatedWithUser, aiMsg]);
-    })
-    .catch(err => {
-      console.error('Failed to fetch AI response', err);
-      const errorMsg = {
-        id: Date.now() + 1,
-        sender: 'TripMate AI 🤖',
-        text: "Honestly, my backend server just blinked for a second. Make sure your Node server is running!",
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        isAI: true
-      };
-      saveMessages([...updatedWithUser, errorMsg]);
-    });
-  };
-
   return (
-    <div className="pl-28 pr-10 py-10 min-h-screen bg-[#f8fafc] flex flex-col">
-      
-      {/* Top Bar */}
-      <div className="flex justify-between items-center mb-6">
-        <button 
-          onClick={() => navigate('/my-trips')} 
-          className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors"
-        >
-          <ArrowLeft size={16} /> Back to My Trips
-        </button>
-        <div className="flex items-center gap-2 bg-purple-50 text-purple-700 px-4 py-2 rounded-2xl text-xs font-extrabold">
-          <Sparkles size={14} /> TripMate AI Live Co-Pilot Active
-        </div>
-      </div>
-
-      {/* Main Workspace Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 flex-1">
+    <div className="min-h-screen bg-gray-50 pb-16 px-4 sm:px-6 lg:px-8 pt-8">
+      <div className="max-w-6xl mx-auto space-y-6">
         
-        {/* Left Column: Destination Info & Guidelines */}
-        <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6 h-fit">
+        {/* Header */}
+        <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <div className="flex items-center gap-1 text-blue-600 text-xs font-bold uppercase tracking-wider mb-1">
-              <MapPin size={14} /> {destination.location}
+            <div className="flex items-center space-x-2">
+              <span className="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">JOINED</span>
+              <span className="text-xs text-gray-400 font-bold uppercase tracking-wider">Trip ID: {id}</span>
             </div>
-            <h2 className="text-2xl font-extrabold text-gray-900">{destination.name}</h2>
+            <h1 className="text-3xl font-extrabold text-gray-900 mt-1">{workspaceTitle}</h1>
           </div>
-
-          <div className="bg-gray-50 p-4 rounded-2xl space-y-3 text-xs font-bold text-gray-600">
-            <div className="flex justify-between">
-              <span>Duration</span>
-              <span className="text-gray-900">{destination.duration} Days</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Difficulty</span>
-              <span className="text-gray-900">{destination.difficulty || 'Moderate'}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Privacy</span>
-              <span className="text-emerald-600 flex items-center gap-1"><ShieldCheck size={12} /> Anonymous</span>
-            </div>
-          </div>
-
-          <div className="p-4 bg-purple-50/50 rounded-2xl border border-purple-100 text-xs text-purple-900 leading-relaxed font-medium">
-            💡 <strong>Tip:</strong> Type anything here. Your message goes straight to your Gemini backend API for a live, smart response!
-          </div>
+          <Link to="/my-trips" className="bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold px-4 py-2.5 rounded-xl transition-all">
+            ← Back to My Trips
+          </Link>
         </div>
 
-        {/* Right Column: Live Chat with AI Assistant */}
-        <div className="lg:col-span-3 bg-white rounded-3xl border border-gray-100 shadow-sm flex flex-col h-[700px]">
+        {/* Workspace Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
-          {/* Chat Header */}
-          <div className="p-6 border-b border-gray-100 flex justify-between items-center">
-            <div>
-              <h3 className="font-extrabold text-gray-900 text-lg">Group Workspace & AI Co-Pilot</h3>
-              <p className="text-xs text-gray-500 font-medium">Collaborate with fellow travelers and chat with TripMate AI.</p>
-            </div>
-            <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-          </div>
-
-          {/* Messages Area */}
-          <div className="flex-1 p-6 overflow-y-auto space-y-4">
-            {messages.map((msg) => (
-              <div 
-                key={msg.id} 
-                className={`flex flex-col ${msg.sender.includes('You') ? 'items-end' : 'items-start'}`}
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-bold text-gray-500">{msg.sender}</span>
-                  <span className="text-[10px] text-gray-400">{msg.time}</span>
+          {/* Left: Members & Itinerary */}
+          <div className="space-y-6">
+            <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 space-y-4">
+              <h3 className="text-lg font-bold text-gray-900">Group Members</h3>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                  <div className="bg-indigo-100 text-indigo-700 font-bold h-10 w-10 rounded-full flex items-center justify-center">TP</div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-800">Tanuj</p>
+                    <p className="text-xs text-gray-500">22 • Male</p>
+                  </div>
                 </div>
-                <div className={`p-4 rounded-2xl max-w-lg text-sm font-medium leading-relaxed shadow-sm ${
-                  msg.isAI 
-                    ? 'bg-purple-50 text-purple-950 border border-purple-100' 
-                    : msg.sender.includes('You')
-                    ? 'bg-blue-600 text-white rounded-tr-none'
-                    : 'bg-gray-100 text-gray-800 rounded-tl-none'
-                }`}>
-                  {msg.text}
+                <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                  <div className="bg-purple-100 text-purple-700 font-bold h-10 w-10 rounded-full flex items-center justify-center">AP</div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-800">Aditya Panna (You)</p>
+                    <p className="text-xs text-indigo-600 font-semibold">Admin</p>
+                  </div>
                 </div>
               </div>
-            ))}
-            <div ref={chatEndRef} />
+            </div>
+
+            {/* Itinerary */}
+            <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 space-y-4">
+              <h3 className="text-lg font-bold text-gray-900">Itinerary Schedule</h3>
+              <div className="space-y-3">
+                {itinerary.map((item, idx) => (
+                  <div key={idx} className="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                    <span className="text-xs font-bold text-indigo-600">Day {item.day || idx + 1}</span>
+                    <h4 className="text-xs font-bold text-gray-800 mt-0.5">{item.title}</h4>
+                    <p className="text-xs text-gray-500 mt-1">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Input Form */}
-          <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-100 flex gap-3">
-            <input 
-              type="text" 
-              placeholder="Ask TripMate AI anything (powered by Gemini API)..." 
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              className="flex-1 p-4 bg-gray-50 border border-gray-200 rounded-2xl font-medium text-sm text-gray-800 focus:outline-none focus:border-purple-500 transition-colors"
-            />
-            <button 
-              type="submit"
-              className="px-6 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-2xl transition-colors shadow-sm flex items-center justify-center gap-2"
-            >
-              <Send size={18} />
-            </button>
-          </form>
+          {/* Right: Group Chat Simulator */}
+          <div className="lg:col-span-2 bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col h-[600px]">
+            <h3 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3">Group Chat</h3>
+            
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-2">
+              <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 max-w-md">
+                <span className="text-xs font-bold text-indigo-600 block mb-1">Tanuj</span>
+                <p className="text-sm text-gray-700">Hey Aditya! Super excited for this trip. Let me know when you want to discuss logistics.</p>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-gray-100 flex gap-2">
+              <input 
+                type="text" 
+                placeholder="Type a message to your group..." 
+                className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+              />
+              <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-sm">
+                Send
+              </button>
+            </div>
+          </div>
 
         </div>
 
       </div>
     </div>
   );
-};
-
-export default GroupWorkspacePage;
+}

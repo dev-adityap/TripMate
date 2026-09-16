@@ -16,7 +16,7 @@ export const mockDestinations = [
     thingsToDo: ['Paragliding', 'River Rafting', 'Cafe Hopping', 'Trekking'],
     bestTimeToVisit: 'October to June', recommendedDuration: '4-5 Days', approximateBudget: '₹10,000 - ₹15,000', travelStyle: 'Leisure / Adventure', difficulty: 'Easy',
     travelTips: ['Book Rohtang Pass permits well in advance.', 'Old Manali is better for backpackers.', 'Carry heavy woolens if visiting in winter.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1597167231350-d057a45dc868?q=80&w=1382&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd2', name: 'Kasol', state: 'Himachal Pradesh', category: 'MOUNTAIN',
@@ -27,7 +27,7 @@ export const mockDestinations = [
     thingsToDo: ['Trekking to Kheerganga', 'Cafe Hopping', 'Riverside Camping', 'Exploring nearby villages'],
     bestTimeToVisit: 'March to June & October to November', recommendedDuration: '3-4 Days', approximateBudget: '₹6,000 - ₹10,000', travelStyle: 'Backpacking', difficulty: 'Easy',
     travelTips: ['Carry cash as ATMs are limited and often run out.', 'Be prepared for sudden rain showers.', 'Respect local village customs when visiting Tosh or Malana.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1710495556210-85091a7520b0?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd3', name: 'Spiti Valley', state: 'Himachal Pradesh', category: 'MOUNTAIN',
@@ -38,7 +38,7 @@ export const mockDestinations = [
     thingsToDo: ['High-altitude driving', 'Monastery hopping', 'Stargazing', 'Camping by Chandratal'],
     bestTimeToVisit: 'May to October', recommendedDuration: '8-10 Days', approximateBudget: '₹18,000 - ₹25,000', travelStyle: 'Adventure / Offbeat', difficulty: 'Moderate',
     travelTips: ['Acclimatize properly; altitude sickness is real.', 'BSNL network works best, but expect days with zero connectivity.', 'Carry extra fuel if self-driving.'],
-    image: ""
+    image: "https://plus.unsplash.com/premium_photo-1661930516466-04ffc555c510?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd4', name: 'Kinnaur Valley', state: 'Himachal Pradesh', category: 'MOUNTAIN',
@@ -49,7 +49,7 @@ export const mockDestinations = [
     thingsToDo: ['Road tripping', 'Village walks', 'Apple orchard visits', 'Photography'],
     bestTimeToVisit: 'April to June & September to October', recommendedDuration: '6-7 Days', approximateBudget: '₹12,000 - ₹18,000', travelStyle: 'Road Trip / Nature', difficulty: 'Moderate',
     travelTips: ['The roads can be treacherous; hire an experienced local driver if unsure.', 'Chitkul gets extremely cold even in summer.', 'Respect the local deities and temple rules.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1733242792661-007784695a37?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd5', name: 'Tirthan Valley', state: 'Himachal Pradesh', category: 'MOUNTAIN',
@@ -60,7 +60,7 @@ export const mockDestinations = [
     thingsToDo: ['Trout Fishing', 'Trekking', 'Riverside Camping', 'Bird Watching'],
     bestTimeToVisit: 'March to June & September to November', recommendedDuration: '4-5 Days', approximateBudget: '₹8,000 - ₹12,000', travelStyle: 'Nature / Relax', difficulty: 'Easy',
     travelTips: ['Fishing requires a permit which your homestay can help arrange.', 'Jalori Pass is steep; ensure your vehicle is in good condition.', 'Carry eco-friendly products to protect the river.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1652501836149-ab1b0f220a37?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd6', name: 'Dalhousie', state: 'Himachal Pradesh', category: 'MOUNTAIN',
@@ -71,7 +71,7 @@ export const mockDestinations = [
     thingsToDo: ['Nature Walks', 'Boating at Chamera Lake', 'Trekking to Dainkund', 'Café Hopping'],
     bestTimeToVisit: 'March to June & October to December', recommendedDuration: '3-4 Days', approximateBudget: '₹9,000 - ₹14,000', travelStyle: 'Family / Leisure', difficulty: 'Easy',
     travelTips: ['Khajjiar gets crowded on weekends; go early in the morning.', 'Winter visits require heavy woolens as it snows heavily.', 'Great place for buying traditional Himachali shawls.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1589702413183-ca141958b7c5?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd7', name: 'Dharamshala', state: 'Himachal Pradesh', category: 'MOUNTAIN',
@@ -82,7 +82,7 @@ export const mockDestinations = [
     thingsToDo: ['Watching a cricket match', 'Tea garden tours', 'Exploring Kangra Fort', 'Forest walks'],
     bestTimeToVisit: 'February to June & September to November', recommendedDuration: '2-3 Days', approximateBudget: '₹7,000 - ₹11,000', travelStyle: 'Culture / Leisure', difficulty: 'Easy',
     travelTips: ['Combine this trip with Mcleod Ganj for a complete experience.', 'The stadium is open to tourists on non-match days.', 'Monsoons receive extremely heavy rainfall; avoid July and August.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1503265192943-9d7eea6fc77a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd8', name: 'Mcleod Ganj', state: 'Himachal Pradesh', category: 'MOUNTAIN',
@@ -93,7 +93,7 @@ export const mockDestinations = [
     thingsToDo: ['Triund Trek', 'Cafe Hopping', 'Meditation and Yoga Retreats', 'Shopping for Tibetan artifacts'],
     bestTimeToVisit: 'September to June', recommendedDuration: '3-4 Days', approximateBudget: '₹8,000 - ₹13,000', travelStyle: 'Spiritual / Backpacking', difficulty: 'Moderate',
     travelTips: ['The hike to Bhagsu waterfall is steep but rewarding.', 'Triund can get very crowded; consider camping further up at Snowline.', 'Respect the silence inside the monastery premises.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1507475834979-531ebe544dbb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd9', name: 'Mussoorie', state: 'Uttarakhand', category: 'MOUNTAIN',
@@ -104,7 +104,7 @@ export const mockDestinations = [
     thingsToDo: ['Cable Car Ride to Gun Hill', 'Shopping on Mall Road', 'Nature walks in Landour', 'Cafe hopping'],
     bestTimeToVisit: 'March to June & September to November', recommendedDuration: '3-4 Days', approximateBudget: '₹9,000 - ₹14,000', travelStyle: 'Family / Leisure', difficulty: 'Easy',
     travelTips: ['Stay in Landour if you prefer peace over the crowded Mall Road.', 'Book hotels well in advance during summer weekends.', 'Try the famous baked goods at Landour Bakehouse.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1690702812077-cc5b8ee88b01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd10', name: 'Auli', state: 'Uttarakhand', category: 'MOUNTAIN',
@@ -115,7 +115,7 @@ export const mockDestinations = [
     thingsToDo: ['Skiing and Snowboarding', 'Ropeway Ride', 'Trekking to Gurso Bugyal', 'Camping'],
     bestTimeToVisit: 'December to March (for snow) & May to November (for nature)', recommendedDuration: '3-4 Days', approximateBudget: '₹12,000 - ₹20,000', travelStyle: 'Adventure / Nature', difficulty: 'Moderate',
     travelTips: ['Skiing equipment can be rented locally; no need to buy.', 'The ropeway from Joshimath is the best way to reach Auli.', 'Carry heavy snow gear if visiting in winter.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1623727705498-51a6a4154384?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd11', name: 'Chopta', state: 'Uttarakhand', category: 'MOUNTAIN',
@@ -126,7 +126,7 @@ export const mockDestinations = [
     thingsToDo: ['Trekking', 'Camping', 'Bird Watching', 'Astrophotography'],
     bestTimeToVisit: 'April to November', recommendedDuration: '3-4 Days', approximateBudget: '₹7,000 - ₹11,000', travelStyle: 'Adventure / Backpacking', difficulty: 'Moderate',
     travelTips: ['Electricity is limited; carry power banks.', 'Accommodation consists mainly of tents and basic guesthouses.', 'Trekking in winter requires snow boots and a guide.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1699214101672-610e95f1e8d3?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd12', name: 'Munsiyari', state: 'Uttarakhand', category: 'MOUNTAIN',
@@ -137,7 +137,7 @@ export const mockDestinations = [
     thingsToDo: ['Trekking to Khaliya Top', 'Glacier Trekking', 'Nature Photography', 'Village walks'],
     bestTimeToVisit: 'March to June & September to October', recommendedDuration: '4-5 Days', approximateBudget: '₹9,000 - ₹14,000', travelStyle: 'Offbeat / Adventure', difficulty: 'Difficult',
     travelTips: ['The drive to Munsiyari is long and tiring; break the journey if needed.', 'Carry sufficient cash and essential medicines.', 'A permit is required for the Milam Glacier trek.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1683700916507-93d49889bacc?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd13', name: 'Lansdowne', state: 'Uttarakhand', category: 'MOUNTAIN',
@@ -148,7 +148,7 @@ export const mockDestinations = [
     thingsToDo: ['Nature Walks', 'Boating', 'Bird Watching', 'Visiting the Army Museum'],
     bestTimeToVisit: 'March to June & September to November', recommendedDuration: '2-3 Days', approximateBudget: '₹7,000 - ₹10,000', travelStyle: 'Relaxation / Family', difficulty: 'Easy',
     travelTips: ['Accommodation is limited; book well in advance.', 'Since it is an army cantonment, strict rules regarding cleanliness and noise apply.', 'Great for short weekend trips from Delhi.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1606202801044-284067800cdf?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd14', name: 'Ranikhet', state: 'Uttarakhand', category: 'MOUNTAIN',
@@ -159,7 +159,7 @@ export const mockDestinations = [
     thingsToDo: ['Golfing', 'Orchard Walks', 'Temple Hopping', 'Picnicking in the meadows'],
     bestTimeToVisit: 'March to July & September to November', recommendedDuration: '3-4 Days', approximateBudget: '₹8,000 - ₹12,000', travelStyle: 'Leisure / Family', difficulty: 'Easy',
     travelTips: ['Try the fresh fruit juices and jams at Chaubatia Gardens.', 'The town sleeps early; plan your dinners accordingly.', 'Respect the army cantonment regulations.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1599578326727-8163b8360ca6?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd15', name: 'Nainital', state: 'Uttarakhand', category: 'MOUNTAIN',
@@ -170,7 +170,7 @@ export const mockDestinations = [
     thingsToDo: ['Boating', 'Cable Car Ride', 'Shopping', 'Trekking to Tiffin Top'],
     bestTimeToVisit: 'March to June & September to December', recommendedDuration: '3-4 Days', approximateBudget: '₹10,000 - ₹15,000', travelStyle: 'Family / Romance', difficulty: 'Easy',
     travelTips: ['Mall road is closed to vehicles in the evening; be prepared to walk.', 'Parking is very limited; choose a hotel with dedicated parking.', 'Try the local bal mithai (sweet).'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1712201649803-ab1b13dae600?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd16', name: 'Darjeeling', state: 'West Bengal', category: 'MOUNTAIN',
@@ -181,7 +181,7 @@ export const mockDestinations = [
     thingsToDo: ['Toy Train Ride', 'Tea Tasting', 'Watching the Sunrise', 'Visiting the Himalayan Mountaineering Institute'],
     bestTimeToVisit: 'March to May & October to December', recommendedDuration: '4-5 Days', approximateBudget: '₹12,000 - ₹18,000', travelStyle: 'Culture / Leisure', difficulty: 'Easy',
     travelTips: ['Tiger Hill requires an extremely early start (around 3:30 AM).', 'Book the Toy Train joyride weeks in advance.', 'Pack an umbrella; rain is unpredictable.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1617478993559-75ceef413f4a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd17', name: 'Kalimpong', state: 'West Bengal', category: 'MOUNTAIN',
@@ -192,7 +192,7 @@ export const mockDestinations = [
     thingsToDo: ['Paragliding from Deolo', 'Visiting Flower Nurseries', 'Monastery Hopping', 'Shopping for local cheese and lollipops'],
     bestTimeToVisit: 'March to May & September to December', recommendedDuration: '2-3 Days', approximateBudget: '₹8,000 - ₹12,000', travelStyle: 'Leisure / Relax', difficulty: 'Easy',
     travelTips: ['Try the locally made Kalimpong cheese and lollipops.', 'A great stopover destination if you are traveling to Sikkim.', 'Deolo Hill offers excellent picnic spots.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1588494149782-7b8327080716?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGthbGltcG9uZ3xlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd18', name: 'Gangtok', state: 'Sikkim', category: 'MOUNTAIN',
@@ -203,7 +203,7 @@ export const mockDestinations = [
     thingsToDo: ['Walking on MG Marg', 'Cable Car Ride', 'Day trip to Nathu La', 'Trying authentic Tibetan food'],
     bestTimeToVisit: 'September to June', recommendedDuration: '4-5 Days', approximateBudget: '₹12,000 - ₹20,000', travelStyle: 'Culture / Adventure', difficulty: 'Moderate',
     travelTips: ['Nathu La Pass requires a special permit and is closed on Mondays and Tuesdays.', 'Strict anti-littering and anti-smoking laws are enforced on MG Marg.', 'Taxis operate on a strict syndicate system.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1615966192539-f1731963b19a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd19', name: 'Pelling', state: 'Sikkim', category: 'MOUNTAIN',
@@ -214,7 +214,7 @@ export const mockDestinations = [
     thingsToDo: ['Walking the Glass Sky Walk', 'Exploring ancient ruins', 'Hiking to waterfalls', 'Photography'],
     bestTimeToVisit: 'September to May', recommendedDuration: '3-4 Days', approximateBudget: '₹10,000 - ₹15,000', travelStyle: 'Nature / Spiritual', difficulty: 'Easy',
     travelTips: ['Wake up early for the best mountain views before the clouds roll in.', 'The roads to Pelling can be bumpy; travel during daylight.', 'Khecheopalri Lake is highly sacred; do not disturb the water.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1721884487052-8fb79415772c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVsbGluZ3xlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd20', name: 'Tawang', state: 'Arunachal Pradesh', category: 'MOUNTAIN',
@@ -225,7 +225,7 @@ export const mockDestinations = [
     thingsToDo: ['Monastery visits', 'High-altitude road tripping', 'Paying respects at the War Memorial', 'Trying Monpa cuisine'],
     bestTimeToVisit: 'March to October', recommendedDuration: '5-7 Days', approximateBudget: '₹15,000 - ₹25,000', travelStyle: 'Adventure / Spiritual', difficulty: 'Moderate',
     travelTips: ['An Inner Line Permit (ILP) is mandatory for all Indian tourists.', 'Acclimatization is necessary; do not rush the ascent.', 'Winters are brutally cold and roads may be blocked by snow.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1626761627604-f27d98885f4b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGF3YW5nfGVufDB8fDB8fHww"
   },
   {
     id: 'd21', name: 'Ziro', state: 'Arunachal Pradesh', category: 'MOUNTAIN',
@@ -236,7 +236,7 @@ export const mockDestinations = [
     thingsToDo: ['Village walks and tribal interactions', 'Attending the Ziro Music Festival (September)', 'Trekking in the pine forests', 'Photography'],
     bestTimeToVisit: 'March to October (September for the Music Festival)', recommendedDuration: '3-5 Days', approximateBudget: '₹10,000 - ₹16,000', travelStyle: 'Culture / Offbeat', difficulty: 'Easy',
     travelTips: ['An Inner Line Permit (ILP) is mandatory.', 'Always ask for permission before photographing tribal elders.', 'Accommodation during the music festival must be booked months in advance.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1641821917194-6760d7b28190?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd22', name: 'Shillong', state: 'Meghalaya', category: 'MOUNTAIN',
@@ -247,7 +247,7 @@ export const mockDestinations = [
     thingsToDo: ['Boating on Umiam Lake', 'Cafe hopping and live music', 'Shopping at Police Bazar', 'Museum tours'],
     bestTimeToVisit: 'September to May', recommendedDuration: '3-4 Days', approximateBudget: '₹10,000 - ₹15,000', travelStyle: 'Culture / Leisure', difficulty: 'Easy',
     travelTips: ['Traffic in Shillong can be heavily congested; plan extra travel time.', 'Police Bazar is the best place to find local Khasi food and street shopping.', 'Carry an umbrella regardless of the season.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1609276804051-8c5e906cc430?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2hpbGxvbmd8ZW58MHx8MHx8fDA%3D"
   },
   {
     id: 'd23', name: 'Cherrapunji', state: 'Meghalaya', category: 'MOUNTAIN',
@@ -258,7 +258,7 @@ export const mockDestinations = [
     thingsToDo: ['Trekking to Nongriat', 'Caving', 'Waterfall hopping', 'Ziplining at Mawkdok Dympep Valley'],
     bestTimeToVisit: 'October to May', recommendedDuration: '3-4 Days', approximateBudget: '₹9,000 - ₹14,000', travelStyle: 'Adventure / Nature', difficulty: 'Moderate',
     travelTips: ['The trek to the Double Decker bridge involves descending and climbing over 3,000 steep stairs.', 'Monsoon visits are beautiful but restrict outdoor activities due to heavy rain.', 'Hire a guide for extensive caving.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1735567065045-97ba386867ad?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd24', name: 'Gulmarg', state: 'Jammu & Kashmir', category: 'MOUNTAIN',
@@ -269,7 +269,7 @@ export const mockDestinations = [
     thingsToDo: ['Skiing and Snowboarding', 'Gondola Ride', 'Trekking to Alpather Lake', 'Snowmobiling'],
     bestTimeToVisit: 'December to March (for snow) & May to October (for nature)', recommendedDuration: '3-4 Days', approximateBudget: '₹15,000 - ₹25,000', travelStyle: 'Adventure / Romance', difficulty: 'Moderate',
     travelTips: ['Book Gondola tickets online well in advance, as they sell out daily.', 'Phase 2 of the Gondola reaches extreme altitudes; beware of altitude sickness.', 'Rent proper snow boots and coats locally.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1706353222367-d0b0fb602f07?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd25', name: 'Pahalgam', state: 'Jammu & Kashmir', category: 'MOUNTAIN',
@@ -280,7 +280,7 @@ export const mockDestinations = [
     thingsToDo: ['Pony Rides', 'River Rafting', 'Trekking', 'Trout Fishing', 'Picnicking'],
     bestTimeToVisit: 'March to November', recommendedDuration: '3-4 Days', approximateBudget: '₹12,000 - ₹18,000', travelStyle: 'Leisure / Family', difficulty: 'Easy',
     travelTips: ['Bargain hard when hiring ponies for excursions.', 'Private outside taxis are often not allowed for local sightseeing; you must hire a local union taxi.', 'Aru Valley is less crowded and more scenic than Betaab.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1636000412010-0df8743754a2?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd26', name: 'Sonamarg', state: 'Jammu & Kashmir', category: 'MOUNTAIN',
@@ -291,7 +291,7 @@ export const mockDestinations = [
     thingsToDo: ['Trekking to the Glacier', 'Sledding', 'Trout Fishing in the Sindh River', 'Camping'],
     bestTimeToVisit: 'April to October', recommendedDuration: '2-3 Days', approximateBudget: '₹10,000 - ₹15,000', travelStyle: 'Adventure / Nature', difficulty: 'Moderate',
     travelTips: ['The road to Sonamarg is closed during deep winter due to heavy snowfall.', 'Wear sturdy trekking shoes if you plan to walk to Thajiwas Glacier instead of taking a pony.', 'Start your journey to Zoji La very early in the morning to avoid traffic.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1666513303924-8dd2ca7606ff?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd27', name: 'Leh', state: 'Ladakh', category: 'MOUNTAIN',
@@ -302,7 +302,7 @@ export const mockDestinations = [
     thingsToDo: ['Monastery tours', 'Motorcycling', 'Cafe hopping in Leh market', 'White water rafting on the Zanskar River'],
     bestTimeToVisit: 'May to September', recommendedDuration: '5-7 Days', approximateBudget: '₹15,000 - ₹25,000', travelStyle: 'Adventure / Culture', difficulty: 'Moderate',
     travelTips: ['Strict acclimatization is mandatory; rest completely for the first 48 hours to avoid Acute Mountain Sickness (AMS).', 'Drink plenty of water and avoid alcohol upon arrival.', 'Postpaid connections of major networks work best.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1600242466690-c1c04f081762?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd28', name: 'Nubra Valley', state: 'Ladakh', category: 'MOUNTAIN',
@@ -313,7 +313,7 @@ export const mockDestinations = [
     thingsToDo: ['Bactrian Camel Safari', 'Motorcycling', 'ATV Rides on Sand Dunes', 'Exploring the Balti culture in Turtuk'],
     bestTimeToVisit: 'May to September', recommendedDuration: '2-3 Days', approximateBudget: '₹12,000 - ₹18,000', travelStyle: 'Adventure / Offbeat', difficulty: 'Moderate',
     travelTips: ['Do not spend more than 20 minutes at Khardung La top due to extreme thin air.', 'An Inner Line Permit (ILP) is required.', 'Turtuk is highly recommended for a unique cultural shift.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1714637469792-d19b0c8be55e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd29', name: 'Pangong Lake', state: 'Ladakh', category: 'MOUNTAIN',
@@ -324,7 +324,7 @@ export const mockDestinations = [
     thingsToDo: ['Lakeside Camping', 'Photography', 'Stargazing', 'Watching the sunrise over the lake'],
     bestTimeToVisit: 'May to September', recommendedDuration: '1-2 Days', approximateBudget: '₹8,000 - ₹12,000', travelStyle: 'Adventure / Nature', difficulty: 'Moderate',
     travelTips: ['Nights by the lake are freezing, even in summer; pack heavy thermals.', 'Do not pollute the lake; it has a very fragile ecosystem.', 'Oxygen levels drop significantly at night.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1593118845043-359e5f628214?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
 
   // 🥾 TREKS / ADVENTURE
@@ -337,7 +337,7 @@ export const mockDestinations = [
     thingsToDo: ['Trekking', 'Wildlife Spotting (Red Panda if lucky)', 'Teahouse hopping', 'Photography'],
     bestTimeToVisit: 'April to May & October to early December', recommendedDuration: '6-7 Days', approximateBudget: '₹9,000 - ₹14,000', travelStyle: 'Adventure Trek', difficulty: 'Moderate',
     travelTips: ['Carry an original ID as the trail enters Nepal.', 'The wind on the ridge is notoriously fierce; a good windcheater is essential.', 'Stay in a teahouse to experience local Sherpa hospitality.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1705744145760-c2ba12abb3a1?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd31', name: 'Kedarkantha Trek', state: 'Uttarakhand', category: 'TREK',
@@ -348,7 +348,7 @@ export const mockDestinations = [
     thingsToDo: ['Snow Trekking', 'Camping on snow', 'Night Photography', 'Summit climbing'],
     bestTimeToVisit: 'December to April (for snow)', recommendedDuration: '5-6 Days', approximateBudget: '₹8,000 - ₹12,000', travelStyle: 'Adventure Trek', difficulty: 'Moderate',
     travelTips: ['Layering is crucial; temperatures drop well below freezing at night.', 'Microspikes and gaiters are usually provided by trek operators but are mandatory.', 'Hydrate constantly, even if you do not feel thirsty in the cold.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1669807935395-3bc80395a951?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd32', name: 'Kedarnath Trek', state: 'Uttarakhand', category: 'TREK',
@@ -359,7 +359,7 @@ export const mockDestinations = [
     thingsToDo: ['Pilgrimage Trekking', 'Attending the evening Aarti', 'Helicopter ride (optional)'],
     bestTimeToVisit: 'May to June & September to October', recommendedDuration: '3-4 Days', approximateBudget: '₹7,000 - ₹15,000', travelStyle: 'Spiritual / Trek', difficulty: 'Moderate',
     travelTips: ['The weather is highly unpredictable; carry heavy rain gear.', 'Start the trek extremely early in the morning to avoid the midday sun and afternoon rain.', 'Ponies and palanquins are available for those unable to walk.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1612438214708-f428a707dd4e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd33', name: 'Valley of Flowers Trek', state: 'Uttarakhand', category: 'TREK',
@@ -370,7 +370,7 @@ export const mockDestinations = [
     thingsToDo: ['Botanical photography', 'Trekking', 'Pilgrimage to Hemkund Sahib', 'Nature walks'],
     bestTimeToVisit: 'July to early September', recommendedDuration: '5-6 Days', approximateBudget: '₹10,000 - ₹15,000', travelStyle: 'Nature Trek', difficulty: 'Moderate',
     travelTips: ['Excellent quality rain gear (poncho, waterproof boots, bag cover) is absolutely mandatory.', 'Camping is not allowed inside the valley; you must return to Ghangaria before dark.', 'Combine this with the steep hike to Hemkund Sahib.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1643042281037-e86e7a0568cc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd34', name: 'Tungnath-Chandrashila Trek', state: 'Uttarakhand', category: 'TREK',
@@ -381,7 +381,7 @@ export const mockDestinations = [
     thingsToDo: ['Summit Climbing', 'Bird Watching', 'Photography', 'Snow trekking in winter'],
     bestTimeToVisit: 'April to November', recommendedDuration: '2-3 Days', approximateBudget: '₹6,000 - ₹10,000', travelStyle: 'Adventure Trek', difficulty: 'Easy',
     travelTips: ['The final push from Tungnath to Chandrashila is steep and can be slippery in winter.', 'Start the summit hike before dawn to catch the sunrise.', 'Carry sufficient water from Chopta.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1465919292275-c60ba49da6ae?q=80&w=1211&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd35', name: 'Ali Bedni Bugyal Trek', state: 'Uttarakhand', category: 'TREK',
@@ -392,7 +392,7 @@ export const mockDestinations = [
     thingsToDo: ['Meadow Trekking', 'Camping under the stars', 'Landscape Photography', 'Forest walks'],
     bestTimeToVisit: 'May to June & September to October', recommendedDuration: '5-6 Days', approximateBudget: '₹10,000 - ₹14,000', travelStyle: 'Nature Trek', difficulty: 'Moderate',
     travelTips: ['Do not trek during the peak monsoon as the meadows become infested with leeches and mist blocks the views.', 'Proper trekking shoes with good grip are required.', 'Ensure you carry eco-bags to bring back your waste.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1666513306098-5d2b004bd915?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd36', name: 'Dayara Bugyal Trek', state: 'Uttarakhand', category: 'TREK',
@@ -403,7 +403,7 @@ export const mockDestinations = [
     thingsToDo: ['Meadow walks', 'Winter snow trekking', 'Camping', 'Photography'],
     bestTimeToVisit: 'May to July & September to March', recommendedDuration: '4 Days', approximateBudget: '₹8,000 - ₹12,000', travelStyle: 'Beginner Trek', difficulty: 'Easy',
     travelTips: ['Excellent choice for a first winter snow trek.', 'Carry a good quality windproof jacket for the open meadows.', 'Respect the local shepherds and their flocks.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1739875875493-5c1470c86726?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd37', name: 'Har Ki Dun Trek', state: 'Uttarakhand', category: 'TREK',
@@ -414,7 +414,7 @@ export const mockDestinations = [
     thingsToDo: ['Valley Trekking', 'Interacting with locals in ancient villages', 'Glacier exploration', 'Riverside camping'],
     bestTimeToVisit: 'April to June & September to December', recommendedDuration: '7-8 Days', approximateBudget: '₹12,000 - ₹18,000', travelStyle: 'Culture / Nature Trek', difficulty: 'Moderate',
     travelTips: ['The trek is long (around 47 km total); build your stamina through jogging before you go.', 'Respect the local architecture and customs in Osla.', 'The valley gets freezing cold in November.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1788770675004-1b1e004fc34a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd38', name: 'Brahmatal Trek', state: 'Uttarakhand', category: 'TREK',
@@ -425,7 +425,7 @@ export const mockDestinations = [
     thingsToDo: ['Snow Trekking', 'Ridge walking', 'Camping in snow', 'Photography'],
     bestTimeToVisit: 'December to March', recommendedDuration: '6 Days', approximateBudget: '₹9,000 - ₹13,000', travelStyle: 'Winter Trek', difficulty: 'Moderate',
     travelTips: ['Snow blindness is a risk on sunny winter days; UV-protected sunglasses are strictly mandatory.', 'Carry three layers of warm clothing.', 'The lakes are considered sacred; do not walk on the ice.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1767165019720-993c62543bfb?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd39', name: 'Kuari Pass Trek', state: 'Uttarakhand', category: 'TREK',
@@ -436,7 +436,7 @@ export const mockDestinations = [
     thingsToDo: ['Mountain Viewing', 'Trekking', 'Forest Camping', 'Photography'],
     bestTimeToVisit: 'April to June & September to December', recommendedDuration: '5-6 Days', approximateBudget: '₹10,000 - ₹15,000', travelStyle: 'Adventure Trek', difficulty: 'Moderate',
     travelTips: ['A great alternative to Auli if you want to avoid tourist crowds but want the same views.', 'The wind at the pass is incredibly strong.', 'Carry sufficient memory cards; you will take endless photos.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1716573263049-bb901a972ce1?q=80&w=1358&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd40', name: 'Hampta Pass Trek', state: 'Himachal Pradesh', category: 'TREK',
@@ -447,7 +447,7 @@ export const mockDestinations = [
     thingsToDo: ['Pass Crossing', 'River Fording', 'Camping at Shea Goru', 'Visiting Chandratal'],
     bestTimeToVisit: 'Mid-June to September', recommendedDuration: '5-6 Days', approximateBudget: '₹10,000 - ₹16,000', travelStyle: 'Crossover Trek', difficulty: 'Moderate',
     travelTips: ['The river crossings are freezing cold; be prepared for the shock.', 'Rain is highly likely on the Kullu side; pack good rain gear.', 'The descent from the pass is steep and requires careful footing.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1688804470994-271ad19db477?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd41', name: 'Buran Ghati Trek', state: 'Himachal Pradesh', category: 'TREK',
@@ -458,7 +458,7 @@ export const mockDestinations = [
     thingsToDo: ['Snow Rappelling', 'High-altitude Trekking', 'Camping by the lake', 'Sliding on snow'],
     bestTimeToVisit: 'May to June & September to October', recommendedDuration: '7-8 Days', approximateBudget: '₹14,000 - ₹20,000', travelStyle: 'Adventure / Thrill', difficulty: 'Moderate',
     travelTips: ['Strict physical fitness is required due to the altitude and the technical pass crossing.', 'Listen carefully to your trek leaders during the rappel.', 'The campsites are incredibly beautiful; bring a good camera.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1601639396099-c87b05e04fd9?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd42', name: 'Pin Parvati Pass Trek', state: 'Himachal Pradesh', category: 'TREK',
@@ -469,7 +469,7 @@ export const mockDestinations = [
     thingsToDo: ['Glacier Trekking', 'Crevasse Navigation', 'High-altitude Camping', 'River Crossings'],
     bestTimeToVisit: 'July to September', recommendedDuration: '11-12 Days', approximateBudget: '₹22,000 - ₹30,000', travelStyle: 'Expedition', difficulty: 'Difficult',
     travelTips: ['Strictly for experienced trekkers with previous high-altitude experience.', 'Physical conditioning (running, strength training) months in advance is mandatory.', 'Weather at the pass is highly unpredictable and can cause delays.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1574632430946-82add0b76816?q=80&w=1525&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd43', name: 'Beas Kund Trek', state: 'Himachal Pradesh', category: 'TREK',
@@ -480,7 +480,7 @@ export const mockDestinations = [
     thingsToDo: ['Glacier Viewing', 'Trekking', 'Camping', 'Photography'],
     bestTimeToVisit: 'Mid-May to October', recommendedDuration: '3-4 Days', approximateBudget: '₹6,000 - ₹9,000', travelStyle: 'Beginner Trek', difficulty: 'Easy',
     travelTips: ['A great introductory trek to prepare for longer Himalayan journeys.', 'The final stretch over the moraine boulders can be tricky on the ankles.', 'Carry a water bottle to refill directly from the glacial streams.'],
-    image: ""
+    image: "https://images.pexels.com/photos/19100015/pexels-photo-19100015.jpeg?_gl=1*mmex6u*_ga*NDE2OTEwMDkyLjE3ODkwNzc3MjM.*_ga_8JE65Q40S6*czE3ODk1NjE4MTEkbzMkZzEkdDE3ODk1NjE4MjQkajQ3JGwwJGgw"
   },
   {
     id: 'd44', name: 'Goechala Trek', state: 'Sikkim', category: 'TREK',
@@ -491,7 +491,7 @@ export const mockDestinations = [
     thingsToDo: ['High-altitude Trekking', 'Watching the sunrise on the peaks', 'Wildlife spotting', 'Camping'],
     bestTimeToVisit: 'April to May & October to November', recommendedDuration: '10-11 Days', approximateBudget: '₹18,000 - ₹25,000', travelStyle: 'Adventure Trek', difficulty: 'Difficult',
     travelTips: ['This is a long, physically demanding trek; cardio fitness is crucial.', 'Foreigners require a Protected Area Permit to do this trek.', 'Acclimatize properly at Dzongri before pushing higher.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1503265192943-9d7eea6fc77a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
 
   // 🏖️ BEACHES / ISLANDS
@@ -504,7 +504,7 @@ export const mockDestinations = [
     thingsToDo: ['Beach hopping', 'Water sports', 'Nightclubbing', 'Heritage walks in Fontainhas', 'Scooter exploration'],
     bestTimeToVisit: 'November to February', recommendedDuration: '4-5 Days', approximateBudget: '₹12,000 - ₹25,000', travelStyle: 'Party / Leisure', difficulty: 'Easy',
     travelTips: ['Rent a scooter for the best, most flexible way to explore.', 'Try the local Goan fish curry and Feni.', 'North Goa is for parties; South Goa is for peace.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1653928359063-13eb336a4196?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd46', name: 'Palolem Beach', state: 'Goa', category: 'BEACH',
@@ -515,7 +515,7 @@ export const mockDestinations = [
     thingsToDo: ['Kayaking', 'Dolphin spotting boat rides', 'Attending a Silent Noise party', 'Yoga retreats'],
     bestTimeToVisit: 'November to March', recommendedDuration: '3-4 Days', approximateBudget: '₹10,000 - ₹18,000', travelStyle: 'Relax / Backpacking', difficulty: 'Easy',
     travelTips: ['Take a short boat ride to the hidden Butterfly Beach for sunset.', 'Beach huts are dismantled during the monsoon season (June to October).', 'The water here is exceptionally safe for swimming.'],
-    image: ""
+    image: "https://plus.unsplash.com/premium_photo-1697729594707-0fc9e51c8eed?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd47', name: 'Baga Beach', state: 'Goa', category: 'BEACH',
@@ -526,7 +526,7 @@ export const mockDestinations = [
     thingsToDo: ['Parasailing', 'Clubbing', 'Eating seafood at beach shacks', 'Shopping at night markets'],
     bestTimeToVisit: 'November to February', recommendedDuration: '3-4 Days', approximateBudget: '₹12,000 - ₹20,000', travelStyle: 'Party / Adventure', difficulty: 'Easy',
     travelTips: ['Expect heavy crowds, especially during long weekends and New Year.', 'Bargain hard for water sports packages.', 'Book nightclub entries online to avoid long queues.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1775132693217-32c5c775adfd?q=80&w=1334&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd48', name: 'Gokarna', state: 'Karnataka', category: 'BEACH',
@@ -537,7 +537,7 @@ export const mockDestinations = [
     thingsToDo: ['Beach Trekking', 'Surfing', 'Yoga', 'Temple Visits', 'Cafe hopping'],
     bestTimeToVisit: 'October to March', recommendedDuration: '3-4 Days', approximateBudget: '₹7,000 - ₹12,000', travelStyle: 'Backpacking / Relax', difficulty: 'Easy',
     travelTips: ['Dress modestly when in the main town and near the temples.', 'The hike between beaches is scenic but can be very hot; carry water.', 'ATMs in town can be unreliable; carry some cash.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1693205118032-9382f7267f55?q=80&w=1164&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd49', name: 'Varkala', state: 'Kerala', category: 'BEACH',
@@ -548,7 +548,7 @@ export const mockDestinations = [
     thingsToDo: ['Paragliding off the cliff', 'Surfing', 'Ayurvedic massages', 'Yoga retreats', 'Watching the sunset'],
     bestTimeToVisit: 'October to March', recommendedDuration: '3-4 Days', approximateBudget: '₹9,000 - ₹15,000', travelStyle: 'Wellness / Backpacking', difficulty: 'Easy',
     travelTips: ['The currents at Papanasam beach can be very strong; swim with caution.', 'Try the fresh seafood at the cliff cafes.', 'Great destination for beginner surfing lessons.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1704499683154-12b5bf19bc1c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd50', name: 'Kovalam', state: 'Kerala', category: 'BEACH',
