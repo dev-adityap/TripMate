@@ -20,7 +20,10 @@ import MessagesPage from './pages/MessagesPage';
 import NotificationsPage from './pages/NotificationsPage';
 import SettingsPage from './pages/SettingsPage';
 import TripsPage from './pages/TripsPage';
-import WishlistPage from './pages/WishlistPage'; // Added missing Wishlist import
+import WishlistPage from './pages/WishlistPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import ReviewsPage from './pages/ReviewsPage';
 
 export default function App() {
   return (
@@ -33,22 +36,28 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<AuthPage />} />
           <Route path="/" element={<Navigate to="/home" replace />} />
+          
+          {/* Public Discovery & Info Pages */}
           <Route path="/home" element={<HomePage />} />
           <Route path="/discover" element={<DiscoverPage />} />
           <Route path="/destination/:id" element={<DestinationPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           
+          {/* Protected Routes (Requires Firebase Google Auth) */}
           <Route path="/my-trips" element={<ProtectedRoute><MyTripsPage /></ProtectedRoute>} />
-          <Route path="/trips" element={<TripsPage />} />
+          <Route path="/trips" element={<ProtectedRoute><TripsPage /></ProtectedRoute>} />
           <Route path="/trip/:id" element={<ProtectedRoute><TripDetailsPage /></ProtectedRoute>} />
           <Route path="/favorites" element={<ProtectedRoute><FavoritesPage /></ProtectedRoute>} />
-          <Route path="/wishlist" element={<WishlistPage />} /> {/* Added Wishlist route */}
+          <Route path="/wishlist" element={<ProtectedRoute><WishlistPage /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
           
-          <Route path="/create" element={<CreateTripPage />} />
-          <Route path="/messages" element={<MessagesPage />} />
-          <Route path="/notifications" element={<NotificationsPage />} />
-          <Route path="/checkout/:id" element={<CheckoutPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/create" element={<ProtectedRoute><CreateTripPage /></ProtectedRoute>} />
+          <Route path="/messages" element={<ProtectedRoute><MessagesPage /></ProtectedRoute>} />
+          <Route path="/notifications" element={<ProtectedRoute><NotificationsPage /></ProtectedRoute>} />
+          <Route path="/checkout/:id" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+          <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
+          <Route path="/reviews" element={<ReviewsPage />} />
 
           {/* Catch-all route placed correctly at the bottom */}
           <Route path="*" element={<Navigate to="/home" replace />} />
