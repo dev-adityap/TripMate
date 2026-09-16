@@ -9,18 +9,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// 1. Enable CORS so your React frontend (port 5173) can talk to Express (port 5000)
+// Enable CORS
 app.use(cors());
 
-// 2. Body parser for JSON requests
+// Body parser for JSON requests
 app.use(express.json());
 
-// 3. Connect to MongoDB Atlas
+// Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB Atlas successfully'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-// 4. Mount Trip Routes (Crucial: matches http://localhost:5000/api/trips/:id/ai)
+// Trip routes
 app.use('/api/trips', tripRoutes);
 
 // Root test route
@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
   res.send('TripMate Backend is running!');
 });
 
-app.listen(PORT, () => {
+// Start server
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
