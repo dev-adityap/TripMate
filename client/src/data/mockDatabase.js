@@ -559,7 +559,7 @@ export const mockDestinations = [
     thingsToDo: ['Climbing the Lighthouse', 'Surfing', 'Ayurvedic treatments', 'Catamaran rides'],
     bestTimeToVisit: 'September to March', recommendedDuration: '3-4 Days', approximateBudget: '₹12,000 - ₹20,000', travelStyle: 'Family / Leisure', difficulty: 'Easy',
     travelTips: ['The view from the top of the lighthouse is spectacular, especially at sunset.', 'Lighthouse Beach is the busiest; Samudra Beach is quieter.', 'Bargain with local fishermen for catamaran rides.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1645974459771-855ac128b89f?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 'd51', name: 'Marari', state: 'Kerala', category: 'BEACH',
@@ -570,7 +570,7 @@ export const mockDestinations = [
     thingsToDo: ['Relaxing on the beach', 'Ayurvedic massages', 'Village cycling tours', 'Watching the fishermen'],
     bestTimeToVisit: 'October to March', recommendedDuration: '2-3 Days', approximateBudget: '₹10,000 - ₹18,000', travelStyle: 'Relaxation / Romance', difficulty: 'Easy',
     travelTips: ['There are very few beach shacks or water sports; this is a place purely for relaxation.', 'Combine a stay here with a houseboat trip in nearby Alleppey.', 'Respect the local fishermen and their workspace on the beach.'],
-    image: ""
+    image: "https://images.pexels.com/photos/36694035/pexels-photo-36694035.jpeg"
   },
   {
     id: 'd52', name: 'Alappuzha', state: 'Kerala', category: 'BEACH',
@@ -581,7 +581,7 @@ export const mockDestinations = [
     thingsToDo: ['Houseboat Cruise', 'Kayaking in narrow canals', 'Ayurvedic therapies', 'Village walks'],
     bestTimeToVisit: 'October to February', recommendedDuration: '2-3 Days', approximateBudget: '₹12,000 - ₹25,000', travelStyle: 'Romance / Leisure', difficulty: 'Easy',
     travelTips: ['For a more intimate experience, rent a small canoe or kayak to explore the narrow canals where large houseboats cannot go.', 'Book houseboats well in advance during the winter peak season.', 'Mosquito repellent is essential.'],
-    image: ""
+    image: "https://plus.unsplash.com/premium_photo-1697729438401-fcb4ff66d9a8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWxhcHB1emhhfGVufDB8fDB8fHww"
   },
   {
     id: 'd53', name: 'Tarkarli', state: 'Maharashtra', category: 'BEACH',
@@ -592,7 +592,7 @@ export const mockDestinations = [
     thingsToDo: ['Scuba Diving', 'Snorkeling', 'Parasailing', 'Houseboat stay on Karli river', 'Eating Malvani seafood'],
     bestTimeToVisit: 'October to March', recommendedDuration: '3-4 Days', approximateBudget: '₹8,000 - ₹14,000', travelStyle: 'Adventure / Leisure', difficulty: 'Easy',
     travelTips: ['The scuba diving is excellent for beginners.', 'Do not leave without trying the local Malvani fish curry and Solkadhi.', 'Dolphin spotting boat rides early in the morning are highly recommended.'],
-    image: ""
+    image: "https://images.pexels.com/photos/11324691/pexels-photo-11324691.jpeg"
   },
   {
     id: 'd54', name: 'Alibaug', state: 'Maharashtra', category: 'BEACH',
@@ -603,7 +603,7 @@ export const mockDestinations = [
     thingsToDo: ['Water sports at Nagaon', 'Walking to Kolaba Fort at low tide', 'Seafood dining', 'Beach hopping'],
     bestTimeToVisit: 'November to March', recommendedDuration: '2-3 Days', approximateBudget: '₹8,000 - ₹15,000', travelStyle: 'Weekend Getaway / Family', difficulty: 'Easy',
     travelTips: ['Taking the Ro-Ro ferry from Mumbai is the fastest and most scenic way to reach.', 'Always check the tide timings before visiting Kolaba Fort.', 'Kashid Beach, a short drive away, has cleaner, white sand.'],
-    image: ""
+    image: "https://plus.unsplash.com/premium_photo-1697729600112-434ee1c7f670?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWxpYmF1Z3xlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd55', name: 'Diu', state: 'Gujarat', category: 'BEACH',
@@ -614,7 +614,7 @@ export const mockDestinations = [
     thingsToDo: ['Exploring the fort', 'Photography in Naida Caves', 'Water sports at Nagoa', 'Cycling around the island'],
     bestTimeToVisit: 'October to March', recommendedDuration: '2-3 Days', approximateBudget: '₹7,000 - ₹12,000', travelStyle: 'Heritage / Relax', difficulty: 'Easy',
     travelTips: ['Rent a scooter or bicycle to easily explore the small island.', 'Naida Caves are best visited around noon when the sunlight filters perfectly through the roof.', 'The island has a very laid-back, early-to-bed culture.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1569776186059-f26b84be14b0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGl1fGVufDB8fDB8fHww"
   },
   {
     id: 'd56', name: 'Puri', state: 'Odisha', category: 'BEACH',
@@ -625,7 +625,7 @@ export const mockDestinations = [
     thingsToDo: ['Temple Pilgrimage', 'Surfing', 'Viewing Sand Art', 'Shopping for Pattachitra art'],
     bestTimeToVisit: 'October to March', recommendedDuration: '3-4 Days', approximateBudget: '₹8,000 - ₹14,000', travelStyle: 'Spiritual / Family', difficulty: 'Easy',
     travelTips: ['Non-Hindus are not allowed inside the Jagannath Temple, but views from the library opposite are available.', 'The sea currents at Puri are notoriously strong; do not swim too deep.', 'Try the temple Mahaprasad.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1655352710727-6c89536454b3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHVyaXxlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd57', name: 'Visakhapatnam', state: 'Andhra Pradesh', category: 'BEACH',
@@ -636,7 +636,7 @@ export const mockDestinations = [
     thingsToDo: ['Visiting the Submarine Museum', 'Surfing at Rushikonda', 'Cable car ride at Kailasagiri', 'Coastal drive to Bheemili'],
     bestTimeToVisit: 'October to March', recommendedDuration: '3-4 Days', approximateBudget: '₹9,000 - ₹15,000', travelStyle: 'Family / City', difficulty: 'Easy',
     travelTips: ['Combine your beach trip with a train ride to the beautiful Araku Valley.', 'Rushikonda Beach is safer for swimming compared to RK Beach.', 'Try the local Andhra spicy bamboo chicken.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1594313059730-8d0a02f44847?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dmlzYWtoYXBhdG5hbXxlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd58', name: 'Andaman & Nicobar Islands', state: 'Andaman', category: 'BEACH',
@@ -647,7 +647,7 @@ export const mockDestinations = [
     thingsToDo: ['Scuba Diving', 'Attending the Light and Sound show at Cellular Jail', 'Island Hopping', 'Bird Watching'],
     bestTimeToVisit: 'October to May', recommendedDuration: '6-8 Days', approximateBudget: '₹30,000 - ₹50,000', travelStyle: 'Adventure / Relax', difficulty: 'Moderate',
     travelTips: ['Ferries between islands get booked quickly; arrange tickets in advance.', 'Internet connectivity is generally poor, making it a true digital detox.', 'A visit to the Cellular Jail is a must for history buffs.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1642498232612-a837df233825?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW5kYW1hbiUyMGFuZCUyMG5pY29iYXIlMjBpc2xhbmRzfGVufDB8fDB8fHww"
   },
   {
     id: 'd59', name: 'Havelock Island', state: 'Andaman', category: 'BEACH',
@@ -658,7 +658,7 @@ export const mockDestinations = [
     thingsToDo: ['Scuba Diving', 'Snorkeling', 'Kayaking in the mangroves', 'Relaxing on the beach'],
     bestTimeToVisit: 'October to May', recommendedDuration: '3-5 Days', approximateBudget: '₹15,000 - ₹30,000', travelStyle: 'Romance / Adventure', difficulty: 'Easy',
     travelTips: ['Elephant Beach requires a short boat ride or a jungle trek to reach.', 'Book scuba diving sessions with certified PADI dive centers only.', 'Rent a two-wheeler to explore the island at your own pace.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1586359716568-3e1907e4cf9f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGF2ZWxvY2slMjBpc2xhbmR8ZW58MHx8MHx8fDA%3D"
   },
   {
     id: 'd60', name: 'Neil Island', state: 'Andaman', category: 'BEACH',
@@ -669,7 +669,7 @@ export const mockDestinations = [
     thingsToDo: ['Glass Bottom Boat Ride', 'Snorkeling at Bharatpur', 'Watching the sunset at Laxmanpur', 'Cycling'],
     bestTimeToVisit: 'October to May', recommendedDuration: '2-3 Days', approximateBudget: '₹10,000 - ₹18,000', travelStyle: 'Relaxation / Romance', difficulty: 'Easy',
     travelTips: ['The Natural Bridge is only accessible during low tide; plan your visit accordingly.', 'Laxmanpur beach offers the best sunset views.', 'The island has very limited nightlife; it’s all about nature.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1579317344982-256c49ab1e0d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmVpbCUyMGlzbGFuZHxlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd61', name: 'Lakshadweep', state: 'Lakshadweep', category: 'BEACH',
@@ -680,7 +680,7 @@ export const mockDestinations = [
     thingsToDo: ['Scuba Diving', 'Snorkeling in the lagoons', 'Kayaking', 'Relaxing on empty beaches'],
     bestTimeToVisit: 'October to March', recommendedDuration: '4-6 Days', approximateBudget: '₹40,000 - ₹70,000', travelStyle: 'Exclusive / Nature', difficulty: 'Moderate',
     travelTips: ['A strict Entry Permit is required for all visitors and can take time to process.', 'Alcohol is banned on all islands except the uninhabited Bangaram.', 'Flights to Agatti are limited; book well in advance.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1683228265398-aa5773b40fbe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bGFrc2hhZHdlZXB8ZW58MHx8MHx8fDA%3D"
   },
   {
     id: 'd62', name: 'Kavaratti', state: 'Lakshadweep', category: 'BEACH',
@@ -691,7 +691,7 @@ export const mockDestinations = [
     thingsToDo: ['Scuba Diving', 'Glass Bottom Boat Rides', 'Kayaking', 'Exploring local culture'],
     bestTimeToVisit: 'October to March', recommendedDuration: '3-4 Days', approximateBudget: '₹35,000 - ₹55,000', travelStyle: 'Nature / Culture', difficulty: 'Easy',
     travelTips: ['Dress modestly when exploring the town and visiting the mosques.', 'The lagoon is incredibly safe and shallow, perfect for children and non-swimmers.', 'Permits must be arranged through authorized agents.'],
-    image: ""
+    image: "https://images.pexels.com/photos/29525734/pexels-photo-29525734.jpeg"
   },
 
   // 🏛️ MONUMENTS / HERITAGE
@@ -959,7 +959,7 @@ export const mockDestinations = [
     thingsToDo: ['Jeep Safari', 'Canter Safari', 'Bird Watching', 'Nature Photography', 'River Rafting (seasonal)'],
     bestTimeToVisit: 'November to June', recommendedDuration: '3-4 Days', approximateBudget: '₹12,000 - ₹25,000', travelStyle: 'Wildlife / Nature', difficulty: 'Easy',
     travelTips: ['Safaris must be booked months in advance through the official government portal.', 'Dhikala zone requires an overnight stay inside the park.', 'Wear muted jungle colors (green, brown) and maintain strict silence during safaris.'],
-    image: ""
+    image: "https://plus.unsplash.com/premium_photo-1661810910850-cca5c23d677e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amltJTIwY29yYmV0dCUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd87', name: 'Ranthambore National Park', state: 'Rajasthan', category: 'WILDLIFE',
@@ -970,7 +970,7 @@ export const mockDestinations = [
     thingsToDo: ['Tiger Safari', 'Wildlife Photography', 'Hiking to Ranthambore Fort', 'Birding'],
     bestTimeToVisit: 'October to June', recommendedDuration: '3-4 Days', approximateBudget: '₹15,000 - ₹30,000', travelStyle: 'Wildlife / Adventure', difficulty: 'Easy',
     travelTips: ['Zones 1 to 5 are generally considered the best for tiger sightings; book early.', 'Jeep safaris (Gypsy) are much better than the larger Canter trucks for photography.', 'The park is closed during the monsoon (July to September).'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1700562554203-5b8644512759?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmFudGhhbWJob3JlJTIwbmF0aW9uYWwlMjBwYXJrfGVufDB8fDB8fHww"
   },
   {
     id: 'd88', name: 'Kaziranga National Park', state: 'Assam', category: 'WILDLIFE',
@@ -981,7 +981,7 @@ export const mockDestinations = [
     thingsToDo: ['Jeep Safari', 'Elephant Safari', 'Bird Watching', 'Tea Estate Visits'],
     bestTimeToVisit: 'November to April', recommendedDuration: '2-3 Days', approximateBudget: '₹12,000 - ₹20,000', travelStyle: 'Wildlife / Nature', difficulty: 'Easy',
     travelTips: ['The Elephant Safari offers the closest approach to rhinos, but raises ethical concerns for some travelers.', 'The park is completely flooded and closed during the monsoon.', 'Combine with a visit to Majuli Island.'],
-    image: ""
+    image: "https://plus.unsplash.com/premium_photo-1664302694391-845d50183b55?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a2F6aXJhbmdhJTIwbmF0aW9uYWwlMjBwYXJrfGVufDB8fDB8fHww"
   },
   {
     id: 'd89', name: 'Gir National Park', state: 'Gujarat', category: 'WILDLIFE',
@@ -992,7 +992,7 @@ export const mockDestinations = [
     thingsToDo: ['Lion Safari', 'Bird Watching', 'Crocodile spotting', 'Visiting local Maldhari tribal settlements'],
     bestTimeToVisit: 'December to March', recommendedDuration: '2-3 Days', approximateBudget: '₹10,000 - ₹18,000', travelStyle: 'Wildlife / Nature', difficulty: 'Easy',
     travelTips: ['Book your safari permits online well in advance via the official Gujarat tourism website.', 'Devalia Safari Park is an enclosed area that guarantees lion sightings, but the true Gir trail is better for authentic wilderness.', 'Closed during the monsoons.'],
-    image: ""
+    image: "https://media.istockphoto.com/id/625743384/photo/lion-walking-in-jungle-of-gir-national-park-wildlife.webp?a=1&b=1&s=612x612&w=0&k=20&c=azTNRwA2EF66qlYk7GpmySTt1KYBlq7YiJSun0Wr7Ww="
   },
   {
     id: 'd90', name: 'Bandhavgarh National Park', state: 'Madhya Pradesh', category: 'WILDLIFE',
@@ -1003,7 +1003,7 @@ export const mockDestinations = [
     thingsToDo: ['Tiger Safari', 'Wildlife Photography', 'Exploring ancient rock-cut caves', 'Bird Watching'],
     bestTimeToVisit: 'October to June', recommendedDuration: '3-4 Days', approximateBudget: '₹15,000 - ₹25,000', travelStyle: 'Wildlife / Adventure', difficulty: 'Easy',
     travelTips: ['Tala zone is historically the most famous for tiger sightings.', 'Safaris are highly regulated; book months in advance.', 'Summer months (April-May) are brutally hot but offer the absolute best tiger sightings near water holes.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1701368533954-f0dc06ebfbed?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFuZGhhdmdhcmglMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D"
   },
   {
     id: 'd91', name: 'Kanha National Park', state: 'Madhya Pradesh', category: 'WILDLIFE',
@@ -1014,7 +1014,7 @@ export const mockDestinations = [
     thingsToDo: ['Tiger Safari', 'Nature Walks in buffer zones', 'Wildlife Photography', 'Tribal village visits'],
     bestTimeToVisit: 'October to June', recommendedDuration: '3-4 Days', approximateBudget: '₹15,000 - ₹25,000', travelStyle: 'Wildlife / Nature', difficulty: 'Easy',
     travelTips: ['Kanha is vast; doing safaris in different zones (like Kanha and Mukki) offers diverse landscapes.', 'Mornings are freezing in winter; dress in multiple layers.', 'The park is closed from July to mid-October.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1590514526581-bf7feaee0217?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a2FuaGElMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D"
   },
   {
     id: 'd92', name: 'Sundarbans', state: 'West Bengal', category: 'WILDLIFE',
@@ -1025,7 +1025,7 @@ export const mockDestinations = [
     thingsToDo: ['Boat Safari', 'Bird Watching', 'Canopy Walk', 'Visiting local delta villages'],
     bestTimeToVisit: 'September to March', recommendedDuration: '2-3 Days', approximateBudget: '₹10,000 - ₹18,000', travelStyle: 'Wildlife / Adventure', difficulty: 'Easy',
     travelTips: ['Tiger sightings are extremely rare due to the dense mangroves; focus on the overall unique ecosystem.', 'Carry binoculars; you will be observing wildlife from the deck of a boat.', 'Winter is the best time; summer is uncomfortably humid.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1549300461-11c5b94e8855?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3VuZGFyYmFuc3xlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd93', name: 'Great Himalayan National Park', state: 'Himachal Pradesh', category: 'WILDLIFE',
@@ -1036,7 +1036,7 @@ export const mockDestinations = [
     thingsToDo: ['Multi-day Wilderness Trekking', 'Bird Watching', 'Camping', 'Trout Fishing in buffer zones'],
     bestTimeToVisit: 'March to June & September to November', recommendedDuration: '5-7 Days', approximateBudget: '₹12,000 - ₹20,000', travelStyle: 'Adventure Trek / Nature', difficulty: 'Difficult',
     travelTips: ['Permits are strictly required to enter the core zone.', 'You must hire registered local guides and porters as trails are unmarked and rugged.', 'Physical fitness is essential for exploring the park.'],
-    image: ""
+    image: "https://images.pexels.com/photos/37454900/pexels-photo-37454900.jpeg"
   },
   {
     id: 'd94', name: 'Dandeli', state: 'Karnataka', category: 'WILDLIFE',
@@ -1047,7 +1047,7 @@ export const mockDestinations = [
     thingsToDo: ['White-water Rafting', 'Jungle Safari', 'Bird Watching', 'Coracle Boat Ride', 'Trekking'],
     bestTimeToVisit: 'October to May', recommendedDuration: '2-3 Days', approximateBudget: '₹8,000 - ₹14,000', travelStyle: 'Adventure / Wildlife', difficulty: 'Moderate',
     travelTips: ['Rafting depends entirely on the water release from the nearby dam; confirm in advance.', 'Carry strong insect repellent for jungle walks.', 'Keep an eye out for Hornbills early in the morning.'],
-    image: ""
+    image: "https://images.unsplash.com/photo-1750353127340-4214a44d0760?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGFuZGVsaXxlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     id: 'd95', name: 'Wayanad', state: 'Kerala', category: 'NATURE',
