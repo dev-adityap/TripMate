@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Briefcase, MapPin, MessageCircle, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 import { mockDestinations } from '../data/mockDatabase';
 
-export default function MyTripsPage() {
+export default function TripsPage() {
   const [purchasedTrips, setPurchasedTrips] = useState([]);
 
   useEffect(() => {

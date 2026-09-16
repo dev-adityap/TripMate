@@ -14,15 +14,22 @@ import TripDetailsPage from './pages/TripDetailsPage';
 import FavoritesPage from './pages/FavoritesPage';
 import ProfilePage from './pages/ProfilePage';
 import AuthPage from './pages/AuthPage';
+import CheckoutPage from './pages/CheckoutPage';
+import CreateTripPage from './pages/CreateTripPage';
+import MessagesPage from './pages/MessagesPage';
+import NotificationsPage from './pages/NotificationsPage';
+import SettingsPage from './pages/SettingsPage';
+import TripsPage from './pages/TripsPage';
+import WishlistPage from './pages/WishlistPage'; // Added missing Wishlist import
 
 export default function App() {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-[#0B0F17] text-[#F1F5F9]">
       
       <Sidebar />
 
-      {/* CHANGED: md:ml-20 applies left margin ONLY on desktop. pb-20 md:pb-0 handles mobile bottom spacing */}
-      <div className="flex-1 w-full md:ml-20 pb-20 md:pb-0 transition-all">
+      {/* Main container with proper dark styling and responsive margin */}
+      <div className="flex-1 w-full md:ml-20 pb-20 md:pb-0 transition-all bg-[#0B0F17]">
         <Routes>
           <Route path="/login" element={<AuthPage />} />
           <Route path="/" element={<Navigate to="/home" replace />} />
@@ -31,10 +38,19 @@ export default function App() {
           <Route path="/destination/:id" element={<DestinationPage />} />
           
           <Route path="/my-trips" element={<ProtectedRoute><MyTripsPage /></ProtectedRoute>} />
+          <Route path="/trips" element={<TripsPage />} />
           <Route path="/trip/:id" element={<ProtectedRoute><TripDetailsPage /></ProtectedRoute>} />
           <Route path="/favorites" element={<ProtectedRoute><FavoritesPage /></ProtectedRoute>} />
+          <Route path="/wishlist" element={<WishlistPage />} /> {/* Added Wishlist route */}
           <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
           
+          <Route path="/create" element={<CreateTripPage />} />
+          <Route path="/messages" element={<MessagesPage />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
+          <Route path="/checkout/:id" element={<CheckoutPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+
+          {/* Catch-all route placed correctly at the bottom */}
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </div>

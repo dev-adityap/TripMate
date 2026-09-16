@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import tripRoutes from './routes/tripRoutes.js';
+import aiRoutes from './routes/ai.js'; // <-- 1. Import the AI routes
 
 dotenv.config();
 
@@ -22,6 +23,9 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Trip routes
 app.use('/api/trips', tripRoutes);
+
+// AI Chat routes (Powered by Gemini)
+app.use('/api/ai', aiRoutes); // <-- 2. Mount the AI routes here
 
 // Root test route
 app.get('/', (req, res) => {

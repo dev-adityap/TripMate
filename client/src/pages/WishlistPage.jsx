@@ -1,98 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, HeartCrack, Trash2 } from 'lucide-react';
-import TripCard from '../components/TripCard';
+import { Heart, MapPin, ArrowRight, Trash2, Sparkles } from 'lucide-react';
+import { mockDestinations } from '../data/mockDatabase';
 
-const WishlistPage = () => {
-  // MOCK DATA: Simulating saved trips
-  const initialWishlist = [
-    {
-      id: 2,
-      destination: "Winter in Kashmir",
-      state: "Jammu & Kashmir, India",
-      image: "https://images.unsplash.com/photo-1627894372583-0599ebf85d34?q=80&w=600&auto=format&fit=crop",
-      startDate: "Dec 10, 2026",
-      endDate: "Dec 17, 2026",
-      budget: 45000,
-      totalSpots: 4,
-      filledSpots: 1,
-      matchScore: 82
-    },
-    {
-      id: 5,
-      destination: "Sandakphu Trek",
-      state: "West Bengal, India",
-      image: "https://images.unsplash.com/photo-1544256214-722a4bb4a64d?q=80&w=600&auto=format&fit=crop",
-      startDate: "Nov 15, 2026",
-      endDate: "Nov 21, 2026",
-      budget: 12500,
-      totalSpots: 12,
-      filledSpots: 5,
-      matchScore: 65
-    }
-  ];
+export default function WishlistPage() {
+  const [wishlistTrips, setWishlistTrips] = useState([]);
 
-  const [wishlist, setWishlist] = useState(initialWishlist);
+  useEffect(() => {
+    const wishlistedIds = JSON.parse(localStorage.getItem('tripMate_wishlist') || '[]');
+    const trips = mockDestinations.filter(dest => wishlistedIds.includes(String(dest.id)));
+    setWishlistTrips(trips);
+  }, []);
 
-  const handleRemove = (id) => {
-    // MOCK: Remove item from wishlist state
-    setWishlist(wishlist.filter(trip => trip.id !== id));
+  const removeFromWishlist = (e, id) => {
+    e.preventDefault();
+    const updatedIds = JSON.parse(localStorage.getItem('tripMate_wishlist') || '[]').filter(item => item !== String(id));
+    localStorage.setItem('tripMate_wishlist', JSON.stringify(updatedIds));
+    setWishlistTrips(wishlistTrips.filter(trip => String(trip.id) !== String(id)));
   };
 
   return (
-    <div className="flex flex-col gap-8 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans">
       
-      {/* HEADER */}
-      <div className="flex items-end justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-textPrimary tracking-tight mb-2 flex items-center gap-3">
-            My Wishlist <Heart className="text-danger fill-danger" size={24} />
-          </h1>
-          <p className="text-textSecondary text-sm">Trips you've saved to look at later.</p>
+      {/* Header */}
+      <div className="max-w-7xl mx-auto mb-10">
+        <div className="inline-flex items-center gap-2 bg-[#131B2E] border border-[#1E293B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-rose-400 mb-3 shadow-xs">
+          <Sparkles size={12} /> Saved Expeditions
         </div>
-        <div className="text-sm font-medium text-textSecondary bg-surface px-4 py-2 rounded-xl border border-gray-100 shadow-sm">
-          {wishlist.length} Saved {wishlist.length === 1 ? 'Trip' : 'Trips'}
-        </div>
+        <h1 className="text-3xl md:text-5xl font-serif text-[#F1F5F9]">Your Wishlist</h1>
+        <p className="text-[#94A3B8] text-sm mt-1">Manage your saved dream destinations and book whenever you're ready.</p>
       </div>
 
-      {/* GRID CONTENT */}
-      {wishlist.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-300">
-          {wishlist.map((trip) => (
-            <div key={trip.id} className="flex flex-col gap-3 group">
-              <TripCard trip={trip} />
-              
-              {/* Remove Action */}
-              <button 
-                onClick={() => handleRemove(trip.id)}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-surface text-textSecondary font-medium text-sm hover:bg-danger/10 hover:text-danger transition-colors border border-gray-200 hover:border-danger/20 opacity-0 group-hover:opacity-100 focus:opacity-100"
-              >
-                <Trash2 size={16} /> Remove from Wishlist
-              </button>
-            </div>
-          ))}
+      {wishlistTrips.length === 0 ? (
+        <div className="max-w-md mx-auto text-center py-24 bg-[#111827] border border-[#1E293B] rounded-3xl p-8 shadow-xl mt-12">
+          <Heart size={48} className="text-slate-600 mx-auto mb-4" />
+          <h3 className="text-xl font-serif text-white mb-2">Your wishlist is empty</h3>
+          <p className="text-[#94A3B8] text-xs mb-6">Explore our discover page and heart your favorite expeditions.</p>
+          <Link to="/discover" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-2xl text-xs uppercase tracking-wider transition-all">
+            Explore Destinations
+          </Link>
         </div>
       ) : (
-        /* Empty State */
-        <div className="flex flex-col items-center justify-center py-24 px-4 text-center bg-surface border border-gray-100 rounded-3xl shadow-soft">
-          <div className="bg-gray-50 w-20 h-20 rounded-full flex items-center justify-center mb-6">
-            <HeartCrack size={32} className="text-gray-400" />
-          </div>
-          <h3 className="text-xl font-bold text-textPrimary mb-3">Your wishlist is empty</h3>
-          <p className="text-textSecondary text-sm max-w-md mb-8 leading-relaxed">
-            You haven't saved any trips yet. Browse the discover page and click the heart icon on any trip that catches your eye!
-          </p>
-          <Link 
-            to="/discover"
-            className="px-8 py-3 bg-primary-500 text-white font-bold rounded-xl hover:bg-primary-600 transition-colors shadow-soft hover:shadow-md"
-          >
-            Explore Trips
-          </Link>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {wishlistTrips.map((trip) => (
+            <Link 
+              to={`/destination/${trip.id}`} 
+              key={trip.id} 
+              className="group bg-[#111827] rounded-3xl overflow-hidden shadow-xl border border-[#1E293B] hover:border-blue-500/50 transition-all relative"
+            >
+              <div className="h-64 overflow-hidden relative bg-[#1F2937]">
+                <img src={trip.image} alt={trip.name} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute top-4 right-4 bg-[#0B0F17]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold text-sky-400 border border-[#1E293B]">
+                  {trip.price || '₹14,500'}
+                </div>
+                
+                {/* Remove button */}
+                <button 
+                  onClick={(e) => removeFromWishlist(e, trip.id)}
+                  className="absolute top-4 left-4 p-2.5 rounded-xl bg-rose-500/80 hover:bg-rose-600 text-white backdrop-blur-md transition-all shadow-md"
+                  title="Remove from wishlist"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-xl font-serif text-white group-hover:text-sky-400 transition-colors">{trip.name || trip.title}</h3>
+                <p className="text-xs text-[#94A3B8] flex items-center gap-1.5 font-medium mt-2">
+                  <MapPin size={14} className="text-[#38BDF8]" /> {trip.location || trip.state}
+                </p>
+                
+                <div className="mt-6 pt-4 border-t border-[#1E293B] flex justify-between items-center">
+                  <span className="text-xs font-bold text-slate-400">View Details</span>
+                  <span className="h-9 w-9 rounded-xl bg-[#131B2E] border border-[#1E293B] text-sky-400 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <ArrowRight size={16} />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       )}
 
     </div>
   );
-};
-
-export default WishlistPage;
+}

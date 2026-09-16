@@ -1,184 +1,112 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Bell, Map, MessageSquare, CheckCircle2, Check, UserPlus, Info } from 'lucide-react';
-import TopHeader from '../components/home/TopHeader';
+import React, { useState, useEffect } from 'react';
+import { Bell, Sparkles, MapPin, CheckCircle, Image, Calendar, Info, RefreshCw } from 'lucide-react';
 
-const NotificationsPage = () => {
-  const navigate = useNavigate();
+export default function NotificationsPage() {
+  const [notifications, setNotifications] = useState([]);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
-  // Extended mock data with target URLs for redirection
-  const [notifications, setNotifications] = useState([
-    { 
-      id: 1, 
-      type: 'system',
-      title: 'Welcome to TripMate!', 
-      message: 'Start exploring destinations and find your next adventure group.', 
-      time: 'Just now', 
-      isRead: false,
-      icon: <Info size={20} className="text-blue-500" />,
-      bgColor: 'bg-blue-100',
-      targetPath: '/discover' // Redirects to discover page
-    },
-    { 
-      id: 2, 
-      type: 'trip',
-      title: 'New trips added', 
-      message: '3 new batches have opened up for the Sandakphu Trek.', 
-      time: '2 hours ago', 
-      isRead: false,
-      icon: <Map size={20} className="text-purple-500" />,
-      bgColor: 'bg-purple-100',
-      targetPath: '/destination/d30' // Redirects to Sandakphu destination page
-    },
-    { 
-      id: 3, 
-      type: 'chat',
-      title: 'New message in Spiti Valley Group', 
-      message: 'Tanuj: "Should we rent bikes from Manali or drive our own cars?"', 
-      time: 'Yesterday', 
-      isRead: true,
-      icon: <MessageSquare size={20} className="text-green-500" />,
-      bgColor: 'bg-green-100',
-      targetPath: '/trip/t3' // Redirects to the Spiti Valley private group dashboard
-    },
-    { 
-      id: 4, 
-      type: 'success',
-      title: 'Trip Confirmed!', 
-      message: 'You have successfully joined the Kedarkantha Winter Trek. View your dashboard for the itinerary.', 
-      time: '3 days ago', 
-      isRead: true,
-      icon: <CheckCircle2 size={20} className="text-emerald-500" />,
-      bgColor: 'bg-emerald-100',
-      targetPath: '/my-trips' // Redirects to the user's trips list
-    },
-    { 
-      id: 5, 
-      type: 'social',
-      title: 'New member joined', 
-      message: 'Neha just joined your Goa Beach Getaway trip.', 
-      time: '1 week ago', 
-      isRead: true,
-      icon: <UserPlus size={20} className="text-amber-500" />,
-      bgColor: 'bg-amber-100',
-      targetPath: '/trip/t_goa' // Redirects to the Goa group dashboard
-    }
-  ]);
+  // Generate fresh randomized notifications on page load/refresh
+  const generateFreshNotifications = () => {
+    setIsRefreshing(true);
+    
+    const treks = ['Sandakphu Trek', 'Kedarkantha Winter Trek', 'Valley of Flowers', 'Hampta Pass', 'Dharamshala Basecamp'];
+    const members = ['Tanuj', 'Biki', 'Neha', 'Rohan', 'Priya', 'Sneha', 'Rahul'];
+    const times = ['Just now', '12m ago', '1h ago', '3h ago', '1d ago', '2d ago'];
+    
+    const pool = [
+      {
+        icon: Info,
+        color: 'text-sky-400 bg-sky-500/10 border-sky-500/20',
+        title: 'Welcome to TripMate!',
+        description: 'Explore verified expeditions and join secure traveler groups.',
+        time: times[Math.floor(Math.random() * times.length)]
+      },
+      {
+        icon: MapPin,
+        color: 'text-purple-400 bg-purple-500/10 border-purple-500/20',
+        title: 'New batch slots opened',
+        description: `3 new spots have opened up for the ${treks[Math.floor(Math.random() * treks.length)]}.`,
+        time: times[Math.floor(Math.random() * times.length)]
+      },
+      {
+        icon: CheckCircle,
+        color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
+        title: 'Squad Workspace Unlocked!',
+        description: 'Your payment was verified. Group chat and checklist are now active.',
+        time: times[Math.floor(Math.random() * times.length)]
+      },
+      {
+        icon: Image,
+        color: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
+        title: 'New memories uploaded',
+        description: `${members[Math.floor(Math.random() * members.length)]} added ${Math.floor(Math.random() * 6) + 2} new photos to the shared folder.`,
+        time: times[Math.floor(Math.random() * times.length)]
+      },
+      {
+        icon: Calendar,
+        color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20',
+        title: 'Itinerary Checkpoint Updated',
+        description: 'The trip leader just updated Day 2 camp coordinates and gear list.',
+        time: times[Math.floor(Math.random() * times.length)]
+      }
+    ];
 
-  const unreadCount = notifications.filter(n => !n.isRead).length;
+    // Shuffle and pick 3 to 5 random notifications
+    const shuffled = [...pool].sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 2) + 4);
+    setNotifications(shuffled);
 
-  const handleMarkAllRead = () => {
-    setNotifications(notifications.map(n => ({ ...n, isRead: true })));
+    setTimeout(() => setIsRefreshing(false), 400);
   };
 
-  const handleMarkAsRead = (id) => {
-    setNotifications(notifications.map(n => 
-      n.id === id ? { ...n, isRead: true } : n
-    ));
-  };
-
-  // Handles clicking the main body of the notification
-  const handleNotificationClick = (notif) => {
-    // 1. Automatically mark it as read when clicked
-    if (!notif.isRead) {
-      handleMarkAsRead(notif.id);
-    }
-    // 2. Redirect the user to the associated page
-    if (notif.targetPath) {
-      navigate(notif.targetPath);
-    }
-  };
+  useEffect(() => {
+    generateFreshNotifications();
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#F9FAFD] text-slate-900 font-sans pb-20">
-      <TopHeader />
-
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 md:mt-12">
-        
-        {/* Page Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div>
-            <h1 className="text-3xl font-extrabold text-slate-900 flex items-center gap-3">
-              <Bell className="text-purple-600" size={32} /> 
-              Notifications
-            </h1>
-            <p className="text-slate-500 mt-2 text-sm">
-              You have <strong className="text-purple-600">{unreadCount} unread</strong> notifications.
-            </p>
+    <div className="min-h-screen bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans">
+      
+      {/* Header with Manual Refresh Trigger */}
+      <div className="max-w-4xl mx-auto mb-8 flex justify-between items-end">
+        <div>
+          <div className="inline-flex items-center gap-2 bg-[#131B2E] border border-[#1E293B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-[#38BDF8] mb-3 shadow-xs">
+            <Sparkles size={12} /> Live Activity Log
           </div>
-          
-          {unreadCount > 0 && (
-            <button 
-              onClick={handleMarkAllRead}
-              className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 text-slate-600 hover:text-purple-700 hover:bg-purple-50 hover:border-purple-200 rounded-xl text-sm font-bold transition-all shadow-sm"
+          <h1 className="text-3xl md:text-5xl font-serif text-[#F1F5F9]">Notifications</h1>
+          <p className="text-[#94A3B8] text-sm mt-1">Refreshed live with your latest bookings and community alerts.</p>
+        </div>
+
+        <button 
+          onClick={generateFreshNotifications}
+          className="bg-[#111827] hover:bg-[#131B2E] border border-[#1E293B] text-sky-400 px-4 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all shadow-md cursor-pointer"
+        >
+          <RefreshCw size={14} className={isRefreshing ? 'animate-spin' : ''} /> Refresh Feed
+        </button>
+      </div>
+
+      {/* Notifications Container Card */}
+      <div className="max-w-4xl mx-auto bg-[#111827] border border-[#1E293B] rounded-3xl shadow-xl overflow-hidden p-6 md:p-8 space-y-4">
+        {notifications.map((notif, index) => {
+          const Icon = notif.icon;
+          return (
+            <div 
+              key={index} 
+              className="bg-[#0B0F17] border border-[#1E293B] p-4 md:p-5 rounded-2xl flex items-start gap-4 hover:border-slate-700 transition-all shadow-inner"
             >
-              <Check size={16} /> Mark all as read
-            </button>
-          )}
-        </div>
-
-        {/* Notifications List */}
-        <div className="bg-white rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 overflow-hidden">
-          {notifications.length > 0 ? (
-            <div className="divide-y divide-slate-100">
-              {notifications.map((notif) => (
-                <div 
-                  key={notif.id} 
-                  onClick={() => handleNotificationClick(notif)}
-                  className={`p-4 sm:p-6 transition-colors flex gap-4 sm:gap-6 cursor-pointer ${notif.isRead ? 'bg-white hover:bg-slate-50' : 'bg-purple-50/30 hover:bg-purple-50/60'}`}
-                >
-                  {/* Icon */}
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${notif.bgColor}`}>
-                    {notif.icon}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1">
-                      <h3 className={`text-base font-bold ${notif.isRead ? 'text-slate-700' : 'text-slate-900'}`}>
-                        {notif.title}
-                      </h3>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">
-                        {notif.time}
-                      </span>
-                    </div>
-                    <p className={`text-sm ${notif.isRead ? 'text-slate-500' : 'text-slate-700 font-medium'}`}>
-                      {notif.message}
-                    </p>
-                  </div>
-
-                  {/* Actions */}
-                  {!notif.isRead && (
-                    <div className="flex-shrink-0 flex items-center">
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevents the main row click (redirection) from firing!
-                          handleMarkAsRead(notif.id);
-                        }}
-                        className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-purple-600 hover:border-purple-300 hover:bg-purple-50 transition-all tooltip-trigger shadow-sm"
-                        title="Mark as read"
-                      >
-                        <Check size={14} />
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="py-20 text-center flex flex-col items-center justify-center">
-              <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-4">
-                <Bell size={32} className="text-slate-300" />
+              <div className={`p-3 rounded-2xl border shrink-0 ${notif.color}`}>
+                <Icon size={20} />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-1">You're all caught up!</h3>
-              <p className="text-sm text-slate-500">You have no new notifications right now.</p>
+              <div className="flex-1 min-w-0">
+                <div className="flex justify-between items-center mb-1">
+                  <h4 className="font-bold text-white text-sm">{notif.title}</h4>
+                  <span className="text-[10px] text-slate-500 font-medium">{notif.time}</span>
+                </div>
+                <p className="text-xs text-[#94A3B8] leading-relaxed">{notif.description}</p>
+              </div>
             </div>
-          )}
-        </div>
+          );
+        })}
+      </div>
 
-      </main>
     </div>
   );
-};
-
-export default NotificationsPage;
+}
