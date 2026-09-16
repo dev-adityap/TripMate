@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Compass, Users, Shield, Rocket } from 'lucide-react';
+import { Sparkles, Code2, Heart } from 'lucide-react';
 
 export default function AboutPage() {
   return (
@@ -97,8 +97,19 @@ export default function AboutPage() {
             </p>
           </div>
 
+          {/* Author Credit Section */}
+          <div className="border-t border-[#1E293B] pt-8 flex flex-col items-center justify-center text-center space-y-3 bg-[#0B0F17] p-6 rounded-2xl border shadow-inner">
+            <div className="w-10 h-10 rounded-xl bg-blue-600/20 text-sky-400 border border-sky-500/30 flex items-center justify-center">
+              <Code2 size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Designed & Developed By</p>
+              <h4 className="text-base font-bold text-white mt-0.5">Aditya Panna</h4>
+            </div>
+          </div>
+
           {/* Conclusion */}
-          <div className="border-t border-[#1E293B] pt-8 text-center space-y-3 bg-[#0B0F17]/50 p-6 rounded-2xl border">
+          <div className="pt-4 text-center space-y-3 bg-[#0B0F17]/50 p-6 rounded-2xl border border-[#1E293B]">
             <p className="text-[11px] uppercase tracking-widest text-sky-400 font-extrabold">The Goal Remains Simple</p>
             <h4 className="text-lg md:text-xl font-serif font-bold text-white">
               Find your destination. Find your people. Go together. 🌄
