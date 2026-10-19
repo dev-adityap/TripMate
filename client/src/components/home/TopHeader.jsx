@@ -85,14 +85,14 @@ const TopHeader = () => {
   };
 
   return (
-    <header className="w-full bg-white border-b border-slate-100 px-6 py-4 flex items-center justify-between sticky top-0 z-40">
+    <header className="w-full bg-white border-b border-zinc-100 px-6 py-4 flex items-center justify-between sticky top-0 z-40">
       
       {/* Search Bar Form with Auto-Suggest */}
       <div ref={searchRef} className="relative w-full max-w-md hidden md:block">
         <form onSubmit={handleSearchSubmit} className="relative w-full">
           <button 
             type="submit" 
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-purple-600 transition-colors z-10 p-1"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-zinc-400 hover:text-amber-500 transition-colors z-10 p-1"
           >
             <Search size={18} />
           </button>
@@ -103,22 +103,22 @@ const TopHeader = () => {
             onChange={handleInputChange}
             onFocus={() => { if (suggestions.length > 0) setShowSearchDropdown(true); }}
             placeholder="Search destinations (e.g., Manali)..."
-            className="w-full pl-12 pr-4 py-2.5 bg-slate-50 border-none rounded-full text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-purple-200 focus:bg-white transition-all outline-none"
+            className="w-full pl-12 pr-4 py-2.5 bg-zinc-50 border-none rounded-full text-sm font-semibold text-zinc-950 focus:ring-2 focus:ring-amber-200 focus:bg-white transition-all outline-none"
           />
         </form>
 
         {showSearchDropdown && suggestions.length > 0 && (
-          <ul className="absolute top-full left-0 w-full mt-2 bg-white border border-slate-100 rounded-2xl shadow-xl z-50 overflow-hidden py-2">
+          <ul className="absolute top-full left-0 w-full mt-2 bg-white border border-zinc-100 rounded-2xl shadow-xl z-50 overflow-hidden py-2">
             {suggestions.map((place, index) => (
               <li 
                 key={index}
                 onClick={() => handleSuggestionClick(place)}
                 className="px-5 py-3 hover:bg-purple-50 cursor-pointer flex items-center gap-3 transition-colors group"
               >
-                <div className="p-1.5 bg-slate-100 group-hover:bg-purple-100 rounded-full transition-colors">
-                  <MapPin size={14} className="text-slate-500 group-hover:text-purple-600 transition-colors" />
+                <div className="p-1.5 bg-zinc-100 group-hover:bg-amber-50 rounded-full transition-colors">
+                  <MapPin size={14} className="text-zinc-400 group-hover:text-amber-500 transition-colors" />
                 </div>
-                <span className="text-sm font-bold text-slate-700 group-hover:text-purple-700 transition-colors">
+                <span className="text-sm font-bold text-zinc-500 group-hover:text-amber-500 transition-colors">
                   {place}
                 </span>
               </li>
@@ -136,7 +136,7 @@ const TopHeader = () => {
               setShowNotifications(!showNotifications);
               setShowProfileMenu(false);
             }}
-            className="relative p-2 text-slate-400 hover:bg-slate-50 hover:text-purple-600 rounded-full transition-all"
+            className="relative p-2 text-zinc-400 hover:bg-zinc-50 hover:text-amber-500 rounded-full transition-all"
           >
             <Bell size={20} />
             {/* Red dot only shows if there are unread notifications */}
@@ -146,11 +146,11 @@ const TopHeader = () => {
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 top-full mt-2 w-80 bg-white border border-slate-100 rounded-2xl shadow-2xl shadow-slate-200/50 z-50 overflow-hidden flex flex-col">
-              <div className="px-4 py-3 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 flex-shrink-0">
-                <span className="font-bold text-slate-900 text-sm">Notifications</span>
+            <div className="absolute right-0 top-full mt-2 w-80 bg-white border border-zinc-100 rounded-2xl shadow-2xl shadow-zinc-200/50 z-50 overflow-hidden flex flex-col">
+              <div className="px-4 py-3 border-b border-zinc-100 flex justify-between items-center bg-zinc-50/50 flex-shrink-0">
+                <span className="font-bold text-zinc-950 text-sm">Notifications</span>
                 {unreadCount > 0 && (
-                  <button onClick={handleMarkAllRead} className="text-xs font-bold text-purple-600 hover:text-purple-800">
+                  <button onClick={handleMarkAllRead} className="text-xs font-bold text-amber-500 hover:text-amber-700">
                     Mark read
                   </button>
                 )}
@@ -163,9 +163,9 @@ const TopHeader = () => {
                       key={notif.id} 
                       className={`p-3 rounded-xl cursor-pointer transition-colors mb-1 ${notif.isRead ? 'bg-white hover:bg-slate-50 opacity-70' : 'bg-purple-50/50 hover:bg-purple-50'}`}
                     >
-                      <p className="text-sm font-bold text-slate-900">{notif.title}</p>
-                      <p className="text-xs text-slate-500 mt-0.5">{notif.message}</p>
-                      <p className="text-[10px] text-slate-400 mt-2 font-medium uppercase">{notif.time}</p>
+                      <p className="text-sm font-bold text-zinc-950">{notif.title}</p>
+                      <p className="text-xs text-zinc-400 mt-0.5">{notif.message}</p>
+                      <p className="text-[10px] text-zinc-400 mt-2 font-medium uppercase">{notif.time}</p>
                     </div>
                   ))
                 ) : (
@@ -173,10 +173,10 @@ const TopHeader = () => {
                 )}
               </div>
               
-              <div className="border-t border-slate-100 p-2 flex-shrink-0 bg-white">
+              <div className="border-t border-zinc-100 p-2 flex-shrink-0 bg-white">
                 <button 
                   onClick={handleViewAll} 
-                  className="w-full py-2 text-center text-xs font-bold text-slate-500 hover:text-slate-800 rounded-lg hover:bg-slate-50 transition-colors"
+                  className="w-full py-2 text-center text-xs font-bold text-zinc-400 hover:text-zinc-700 rounded-lg hover:bg-zinc-50 transition-colors"
                 >
                   View all notifications
                 </button>
@@ -185,7 +185,7 @@ const TopHeader = () => {
           )}
         </div>
         
-        <div className="h-8 w-px bg-slate-200 mx-1 sm:mx-2"></div>
+            <div className="h-8 w-px bg-zinc-200 mx-1 sm:mx-2"></div>
         
         {/* Profile Wrapper */}
         <div ref={profileRef} className="relative">
@@ -196,33 +196,33 @@ const TopHeader = () => {
             }}
             className="flex items-center gap-3 hover:bg-slate-50 p-1.5 pr-3 rounded-full border border-transparent hover:border-slate-100 transition-all cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-full bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-xs">
+            <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-xs">
               AP
             </div>
-            <span className="text-sm font-bold text-slate-700 hidden sm:block">Aditya Panna</span>
-            <ChevronDown size={16} className={`text-slate-400 hidden sm:block transition-transform duration-200 ${showProfileMenu ? 'rotate-180' : ''}`} />
+            <span className="text-sm font-bold text-zinc-500 hidden sm:block">Aditya Panna</span>
+            <ChevronDown size={16} className={`text-zinc-400 hidden sm:block transition-transform duration-200 ${showProfileMenu ? 'rotate-180' : ''}`} />
           </button>
 
           {showProfileMenu && (
             <div className="absolute right-0 top-full mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-2xl shadow-slate-200/50 z-50 overflow-hidden py-2">
-              <div className="px-4 py-3 border-b border-slate-100 mb-2">
-                <p className="text-sm font-extrabold text-slate-900">Aditya Panna</p>
-                <p className="text-xs text-slate-500 font-medium truncate">aditya@example.com</p>
+              <div className="px-4 py-3 border-b border-zinc-100 mb-2">
+                <p className="text-sm font-extrabold text-zinc-950">Aditya Panna</p>
+                <p className="text-xs text-zinc-400 font-medium truncate">aditya@example.com</p>
               </div>
               
               <div className="px-2 space-y-1">
-                <button onClick={() => { setShowProfileMenu(false); navigate('/profile'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-50 flex items-center gap-3 text-sm font-bold text-slate-600 hover:text-purple-700 transition-colors">
+                <button onClick={() => { setShowProfileMenu(false); navigate('/profile'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-zinc-50 flex items-center gap-3 text-sm font-bold text-zinc-500 hover:text-amber-500 transition-colors">
                   <UserIcon size={16} /> My Profile
                 </button>
-                <button onClick={() => { setShowProfileMenu(false); navigate('/my-trips'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-50 flex items-center gap-3 text-sm font-bold text-slate-600 hover:text-purple-700 transition-colors">
+                <button onClick={() => { setShowProfileMenu(false); navigate('/my-trips'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-zinc-50 flex items-center gap-3 text-sm font-bold text-zinc-500 hover:text-amber-500 transition-colors">
                   <Map size={16} /> My Trips
                 </button>
-                <button onClick={() => { setShowProfileMenu(false); navigate('/settings'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-50 flex items-center gap-3 text-sm font-bold text-slate-600 hover:text-purple-700 transition-colors">
+                <button onClick={() => { setShowProfileMenu(false); navigate('/settings'); }} className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-zinc-50 flex items-center gap-3 text-sm font-bold text-zinc-500 hover:text-amber-500 transition-colors">
                   <Settings size={16} /> Settings
                 </button>
               </div>
               
-              <div className="h-px bg-slate-100 my-2 mx-2"></div>
+              <div className="h-px bg-zinc-100 my-2 mx-2"></div>
               
               <div className="px-2">
                 <button onClick={() => {

@@ -20,7 +20,7 @@ const VibeSection = () => {
       subtitle: 'Mountains are calling',
       icon: <Mountain size={28} strokeWidth={1.5} />,
       image: '/assets/placeholders/vibe-treks.jpg',
-      fallbackColor: 'from-blue-900 to-slate-800'
+      fallbackColor: 'from-amber-900 to-orange-800'
     },
     {
       id: 'beaches',
@@ -28,7 +28,7 @@ const VibeSection = () => {
       subtitle: 'Sun, sand & good vibes',
       icon: <Palmtree size={28} strokeWidth={1.5} />,
       image: '/assets/placeholders/vibe-beaches.jpg',
-      fallbackColor: 'from-cyan-800 to-blue-900'
+      fallbackColor: 'from-amber-800 to-orange-900'
     },
     {
       id: 'mountains',
@@ -36,7 +36,7 @@ const VibeSection = () => {
       subtitle: 'Breathe something new',
       icon: <MountainSnow size={28} strokeWidth={1.5} />,
       image: '/assets/placeholders/vibe-mountains.jpg',
-      fallbackColor: 'from-slate-700 to-slate-900'
+      fallbackColor: 'from-zinc-800 to-[#09090B]'
     },
     {
       id: 'heritage',
@@ -69,8 +69,8 @@ const VibeSection = () => {
       
       {/* Section Header */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-slate-900">Explore by vibe</h2>
-        <p className="text-slate-500 text-sm mt-1">Not sure where to go? Explore trips by your travel style.</p>
+        <h2 className="text-2xl font-bold text-zinc-950">Explore by vibe</h2>
+        <p className="text-zinc-400 text-sm mt-1">Not sure where to go? Explore trips by your travel style.</p>
       </div>
 
       {/* Categories Grid */}

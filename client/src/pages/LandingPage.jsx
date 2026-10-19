@@ -69,7 +69,7 @@ const LandingPage = () => {
               <span className="text-xs font-bold tracking-wide uppercase">TripMate Public Beta is Live</span>
             </div>
             
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-textPrimary tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-textPrimary leading-[1.1] mb-6">
               Find the people.<br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-700">
                 Plan the trip. Go together.
@@ -143,7 +143,7 @@ const LandingPage = () => {
       {/* FEATURES SECTION */}
       <section className="py-24 bg-surface border-t border-gray-100">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-textPrimary mb-4">Why travel with TripMate?</h2>
+          <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-textPrimary mb-4">Why travel with TripMate?</h2>
           <p className="text-textSecondary max-w-2xl mx-auto mb-16">Everything you need to find your travel tribe and organize the perfect getaway in one seamless platform.</p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

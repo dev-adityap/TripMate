@@ -1,90 +1,91 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Heart, MapPin, Trash2, ArrowRight, Sparkles } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
-export default function WishlistPage() {
+export default function WishlistPage({ updateBackground }) {
   const [wishlist, setWishlist] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('tripMate_wishlist') || '[]');
     setWishlist(saved);
-  }, []);
+    if (updateBackground && saved.length > 0) {
+      updateBackground(saved[0].image);
+    } else if (updateBackground) {
+      updateBackground('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    }
+  }, [updateBackground]);
 
   const removeItem = (id, e) => {
     e.stopPropagation();
     const updated = wishlist.filter(item => item.id !== id);
     setWishlist(updated);
     localStorage.setItem('tripMate_wishlist', JSON.stringify(updated));
+    if (updateBackground && updated.length > 0) {
+      updateBackground(updated[0].image);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans">
-      
-      <div className="max-w-7xl mx-auto mb-8">
-        <div className="inline-flex items-center gap-2 bg-[#131B2E] border border-[#1E293B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-[#38BDF8] mb-3 shadow-xs">
-          <Sparkles size={12} /> Saved Expeditions
+    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="mb-10">
+          <div className="inline-flex items-center gap-2 bg-white/[0.04] backdrop-blur-2xl border border-white/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-amber-300 mb-3 shadow-xs">
+            <Sparkles size={12} /> Saved Expeditions
+          </div>
+          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white leading-[0.92] drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] mb-2">My Wishlist</h1>
+          <p className="text-white/75 text-sm mt-1">The places you're dreaming of exploring.</p>
         </div>
-        <h1 className="text-3xl md:text-5xl font-serif text-[#F1F5F9]">My Wishlist</h1>
-        <p className="text-[#94A3B8] text-sm mt-1">Manage your bookmarked destinations and plan your next group getaway.</p>
-      </div>
 
-      <div className="max-w-7xl mx-auto">
         {wishlist.length === 0 ? (
-          <div className="bg-[#111827] border border-[#1E293B] rounded-3xl p-12 text-center space-y-4 shadow-xl">
-            <Heart size={48} className="text-slate-600 mx-auto" />
+          <div className="bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-3xl p-12 max-w-lg mx-auto text-center space-y-4 shadow-2xl">
+            <Heart size={48} className="text-white/40 mx-auto" />
             <h3 className="text-lg font-bold text-white">Your wishlist is empty</h3>
-            <p className="text-xs text-[#94A3B8] max-w-sm mx-auto">Explore destinations and click "Add to Wishlist" to save them here for later.</p>
-            <button
-              onClick={() => navigate('/discover')}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-xs font-bold transition-all cursor-pointer shadow-lg shadow-blue-900/30 inline-flex items-center gap-2"
+            <p className="text-xs text-white/60 max-w-sm mx-auto">Explore destinations and save the ones that catch your eye!</p>
+            <Link
+              to="/discover"
+              className="bg-white hover:bg-amber-400 text-zinc-950 font-bold px-6 py-3 rounded-xl text-xs transition-all cursor-pointer shadow-[0_10px_25px_rgba(255,255,255,0.1)] border border-white/10 inline-flex items-center gap-2"
             >
-              Explore Discoveries <ArrowRight size={14} />
-            </button>
+              Explore Destinations <ArrowRight size={14} />
+            </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {wishlist.map((item) => (
               <div
                 key={item.id}
-                onClick={() => navigate(`/destination/${item.id}`)}
-                className="bg-[#111827] border border-[#1E293B] rounded-3xl overflow-hidden shadow-xl hover:border-slate-700 transition-all cursor-pointer group flex flex-col justify-between"
+                onClick={() => navigate(/destination/)}
+                className="h-[380px] rounded-3xl overflow-hidden relative group border border-white/10 shadow-2xl cursor-pointer"
               >
-                <div>
-                  <div className="h-48 relative overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <button
-                      onClick={(e) => removeItem(item.id, e)}
-                      className="absolute top-4 right-4 w-9 h-9 bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-rose-500 hover:bg-black transition-colors"
-                      title="Remove from Wishlist"
-                    >
-                      <Trash2 size={16} />
-                    </button>
+                <img src={item.image} alt={item.name || item.title} className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700" />
+                <button
+                  onClick={(e) => removeItem(item.id, e)}
+                  className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white text-zinc-950 shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+                >
+                  <Trash2 size={18} />
+                </button>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-end justify-between gap-3">
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-white/70 mb-1">{item.state || item.location || item.category}</p>
+                      <h3 className="text-2xl font-bold text-white leading-tight">{item.name || item.title}</h3>
+                      <p className="text-xs text-white/70 flex items-center gap-1.5 font-medium mt-2">
+                        <MapPin size={14} className="text-amber-300" /> {item.state || item.location}
+                      </p>
+                    </div>
+                    {item.price && (
+                      <div className="bg-white/[0.08] backdrop-blur-2xl border border-white/10 rounded-full px-4 py-2 text-sm font-bold text-white shadow-lg">
+                        ?{item.price}
+                      </div>
+                    )}
                   </div>
-
-                  <div className="p-6 space-y-2">
-                    <h3 className="text-base font-bold text-white">{item.title}</h3>
-                    <p className="text-xs text-sky-400 flex items-center gap-1">
-                      <MapPin size={13} /> {item.location}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-6 pt-0 flex items-center justify-between border-t border-[#1E293B] mt-4">
-                  <div>
-                    <span className="text-[10px] text-slate-400 uppercase tracking-widest">Starting from</span>
-                    <div className="text-sm font-bold text-white">{item.price}</div>
-                  </div>
-                  <span className="w-9 h-9 rounded-xl bg-[#0B0F17] border border-[#1E293B] flex items-center justify-center text-sky-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                    <ArrowRight size={16} />
-                  </span>
                 </div>
               </div>
             ))}
           </div>
         )}
       </div>
-
     </div>
   );
 }

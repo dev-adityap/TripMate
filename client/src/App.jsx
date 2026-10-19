@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 // Import Components
 import Sidebar from './components/Sidebar';
@@ -13,7 +13,7 @@ import MyTripsPage from './pages/MyTripsPage';
 import TripDetailsPage from './pages/TripDetailsPage';
 import FavoritesPage from './pages/FavoritesPage';
 import ProfilePage from './pages/ProfilePage';
-import AuthPage from './pages/AuthPage';
+import LoginPage from './pages/LoginPage';
 import CheckoutPage from './pages/CheckoutPage';
 import CreateTripPage from './pages/CreateTripPage';
 import MessagesPage from './pages/MessagesPage';
@@ -24,40 +24,68 @@ import WishlistPage from './pages/WishlistPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ReviewsPage from './pages/ReviewsPage';
+import { mockDestinations } from './data/mockDatabase';
 
 export default function App() {
+  const [backgroundImage, setBackgroundImage] = useState(
+    'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=80'
+  );
+
+  const updateBackground = (imageUrl) => {
+    if (imageUrl) {
+      setBackgroundImage(imageUrl);
+    }
+  };
+
+  // Global ScrollToTop on route change
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+
   return (
-    <div className="flex min-h-screen bg-[#0B0F17] text-[#F1F5F9]">
-      
-      <Sidebar />
+    <div className="min-h-screen w-full relative overflow-x-hidden bg-[#09090B] text-white font-sans select-none">
+      {/* Dynamic Background Layer */}
+      <div
+        className="fixed inset-0 z-0 transition-all duration-1000 ease-out transform scale-105"
+        style={{
+          backgroundImage: `url('${backgroundImage}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      {/* Readability Overlays */}
+      <div className="fixed inset-0 z-0 bg-gradient-to-r from-black/80 via-black/45 to-black/25" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
 
       {/* Main container with proper dark styling and responsive margin */}
-      <div className="flex-1 w-full md:ml-20 pb-20 md:pb-0 transition-all bg-[#0B0F17]">
+      <div className="relative z-10 flex-1 w-full pb-20 md:pb-0 transition-all">
         <Routes>
-          <Route path="/login" element={<AuthPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Navigate to="/home" replace />} />
-          
+
           {/* Public Discovery & Info Pages */}
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/discover" element={<DiscoverPage />} />
-          <Route path="/destination/:id" element={<DestinationPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          
+          <Route path="/home" element={<HomePage updateBackground={updateBackground} />} />
+          <Route path="/discover" element={<DiscoverPage updateBackground={updateBackground} />} />
+          <Route path="/destination/:id" element={<DestinationPage updateBackground={updateBackground} />} />
+          <Route path="/about" element={<AboutPage updateBackground={updateBackground} />} />
+          <Route path="/contact" element={<ContactPage updateBackground={updateBackground} />} />
+
           {/* Protected Routes (Requires Firebase Google Auth) */}
-          <Route path="/my-trips" element={<ProtectedRoute><MyTripsPage /></ProtectedRoute>} />
-          <Route path="/trips" element={<ProtectedRoute><TripsPage /></ProtectedRoute>} />
-          <Route path="/trip/:id" element={<ProtectedRoute><TripDetailsPage /></ProtectedRoute>} />
-          <Route path="/favorites" element={<ProtectedRoute><FavoritesPage /></ProtectedRoute>} />
-          <Route path="/wishlist" element={<ProtectedRoute><WishlistPage /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-          
-          <Route path="/create" element={<ProtectedRoute><CreateTripPage /></ProtectedRoute>} />
-          <Route path="/messages" element={<ProtectedRoute><MessagesPage /></ProtectedRoute>} />
-          <Route path="/notifications" element={<ProtectedRoute><NotificationsPage /></ProtectedRoute>} />
-          <Route path="/checkout/:id" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
-          <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
-          <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/my-trips" element={<ProtectedRoute><MyTripsPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/trips" element={<ProtectedRoute><TripsPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/trip/:id" element={<ProtectedRoute><TripDetailsPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/favorites" element={<ProtectedRoute><FavoritesPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/wishlist" element={<ProtectedRoute><WishlistPage updateBackground={updateBackground} /></ProtectedRoute>} />
+
+          <Route path="/profile" element={<ProtectedRoute><ProfilePage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/create" element={<ProtectedRoute><CreateTripPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/messages" element={<ProtectedRoute><MessagesPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/notifications" element={<ProtectedRoute><NotificationsPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/checkout/:id" element={<ProtectedRoute><CheckoutPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/settings" element={<ProtectedRoute><SettingsPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/reviews" element={<ReviewsPage updateBackground={updateBackground} />} />
 
           {/* Catch-all route placed correctly at the bottom */}
           <Route path="*" element={<Navigate to="/home" replace />} />

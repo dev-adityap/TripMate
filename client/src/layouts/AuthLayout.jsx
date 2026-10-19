@@ -21,12 +21,12 @@ const AuthLayout = ({ children, title, subtitle }) => {
           <div className="bg-primary-500 text-white p-2 rounded-xl shadow-soft">
             <Compass size={28} strokeWidth={2.5} />
           </div>
-          <span className="text-3xl font-bold text-textPrimary tracking-tight">
+          <span className="text-3xl font-black text-textPrimary tracking-tight">
             TripMate
           </span>
         </Link>
         
-        <h2 className="mt-2 text-center text-2xl font-bold text-textPrimary">
+        <h2 className="mt-2 text-center text-2xl font-black text-textPrimary">
           {title}
         </h2>
         {subtitle && (

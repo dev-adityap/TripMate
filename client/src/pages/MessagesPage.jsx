@@ -175,7 +175,7 @@ export default function MessagesPage() {
         <div className="inline-flex items-center gap-2 bg-[#131B2E] border border-[#1E293B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-[#38BDF8] mb-3 shadow-xs">
           <Sparkles size={12} /> Squad Collaboration & Gemini 3.6 Flash
         </div>
-        <h1 className="text-3xl md:text-5xl font-serif text-[#F1F5F9]">Group Workspaces</h1>
+        <h1 className="text-3xl md:text-5xl font-sans text-[#F1F5F9]">Group Workspaces</h1>
         <p className="text-[#94A3B8] text-sm mt-1">Coordinate itineraries with your verified squad and get live responses from Gemini 3.6 Flash.</p>
       </div>
 
@@ -251,7 +251,7 @@ export default function MessagesPage() {
           {/* Chat Header with Member Count & Unique Random Dropdown */}
           <div className="p-6 bg-[#0B0F17]/50 border-b border-[#1E293B] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h3 className="text-lg font-serif text-white">{activeWorkspace || 'Select a Workspace'}</h3>
+              <h3 className="text-lg font-sans text-white">{activeWorkspace || 'Select a Workspace'}</h3>
               <div className="flex items-center gap-3 mt-1">
                 {/* Member Number Badge */}
                 <span className="text-[11px] text-[#94A3B8] flex items-center gap-1 font-medium bg-[#0B0F17] border border-[#1E293B] px-3 py-1 rounded-lg">

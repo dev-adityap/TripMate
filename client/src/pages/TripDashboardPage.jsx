@@ -139,7 +139,7 @@ const TripDashboardPage = () => {
         <div className="w-full lg:w-1/3 flex flex-col gap-4 overflow-y-auto pr-2">
           
           <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-            <h2 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-4 border-b pb-2">Group Members</h2>
+            <h2 className="text-lg md:text-xl font-extrabold text-slate-900 uppercase tracking-wider mb-4 border-b pb-2">Group Members</h2>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 font-bold"><UserIcon size={18}/></div>
@@ -153,15 +153,15 @@ const TripDashboardPage = () => {
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex-1">
-            <h2 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-4 border-b pb-2">Itinerary</h2>
+            <h2 className="text-lg md:text-xl font-extrabold text-slate-900 uppercase tracking-wider mb-4 border-b pb-2">Itinerary</h2>
             <p className="text-xs text-slate-500 italic mb-4">Day-by-day schedule for this expedition.</p>
             <div className="space-y-4">
                <div className="border-l-2 border-purple-200 pl-4">
-                 <h4 className="text-xs font-bold text-purple-600 mb-1">DAY 1</h4>
+                 <h4 className="text-[11px] font-bold uppercase tracking-widest text-purple-600 mb-1">DAY 1</h4>
                  <p className="text-sm font-bold text-slate-900">Arrival & Acclimatization Briefing</p>
                </div>
                <div className="border-l-2 border-slate-200 pl-4">
-                 <h4 className="text-xs font-bold text-slate-400 mb-1">DAY 2</h4>
+                 <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1">DAY 2</h4>
                  <p className="text-sm font-bold text-slate-900">Pass Crossing & Base Camp Setup</p>
                </div>
             </div>
@@ -179,7 +179,7 @@ const TripDashboardPage = () => {
             </div>
             <button 
               onClick={triggerAIAssist} 
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-xs font-bold transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold transition-colors"
             >
               <Sparkles size={14} /> Ask TripMate AI
             </button>

@@ -120,7 +120,7 @@ export default function ProfilePage() {
               <div className="mt-4 space-y-2">
                 <p className="text-xs font-bold text-gray-500 uppercase">Active Session Token (JWT)</p>
                 <div className="bg-gray-50 border border-gray-200 p-3 rounded-xl overflow-x-auto">
-                  <code className="text-[10px] text-indigo-600 font-mono break-all whitespace-normal">
+                  <code className="text-[10px] text-indigo-600 font-sans break-all whitespace-normal">
                     {token || 'No active token found.'}
                   </code>
                 </div>

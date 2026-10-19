@@ -100,7 +100,7 @@ const AddDestinationModal = ({ isOpen, onClose, onAdd }) => {
           <button onClick={onClose} className="px-5 py-2.5 text-sm font-bold text-gray-600 hover:bg-gray-200 rounded-xl transition-colors">
             Cancel
           </button>
-          <button type="submit" form="add-dest-form" className="px-6 py-2.5 bg-blue-600 text-white text-sm font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-sm">
+          <button type="submit" form="add-dest-form" className="px-6 py-2.5 bg-amber-500 text-zinc-950 text-sm font-bold rounded-xl hover:bg-amber-400 transition-colors shadow-sm">
             + Publish Destination
           </button>
         </div>

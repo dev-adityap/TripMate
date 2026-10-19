@@ -25,14 +25,14 @@ const CalendarPage = () => {
 
       {joinedDestinations.length === 0 ? (
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-16 text-center max-w-xl mx-auto mt-10">
-          <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
             <CalendarIcon size={28} />
           </div>
           <h2 className="text-xl font-extrabold text-gray-900 mb-2">No trips scheduled on your calendar</h2>
           <p className="text-gray-500 font-medium text-sm mb-6">Join trips from the Discover page to populate your travel schedule!</p>
           <button 
             onClick={() => navigate('/discover')}
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors shadow-sm text-sm inline-flex items-center gap-2"
+            className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold rounded-xl transition-all duration-300 shadow-sm text-sm inline-flex items-center gap-2"
           >
             Discover Trips <ArrowRight size={16} />
           </button>
@@ -46,18 +46,18 @@ const CalendarPage = () => {
               className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row items-start md:items-center gap-6 cursor-pointer group"
             >
               {/* Date Box Indicator */}
-              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-50 to-blue-50 text-purple-700 flex flex-col items-center justify-center p-3 text-center shrink-0 border border-purple-100">
+              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 text-amber-500 flex flex-col items-center justify-center p-3 text-center shrink-0 border border-amber-100">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Month</span>
                 <span className="text-xl font-extrabold text-gray-900">Oct {15 + idx * 7}</span>
               </div>
 
               {/* Trip Info */}
               <div className="flex-1">
-                <div className="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider mb-1">
+                <div className="flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-wider mb-1">
                   <MapPin size={14} />
                   <span>{dest.location}</span>
                 </div>
-                <h3 className="text-xl font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+                <h3 className="text-xl font-extrabold text-zinc-950 group-hover:text-amber-500 transition-colors mb-2">
                   {dest.name}
                 </h3>
                 <div className="flex flex-wrap gap-4 text-xs font-bold text-gray-500">
@@ -72,7 +72,7 @@ const CalendarPage = () => {
 
               {/* Action */}
               <div className="shrink-0">
-                <span className="px-5 py-2.5 bg-blue-600 group-hover:bg-blue-700 text-white text-sm font-bold rounded-xl transition-colors shadow-sm inline-block">
+                <span className="px-5 py-2.5 bg-amber-500 group-hover:bg-amber-400 text-zinc-950 text-sm font-bold transition-all duration-300 shadow-sm inline-block">
                   View Details
                 </span>
               </div>

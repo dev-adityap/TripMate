@@ -9,7 +9,7 @@ const FooterCTA = () => {
     <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 pb-8">
       
       {/* 1. Cinematic CTA Banner */}
-      <div className="relative w-full h-[320px] md:h-[280px] rounded-3xl overflow-hidden shadow-xl flex items-center bg-slate-900 group">
+      <div className="relative w-full h-[320px] md:h-[280px] rounded-3xl overflow-hidden shadow-xl flex items-center bg-[#09090B] group">
         
         {/* Background Image Setup */}
         <img 
@@ -19,7 +19,7 @@ const FooterCTA = () => {
           onError={(e) => {
             e.target.style.display = 'none';
             // Fallback gradient if image is missing
-            e.target.parentElement.classList.add('bg-gradient-to-r', 'from-slate-900', 'to-purple-950');
+            e.target.parentElement.classList.add('bg-gradient-to-r', 'from-[#09090B]', 'to-purple-950');
           }}
         />
 
@@ -63,7 +63,7 @@ const FooterCTA = () => {
             <div className="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white font-black text-xl italic">
               TM
             </div>
-            <span className="text-xl font-extrabold text-slate-900 tracking-tight">TripMate</span>
+            <span className="text-xl font-extrabold text-zinc-950 tracking-tight">TripMate</span>
           </div>
           <p className="text-sm text-slate-500 max-w-xs">
             Find people. Plan together. Travel further.
@@ -72,7 +72,7 @@ const FooterCTA = () => {
 
         {/* Links Columns */}
         <div>
-          <h4 className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Explore</h4>
+          <h4 className="font-bold text-zinc-950 mb-4 text-sm uppercase tracking-wider">Explore</h4>
           <ul className="space-y-3">
             <li><button onClick={() => navigate('/discover')} className="text-sm text-slate-500 hover:text-purple-600 transition-colors">Destinations</button></li>
             <li><button onClick={() => navigate('/discover')} className="text-sm text-slate-500 hover:text-purple-600 transition-colors">Trips</button></li>
@@ -81,7 +81,7 @@ const FooterCTA = () => {
         </div>
 
         <div>
-          <h4 className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Company</h4>
+          <h4 className="font-bold text-zinc-950 mb-4 text-sm uppercase tracking-wider">Company</h4>
           <ul className="space-y-3">
             <li><button className="text-sm text-slate-500 hover:text-purple-600 transition-colors">About</button></li>
             <li><button className="text-sm text-slate-500 hover:text-purple-600 transition-colors">Privacy</button></li>
@@ -90,7 +90,7 @@ const FooterCTA = () => {
         </div>
 
         <div>
-          <h4 className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Support</h4>
+          <h4 className="font-bold text-zinc-950 mb-4 text-sm uppercase tracking-wider">Support</h4>
           <ul className="space-y-3">
             <li><button className="text-sm text-slate-500 hover:text-purple-600 transition-colors">Help Center</button></li>
             <li><button className="text-sm text-slate-500 hover:text-purple-600 transition-colors">Contact</button></li>
@@ -105,9 +105,9 @@ const FooterCTA = () => {
         {/* Social Icons */}
         {/* Social Links Fallback */}
         <div className="flex items-center gap-5 text-sm font-bold text-slate-400">
-          <button className="hover:text-slate-900 transition-colors">IG</button>
-          <button className="hover:text-slate-900 transition-colors">TW</button>
-          <button className="hover:text-slate-900 transition-colors">GH</button>
+          <button className="hover:text-zinc-950 transition-colors">IG</button>
+          <button className="hover:text-zinc-950 transition-colors">TW</button>
+          <button className="hover:text-zinc-950 transition-colors">GH</button>
         </div>
 
         {/* Copyright */}

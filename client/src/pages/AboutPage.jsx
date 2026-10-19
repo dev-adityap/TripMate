@@ -1,128 +1,68 @@
-import React from 'react';
-import { Sparkles, Code2, Heart } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Sparkles, Mountain, ShieldCheck, Users, Globe, Award, Code2 } from 'lucide-react';
 
-export default function AboutPage() {
+export default function AboutPage({ updateBackground }) {
+  useEffect(() => {
+    if (updateBackground) {
+      updateBackground('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    }
+  }, [updateBackground]);
+
+  const features = [
+    { icon: Mountain, title: 'Curated Expeditions', desc: 'Handpicked treks and getaways with verified itineraries and local expertise.' },
+    { icon: ShieldCheck, title: 'Safety First', desc: 'Verified hosts, emergency protocols, and gear checklists for peace of mind.' },
+    { icon: Users, title: 'Squad Matching', desc: 'Find like-minded travelers and build your crew before you depart.' },
+    { icon: Globe, title: 'Sustainable Travel', desc: 'Low-impact routes, leave-no-trace guidance, and community-first partnerships.' },
+    { icon: Award, title: 'Quality Assurance', desc: 'Every listing is vetted for experience, pricing, and reliability.' },
+    { icon: Sparkles, title: 'Seamless Experience', desc: 'From discovery to checkout, every touchpoint is crafted for ease.' }
+  ];
+
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans">
-      <div className="max-w-4xl mx-auto space-y-8">
-        
-        {/* Header Badge */}
-        <div>
-          <div className="inline-flex items-center gap-2 bg-[#131B2E] border border-[#1E293B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-[#38BDF8] mb-3 shadow-xs">
-            <Sparkles size={12} /> The Story Behind TripMate
+    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-[#09090B] backdrop-blur-[2px]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto space-y-10">
+        <div className="text-center space-y-4 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-white/[0.04] backdrop-blur-2xl border border-white/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-amber-300 shadow-xs">
+            <Sparkles size={12} /> Our Story
           </div>
-          <h1 className="text-3xl md:text-5xl font-serif text-white">🌄 About TripMate</h1>
+          <h1 className="text-3xl md:text-6xl font-black uppercase tracking-tight text-white leading-[0.92] drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
+            About TripMate
+          </h1>
+          <p className="text-base md:text-lg text-white/80 leading-relaxed">
+            TripMate is built to bring adventurers together. We believe travel is better when shared'uniting explorers, streamlining logistics, and creating unforgettable journeys rooted in trust, community, and respect for the wild.
+          </p>
         </div>
 
-        {/* Main Content Card */}
-        <div className="bg-[#111827] border border-[#1E293B] p-8 md:p-12 rounded-3xl shadow-2xl space-y-8 text-xs md:text-sm text-slate-300 leading-relaxed">
-          
-          {/* Story Section */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-serif font-bold text-white border-b border-[#1E293B] pb-3">
-              The Story Behind TripMate
-            </h3>
-            <p className="italic text-sky-400 font-medium text-sm">TripMate started with a simple thought:</p>
-            <p className="text-white font-bold text-base md:text-lg">
-              Why do great travel plans so often end before they even begin?
-            </p>
-            <p className="text-[#94A3B8]">
-              I’ve always loved the idea of exploring new places, going on treks, discovering hidden destinations, and making memories with people. But one problem kept coming up: finding the right people to go with.
-            </p>
-            <p className="text-[#94A3B8]">
-              Friends might have different schedules. Plans get cancelled. Sometimes you have the destination, the dates, and the excitement, but not enough people to make the trip happen.
-            </p>
-            <p className="text-slate-400 font-medium">That made me think:</p>
-            
-            <div className="bg-[#0B0F17] border border-[#1E293B] p-5 rounded-2xl shadow-inner text-white font-medium italic">
-              "What if people could find others who want to visit the same place, around the same time, and simply plan the journey together?"
+        <div className="grid md:grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <div key={i} className="bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-2xl space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center backdrop-blur-2xl">
+                <f.icon size={20} className="text-amber-300" />
+              </div>
+              <h3 className="text-lg font-bold text-white">{f.title}</h3>
+              <p className="text-sm text-white/70 leading-relaxed">{f.desc}</p>
             </div>
-            
-            <p className="text-sky-400 font-bold text-base pt-2">And that's where TripMate began.</p>
-          </div>
-
-          {/* What I wanted to build */}
-          <div className="border-t border-[#1E293B] pt-8 space-y-4">
-            <h3 className="text-xl font-serif font-bold text-white pb-1">
-              🧭 What I wanted to build
-            </h3>
-            <p className="text-[#94A3B8]">I wanted TripMate to be more than another travel website.</p>
-            <p className="text-slate-300 font-semibold">The idea was to create a platform where people can:</p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-              <div className="bg-[#0B0F17] border border-[#1E293B] p-4 rounded-2xl flex items-center gap-3 shadow-inner">
-                <span className="text-xl">🌍</span>
-                <span className="text-xs text-slate-200 font-medium">Discover 100+ destinations across India</span>
-              </div>
-              <div className="bg-[#0B0F17] border border-[#1E293B] p-4 rounded-2xl flex items-center gap-3 shadow-inner">
-                <span className="text-xl">🗓️</span>
-                <span className="text-xs text-slate-200 font-medium">Explore available trip dates and group batches</span>
-              </div>
-              <div className="bg-[#0B0F17] border border-[#1E293B] p-4 rounded-2xl flex items-center gap-3 shadow-inner">
-                <span className="text-xl">👥</span>
-                <span className="text-xs text-slate-200 font-medium">See anonymous group information before joining</span>
-              </div>
-              <div className="bg-[#0B0F17] border border-[#1E293B] p-4 rounded-2xl flex items-center gap-3 shadow-inner">
-                <span className="text-xl">🤝</span>
-                <span className="text-xs text-slate-200 font-medium">Find people interested in the same journey</span>
-              </div>
-              <div className="bg-[#0B0F17] border border-[#1E293B] p-4 rounded-2xl flex items-center gap-3 shadow-inner">
-                <span className="text-xl">💬</span>
-                <span className="text-xs text-slate-200 font-medium">Connect with their group through group chat</span>
-              </div>
-              <div className="bg-[#0B0F17] border border-[#1E293B] p-4 rounded-2xl flex items-center gap-3 shadow-inner">
-                <span className="text-xl">🤖</span>
-                <span className="text-xs text-slate-200 font-medium">Interact with an AI-powered travel assistant</span>
-              </div>
-              <div className="md:col-span-2 bg-[#0B0F17] border border-[#1E293B] p-4 rounded-2xl flex items-center gap-3 shadow-inner">
-                <span className="text-xl">🔐</span>
-                <span className="text-xs text-slate-200 font-medium">Keep personal information protected while discovering potential travel companions</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Real-world project section */}
-          <div className="border-t border-[#1E293B] pt-8 space-y-4">
-            <h3 className="text-xl font-serif font-bold text-white pb-1">
-              🚀 Built as a real-world project
-            </h3>
-            <p className="text-[#94A3B8]">
-              TripMate is also my attempt to turn an everyday problem into a real, working product.
-            </p>
-            <p className="text-[#94A3B8]">
-              From designing the interface and building the frontend to developing the backend, database, APIs, authentication, and AI features, I’ve been building TripMate step by step while learning what it actually takes to turn an idea into a full-stack application.
-            </p>
-            <p className="text-slate-300 font-medium">
-              TripMate is still evolving. There are more features, improvements, and ideas I want to bring into it.
-            </p>
-          </div>
-
-          {/* Author Credit Section */}
-          <div className="border-t border-[#1E293B] pt-8 flex flex-col items-center justify-center text-center space-y-3 bg-[#0B0F17] p-6 rounded-2xl border shadow-inner">
-            <div className="w-10 h-10 rounded-xl bg-blue-600/20 text-sky-400 border border-sky-500/30 flex items-center justify-center">
-              <Code2 size={20} />
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Designed & Developed By</p>
-              <h4 className="text-base font-bold text-white mt-0.5">Aditya Panna</h4>
-            </div>
-          </div>
-
-          {/* Conclusion */}
-          <div className="pt-4 text-center space-y-3 bg-[#0B0F17]/50 p-6 rounded-2xl border border-[#1E293B]">
-            <p className="text-[11px] uppercase tracking-widest text-sky-400 font-extrabold">The Goal Remains Simple</p>
-            <h4 className="text-lg md:text-xl font-serif font-bold text-white">
-              Find your destination. Find your people. Go together. 🌄
-            </h4>
-            <div className="pt-2">
-              <span className="text-xs font-bold bg-[#131B2E] text-slate-300 border border-[#1E293B] px-4 py-1.5 rounded-full inline-block">
-                TripMate · Since 2026
-              </span>
-            </div>
-          </div>
-
+          ))}
         </div>
 
+        <div className="bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl space-y-6">
+          <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white">Our Mission</h2>
+          <p className="text-white/80 leading-relaxed text-sm md:text-base">
+            To democratize adventure by making it safer, simpler, and more social. We curate meaningful experiences, empower local communities, and equip every squad with the tools they need to explore responsibly.
+          </p>
+        </div>
+
+        <div className="border-amber-400/30 bg-gradient-to-br from-white/[0.06] to-amber-500/[0.05] rounded-3xl p-8 shadow-2xl text-center space-y-3 backdrop-blur-2xl border">
+          <Code2 size={40} className="text-amber-300 mx-auto" />
+          <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white">Crafted with Passion</h3>
+          <p className="text-white/80 text-sm">Designed &amp; Developed By Aditya Panna</p>
+          <p className="text-white/60 text-xs max-w-2xl mx-auto leading-relaxed">
+            Built from the ground up with a focus on performance, accessibility, and editorial craftsmanship to deliver an immersive travel experience.
+          </p>
+        </div>
       </div>
     </div>
   );

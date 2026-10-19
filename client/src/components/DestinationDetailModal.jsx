@@ -88,7 +88,7 @@ const DestinationDetailModal = ({ trip, isOpen, onClose, onJoin }) => {
           <img src={activeImage} alt={trip.name} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider bg-blue-600 text-white px-3 py-1 rounded-xl">
+              <span className="text-xs font-bold uppercase tracking-wider bg-amber-500 text-zinc-950 px-3 py-1 rounded-xl">
                 {trip.state || trip.location || 'Destination'}
               </span>
               <h2 className="text-3xl font-extrabold text-white mt-2">{trip.name}</h2>
@@ -101,7 +101,7 @@ const DestinationDetailModal = ({ trip, isOpen, onClose, onJoin }) => {
             <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Vivid Gallery Photos</h4>
             <div className="flex gap-3 overflow-x-auto pb-2">
               {galleryImages.map((imgUrl, index) => (
-                <button key={index} onClick={() => setActiveImage(imgUrl)} className={`relative w-20 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all ${activeImage === imgUrl ? 'border-blue-600 scale-105' : 'border-transparent opacity-70 hover:opacity-100'}`}>
+                <button key={index} onClick={() => setActiveImage(imgUrl)} className={`relative w-20 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all                 ${activeImage === imgUrl ? 'border-amber-500 scale-105' : 'border-transparent opacity-70 hover:opacity-100'}`}>
                   <img src={imgUrl} alt="Thumbnail" className="w-full h-full object-cover" />
                 </button>
               ))}
@@ -116,19 +116,19 @@ const DestinationDetailModal = ({ trip, isOpen, onClose, onJoin }) => {
           </div>
 
           <div className="flex items-center gap-4 py-4 border-y border-gray-100 text-sm text-gray-500 font-medium">
-            <span className="flex items-center gap-1.5"><MapPin size={16} className="text-blue-500" /> {trip.state || 'Scenic Region'}</span>
+            <span className="flex items-center gap-1.5"><MapPin size={16} className="text-amber-300" /> {trip.state || 'Scenic Region'}</span>
             <span className="flex items-center gap-1.5"><Users size={16} className="text-purple-500" /> {trip.participants?.length || 0} Travelers Joined</span>
           </div>
 
           {/* NEW: Pricing and Date Selector Block (matches your screenshot) */}
-          <div className="bg-[#F9FAFD] p-6 rounded-3xl border border-slate-100 flex flex-col gap-6">
+          <div className="bg-[#F9FAFD] p-6 rounded-3xl border border-zinc-100 flex flex-col gap-6">
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Package Price</p>
-                <h3 className="text-3xl font-extrabold text-slate-900">₹{trip.price || '14,500'}</h3>
+                <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider mb-1">Package Price</p>
+                <h3 className="text-3xl font-extrabold text-zinc-950">₹{trip.price || '14,500'}</h3>
               </div>
               <div className="text-right">
-                <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Per Person</p>
+                <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider mb-1">Per Person</p>
                 <span className="bg-purple-100 text-purple-700 text-[11px] font-bold px-3 py-1 rounded-full">All Inclusive</span>
               </div>
             </div>
@@ -136,7 +136,7 @@ const DestinationDetailModal = ({ trip, isOpen, onClose, onJoin }) => {
             <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
           </div>
 
-          <button onClick={() => { onClose(); onJoin(trip._id, selectedDate); }} className="w-full py-4 bg-blue-600 text-white font-bold rounded-2xl text-sm hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2">
+          <button onClick={() => { onClose(); onJoin(trip._id, selectedDate); }} className="w-full py-4 bg-white hover:bg-amber-400 text-zinc-950 font-bold rounded-2xl text-sm transition-all duration-300 shadow-[0_12px_30px_rgba(0,0,0,0.4)] flex items-center justify-center gap-2">
             Join Trip & Open Workspace <ArrowRight size={18} />
           </button>
         </div>

@@ -68,12 +68,12 @@ const TripsForming = () => {
       {/* Section Header */}
       <div className="flex justify-between items-end mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">Trips forming now</h2>
-          <p className="text-slate-500 text-sm mt-1">Join people who are already planning their next adventure.</p>
+          <h2 className="text-2xl font-bold text-zinc-950">Trips forming now</h2>
+          <p className="text-zinc-400 text-sm mt-1">Join people who are already planning their next adventure.</p>
         </div>
         <button 
           onClick={() => navigate('/discover')}
-          className="hidden sm:flex items-center gap-1 text-sm font-semibold text-purple-600 hover:text-purple-700 transition-colors"
+          className="hidden sm:flex items-center gap-1 text-sm font-semibold text-amber-500 hover:text-amber-700 transition-colors"
         >
           View All Trips <ArrowRight size={16} />
         </button>
@@ -85,7 +85,7 @@ const TripsForming = () => {
         {/* Left Scroll Button */}
         <button 
           onClick={scrollLeft}
-          className="hidden lg:flex opacity-0 group-hover/slider:opacity-100 absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full items-center justify-center shadow-lg border border-slate-100 text-slate-600 hover:text-purple-600 hover:scale-105 transition-all z-10"
+          className="hidden lg:flex opacity-0 group-hover/slider:opacity-100 absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full items-center justify-center shadow-lg border border-zinc-100 text-zinc-400 hover:text-amber-500 hover:scale-105 transition-all z-10"
         >
           <ChevronLeft size={24} />
         </button>
@@ -100,7 +100,7 @@ const TripsForming = () => {
             <div key={trip.id} className="min-w-[280px] sm:min-w-[300px] w-[280px] sm:w-[300px] snap-start bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-shadow group flex flex-col flex-shrink-0">
               
               {/* Top Image Area */}
-              <div className="relative h-44 bg-slate-200 overflow-hidden">
+              <div className="relative h-44 bg-zinc-200 overflow-hidden">
                 <img 
                   src={trip.image} 
                   alt={trip.title} 
@@ -111,11 +111,11 @@ const TripsForming = () => {
                   }}
                 />
                 
-                <div className="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white px-2.5 py-1 rounded text-[10px] font-bold tracking-wider uppercase">
+                <div className="absolute bottom-3 left-3 bg-[#09090B]/80 backdrop-blur-sm text-white px-2.5 py-1 rounded text-[10px] font-bold tracking-wider uppercase">
                   {trip.category}
                 </div>
                 
-                <button className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+                  <button className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-zinc-400 hover:text-rose-500 transition-colors shadow-sm">
                   <Heart size={16} />
                 </button>
               </div>
@@ -123,7 +123,7 @@ const TripsForming = () => {
               {/* Bottom Content Area */}
               <div className="p-4 flex flex-col flex-1">
                 <div className="flex justify-between items-center mb-1">
-                  <div className="flex items-center gap-1 text-blue-600 text-[10px] font-bold tracking-wider uppercase">
+                  <div className="flex items-center gap-1 text-amber-300 text-[10px] font-bold tracking-wider uppercase">
                     <MapPin size={12} />
                     {trip.state}
                   </div>
@@ -137,23 +137,23 @@ const TripsForming = () => {
 
                 <div className="flex items-center justify-between text-xs font-medium text-slate-600 mb-4 pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-1.5">
-                    <Users size={14} className="text-slate-400" />
-                    <span><strong className="text-slate-900">{trip.joined}</strong> / {trip.maxSize}</span>
+                    <Users size={14} className="text-zinc-400" />
+                    <span><strong className="text-zinc-950">{trip.joined}</strong> / {trip.maxSize}</span>
                   </div>
                   <div className="flex gap-2">
-                    <span className="text-blue-500">{trip.males} ♂</span>
-                    <span className="text-pink-500">{trip.females} ♀</span>
+                    <span className="text-amber-300">{trip.males} ♂</span>
+                    <span className="text-rose-400">{trip.females} ♀</span>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-lg font-bold text-slate-900">₹{trip.price}</div>
+                  <div className="text-lg font-bold text-zinc-950">₹{trip.price}</div>
                   <div className="text-xs font-bold text-pink-600 bg-pink-50 px-2 py-1 rounded-md">{trip.duration}</div>
                 </div>
 
                 <button 
                   onClick={() => navigate(`/trip/${trip.id}`)} 
-                  className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2 mt-auto"
+                  className="w-full py-2.5 rounded-xl bg-white hover:bg-amber-400 text-zinc-950 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-auto"
                 >
                   View Trip <ArrowRight size={16} />
                 </button>
@@ -179,10 +179,10 @@ const TripsForming = () => {
         }
       `}} />
 
-      <button 
-        onClick={() => navigate('/discover')}
-        className="sm:hidden w-full mt-6 py-3 bg-slate-100 rounded-xl text-sm font-semibold text-slate-700 flex justify-center items-center gap-2"
-      >
+        <button 
+          onClick={() => navigate('/discover')}
+          className="sm:hidden w-full mt-6 py-3 bg-zinc-100 rounded-xl text-sm font-semibold text-zinc-500 flex justify-center items-center gap-2"
+        >
         View All Trips <ArrowRight size={16} />
       </button>
 

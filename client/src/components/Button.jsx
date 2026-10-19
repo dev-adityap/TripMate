@@ -11,7 +11,7 @@ const variants = {
 const sizes = {
   sm: 'py-1.5 px-3 text-sm rounded-lg',
   md: 'py-2 px-4 text-sm font-medium rounded-xl',
-  lg: 'py-3 px-6 text-base font-medium rounded-2xl',
+  lg: 'py-3 px-6 text-base font-semibold rounded-2xl',
 };
 
 const Button = ({ 

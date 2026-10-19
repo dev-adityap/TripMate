@@ -66,10 +66,10 @@ const ExpenseTrackerPage = () => {
         
         {/* Left Column: Summary Cards */}
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-purple-900 to-blue-900 rounded-3xl p-8 text-white shadow-lg space-y-6">
+          <div className="bg-gradient-to-br from-amber-900 to-orange-900 rounded-3xl p-8 text-white shadow-lg space-y-6">
             <div className="flex justify-between items-center">
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Total Group Pool</span>
-              <Receipt size={24} className="text-purple-300" />
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-300">Total Group Pool</span>
+              <Receipt size={24} className="text-amber-300" />
             </div>
             <div>
               <h2 className="text-4xl font-extrabold">₹{totalExpense.toLocaleString('en-IN')}</h2>
@@ -77,15 +77,15 @@ const ExpenseTrackerPage = () => {
             </div>
 
             <div className="pt-4 border-t border-white/10 flex justify-between items-center text-sm">
-              <span className="text-purple-200 font-medium">Estimated Split ({activeGroupSize} Travelers)</span>
+              <span className="text-amber-200 font-medium">Estimated Split ({activeGroupSize} Travelers)</span>
               <span className="font-extrabold text-emerald-400">₹{perPersonShare.toLocaleString('en-IN')} / person</span>
             </div>
           </div>
 
           {/* Add Expense Form */}
           <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-            <h3 className="text-lg font-extrabold text-gray-900 mb-6 flex items-center gap-2">
-              <Plus size={18} className="text-purple-600" /> Log New Expense
+              <h3 className="text-lg font-extrabold text-zinc-950 mb-6 flex items-center gap-2">
+                <Plus size={18} className="text-amber-500" /> Log New Expense
             </h3>
 
             <form onSubmit={handleAddExpense} className="space-y-4">
@@ -96,7 +96,7 @@ const ExpenseTrackerPage = () => {
                   placeholder="e.g., Equipment Rental" 
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-gray-800 focus:outline-none focus:border-purple-500"
+                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-zinc-800 focus:outline-none focus:border-amber-400"
                   required
                 />
               </div>
@@ -108,7 +108,7 @@ const ExpenseTrackerPage = () => {
                   placeholder="2500" 
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-gray-800 focus:outline-none focus:border-purple-500"
+                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-zinc-800 focus:outline-none focus:border-amber-400"
                   required
                 />
               </div>
@@ -120,7 +120,7 @@ const ExpenseTrackerPage = () => {
                     type="text" 
                     value={paidBy}
                     onChange={(e) => setPaidBy(e.target.value)}
-                    className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-gray-800 focus:outline-none focus:border-purple-500"
+                    className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-zinc-800 focus:outline-none focus:border-amber-400"
                   />
                 </div>
                 <div>
@@ -128,7 +128,7 @@ const ExpenseTrackerPage = () => {
                   <select 
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-gray-800 focus:outline-none focus:border-purple-500"
+                    className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-2xl font-bold text-sm text-zinc-800 focus:outline-none focus:border-amber-400"
                   >
                     <option value="Transport">Transport</option>
                     <option value="Food">Food</option>
@@ -138,9 +138,9 @@ const ExpenseTrackerPage = () => {
                 </div>
               </div>
 
-              <button 
+              <              button 
                 type="submit"
-                className="w-full py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-2xl shadow-sm transition-colors text-sm mt-2"
+                className="w-full py-4 bg-white hover:bg-amber-400 text-zinc-950 font-bold rounded-2xl shadow-sm transition-all duration-300 text-sm mt-2"
               >
                 Add Expense
               </button>
@@ -152,7 +152,7 @@ const ExpenseTrackerPage = () => {
         <div className="lg:col-span-2 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-extrabold text-gray-900">Group Transaction History</h3>
-            <span className="text-xs font-bold text-purple-600 bg-purple-50 px-3 py-1.5 rounded-full">
+            <span className="text-xs font-bold text-amber-500 bg-amber-50 px-3 py-1.5 rounded-full">
               {expenses.length} Records
             </span>
           </div>
@@ -166,12 +166,12 @@ const ExpenseTrackerPage = () => {
               {expenses.map((exp) => (
                 <div key={exp.id} className="flex justify-between items-center p-4 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-gray-50 transition-colors">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-extrabold text-sm shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-500 flex items-center justify-center font-extrabold text-sm shrink-0">
                       ₹
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-gray-900">{exp.title}</h4>
-                      <p className="text-xs text-gray-500 font-medium mt-0.5">Paid by <span className="text-purple-600 font-bold">{exp.paidBy}</span> • <span className="uppercase text-[10px] bg-gray-200 px-2 py-0.5 rounded font-bold">{exp.category}</span></p>
+                      <h4 className="font-extrabold text-zinc-950">{exp.title}</h4>
+                      <p className="text-xs text-zinc-500 font-medium mt-0.5">Paid by <span className="text-amber-500 font-bold">{exp.paidBy}</span> • <span className="uppercase text-[10px] bg-zinc-200 px-2 py-0.5 rounded font-bold">{exp.category}</span></p>
                     </div>
                   </div>
 

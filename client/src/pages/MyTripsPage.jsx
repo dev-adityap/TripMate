@@ -20,14 +20,14 @@ export default function MyTripsPage() {
         <div className="inline-flex items-center gap-2 bg-[#131B2E] border border-[#1E293B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3 shadow-xs">
           <Sparkles size={12} /> Confirmed Itineraries
         </div>
-        <h1 className="text-3xl md:text-5xl font-serif text-[#F1F5F9]">My Trips</h1>
+        <h1 className="text-3xl md:text-5xl font-sans text-[#F1F5F9]">My Trips</h1>
         <p className="text-[#94A3B8] text-sm mt-1">Your confirmed expeditions and unlocked group chat workspaces.</p>
       </div>
 
       {purchasedTrips.length === 0 ? (
         <div className="max-w-md mx-auto text-center py-24 bg-[#111827] border border-[#1E293B] rounded-3xl p-8 shadow-xl mt-12">
           <Briefcase size={48} className="text-slate-600 mx-auto mb-4" />
-          <h3 className="text-xl font-serif text-white mb-2">No booked trips yet</h3>
+          <h3 className="text-xl font-sans text-white mb-2">No booked trips yet</h3>
           <p className="text-[#94A3B8] text-xs mb-6">Complete a checkout on any destination to unlock your squad workspace.</p>
           <Link to="/discover" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-2xl text-xs uppercase tracking-wider transition-all">
             Browse Expeditions
@@ -46,7 +46,7 @@ export default function MyTripsPage() {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-serif text-white">{trip.name || trip.title}</h3>
+                  <h3 className="text-xl font-sans text-white">{trip.name || trip.title}</h3>
                   <p className="text-xs text-[#94A3B8] flex items-center gap-1.5 font-medium mt-2">
                     <MapPin size={14} className="text-[#38BDF8]" /> {trip.location || trip.state}
                   </p>

@@ -1,154 +1,140 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { PlusCircle, MapPin, Calendar, IndianRupee, Sparkles, CheckCircle2 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { MapPin, Calendar, Users, ArrowRight, Sparkles, Loader } from 'lucide-react';
 
-export default function CreateTripPage() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: '',
-    state: '',
-    category: 'MOUNTAIN',
-    price: '₹14,500',
-    description: '',
-    image: 'https://images.unsplash.com/photo-1597167231350-d057a45dc868?q=80&w=1382&auto=format&fit=crop'
+export default function CreateTripPage({ updateBackground }) {
+  const [form, setForm] = useState({
+    destination: '',
+    startDate: '',
+    endDate: '',
+    groupSize: ''
   });
+  const [loading, setLoading] = useState(false);
 
-  const [success, setSuccess] = useState(false);
+  useEffect(() => {
+    if (updateBackground) {
+      updateBackground('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2074&auto=format&fit=crop');
+    }
+  }, [updateBackground]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.state) return;
-
-    const newDestination = {
-      id: 'custom_' + Date.now(),
-      ...formData
-    };
-
-    const existing = JSON.parse(localStorage.getItem('tripMate_customDestinations') || '[]');
-    localStorage.setItem('tripMate_customDestinations', JSON.stringify([newDestination, ...existing]));
-
-    setSuccess(true);
-    setTimeout(() => {
-      navigate('/discover');
-    }, 1500);
+    setLoading(true);
+    try {
+      await fetch('http://localhost:5000/api/trips', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+      alert('Trip created successfully!');
+      setForm({ destination: '', startDate: '', endDate: '', groupSize: '' });
+    } catch (err) {
+      alert(err.message || 'Failed to create trip');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans">
-      
-      {/* Header */}
-      <div className="max-w-3xl mx-auto mb-8">
-        <div className="inline-flex items-center gap-2 bg-[#131B2E] border border-[#1E293B] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-[#38BDF8] mb-3 shadow-xs">
-          <Sparkles size={12} /> Expedition Creator
+    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <div className="mb-10">
+          <div className="inline-flex items-center gap-2 bg-white/[0.04] backdrop-blur-2xl border border-white/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-amber-300 mb-3 shadow-xs">
+            <Sparkles size={12} /> Expedition Blueprint
+          </div>
+          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white leading-[0.92] drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] mb-2">Plan Your Trip</h1>
+          <p className="text-white/75 text-sm mt-1">Craft an editorial itinerary tailored to your squad.</p>
         </div>
-        <h1 className="text-3xl md:text-5xl font-serif text-[#F1F5F9]">Plan a New Trip</h1>
-        <p className="text-[#94A3B8] text-sm mt-1">Publish a custom expedition or group itinerary to the TripMate platform.</p>
+
+        <div className="bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-widest text-white/70 flex items-center gap-2">
+                <MapPin size={14} className="text-amber-300" /> Destination
+              </label>
+              <input
+                type="text"
+                name="destination"
+                value={form.destination}
+                onChange={handleChange}
+                placeholder="e.g., Spiti Valley, Ladakh"
+                className="w-full bg-white/[0.05] focus:bg-white/[0.08] border border-white/15 focus:border-amber-400/70 rounded-2xl px-4 py-3.5 text-white placeholder:text-white/40 text-sm transition-all outline-none"
+                required
+              />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-white/70 flex items-center gap-2">
+                  <Calendar size={14} className="text-amber-300" /> Start Date
+                </label>
+                <input
+                  type="date"
+                  name="startDate"
+                  value={form.startDate}
+                  onChange={handleChange}
+                  className="w-full bg-white/[0.05] focus:bg-white/[0.08] border border-white/15 focus:border-amber-400/70 rounded-2xl px-4 py-3.5 text-white placeholder:text-white/40 text-sm transition-all outline-none"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-white/70 flex items-center gap-2">
+                  <Calendar size={14} className="text-amber-300" /> End Date
+                </label>
+                <input
+                  type="date"
+                  name="endDate"
+                  value={form.endDate}
+                  onChange={handleChange}
+                  className="w-full bg-white/[0.05] focus:bg-white/[0.08] border border-white/15 focus:border-amber-400/70 rounded-2xl px-4 py-3.5 text-white placeholder:text-white/40 text-sm transition-all outline-none"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-widest text-white/70 flex items-center gap-2">
+                <Users size={14} className="text-amber-300" /> Group Size
+              </label>
+              <input
+                type="number"
+                name="groupSize"
+                value={form.groupSize}
+                onChange={handleChange}
+                placeholder="e.g., 4"
+                min="1"
+                className="w-full bg-white/[0.05] focus:bg-white/[0.08] border border-white/15 focus:border-amber-400/70 rounded-2xl px-4 py-3.5 text-white placeholder:text-white/40 text-sm transition-all outline-none"
+                required
+              />
+            </div>
+
+            <div className="pt-4 flex flex-wrap items-center gap-4">
+              <button
+                type="submit"
+                disabled={loading}
+                className="bg-white hover:bg-amber-400 text-zinc-950 font-bold px-8 py-4 rounded-2xl text-sm transition-all disabled:opacity-60 inline-flex items-center gap-2 shadow-[0_10px_25px_rgba(255,255,255,0.1)]"
+              >
+                {loading ? (
+                  <>
+                    <Loader size={16} className="animate-spin" /> Creating...
+                  </>
+                ) : (
+                  <>
+                    Create Expedition <ArrowRight size={16} />
+                  </>
+                )}
+              </button>
+              <Link to="/discover" className="text-sm text-white/70 hover:text-white transition-colors">
+                Browse Destinations
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
-
-      {success && (
-        <div className="max-w-3xl mx-auto mb-6 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-4 rounded-2xl flex items-center gap-2 text-xs font-bold shadow-xl">
-          <CheckCircle2 size={16} /> Expedition created successfully! Redirecting to discover...
-        </div>
-      )}
-
-      {/* Form Card */}
-      <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-[#111827] border border-[#1E293B] rounded-3xl shadow-xl p-6 md:p-8 space-y-6">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-xs font-bold text-[#94A3B8] mb-2">Destination / Expedition Title *</label>
-            <input 
-              type="text" 
-              name="name"
-              required
-              placeholder="e.g. Zanskar Frozen River Trek"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full bg-[#0B0F17] border border-[#1E293B] rounded-2xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-sky-500 shadow-inner"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-[#94A3B8] mb-2">State / Region *</label>
-            <input 
-              type="text" 
-              name="state"
-              required
-              placeholder="e.g. Ladakh"
-              value={formData.state}
-              onChange={handleChange}
-              className="w-full bg-[#0B0F17] border border-[#1E293B] rounded-2xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-sky-500 shadow-inner"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-xs font-bold text-[#94A3B8] mb-2">Category</label>
-            <select 
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              className="w-full bg-[#0B0F17] border border-[#1E293B] rounded-2xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-sky-500 shadow-inner uppercase"
-            >
-              <option value="MOUNTAIN">Mountain</option>
-              <option value="TREK">Trek</option>
-              <option value="BEACH">Beach</option>
-              <option value="HERITAGE">Heritage</option>
-              <option value="WILDLIFE">Wildlife</option>
-              <option value="NATURE">Nature</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-[#94A3B8] mb-2">Approximate Budget</label>
-            <input 
-              type="text" 
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              className="w-full bg-[#0B0F17] border border-[#1E293B] rounded-2xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-sky-500 shadow-inner"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-xs font-bold text-[#94A3B8] mb-2">Image URL (Banner)</label>
-          <input 
-            type="text" 
-            name="image"
-            value={formData.image}
-            onChange={handleChange}
-            className="w-full bg-[#0B0F17] border border-[#1E293B] rounded-2xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-sky-500 shadow-inner"
-          />
-        </div>
-
-        <div>
-          <label className="block text-xs font-bold text-[#94A3B8] mb-2">Description & Highlights</label>
-          <textarea 
-            name="description"
-            rows="4"
-            required
-            placeholder="Describe the adventure, itinerary, and squad expectations..."
-            value={formData.description}
-            onChange={handleChange}
-            className="w-full bg-[#0B0F17] border border-[#1E293B] rounded-2xl p-4 text-xs text-white focus:outline-none focus:border-sky-500 shadow-inner resize-none"
-          ></textarea>
-        </div>
-
-        <button 
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-blue-900/30 transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
-        >
-          <PlusCircle size={18} /> Publish Expedition
-        </button>
-
-      </form>
     </div>
   );
 }

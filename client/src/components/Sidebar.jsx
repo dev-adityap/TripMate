@@ -18,7 +18,7 @@ import {
 export default function Sidebar() {
   const location = useLocation();
   const [isLogoModalOpen, setIsLogoModalOpen] = useState(false);
-  const logoUrl = "TripMate.png";
+  const logoUrl = "/TripMate.png";
 
   // Added About Us & Contact Us to the main navigation items
   const navItems = [
@@ -37,13 +37,13 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="fixed bottom-0 left-0 w-full md:w-20 md:h-screen bg-[#111827] border-t md:border-t-0 md:border-r border-[#1E293B] flex md:flex-col justify-between items-center py-3 md:py-6 px-4 md:px-0 z-50 shadow-2xl overflow-y-auto">
+      <aside className="fixed left-4 top-1/2 -translate-y-1/2 z-50 bg-white/10 backdrop-blur-xl border border-white/15 rounded-full py-5 px-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.45)] hidden md:flex md:flex-col items-center justify-center space-y-2">
         
         {/* Custom Logo at the Top */}
-        <div className="hidden md:flex flex-col items-center mb-4 shrink-0">
+        <div className="flex flex-col items-center mb-2 shrink-0">
           <button 
             onClick={() => setIsLogoModalOpen(true)}
-            className="w-12 h-12 rounded-2xl overflow-hidden border border-[#1E293B] shadow-inner flex items-center justify-center bg-[#0B0F17] transition-transform duration-300 hover:scale-110 active:scale-95 cursor-pointer group"
+            className="w-10 h-10 rounded-full overflow-hidden border border-white/20 shadow-inner flex items-center justify-center bg-black/30 transition-transform duration-300 hover:scale-110 active:scale-95 cursor-pointer group"
             title="View TripMate Logo"
           >
             <img src={logoUrl} alt="TripMate Logo" className="w-full h-full object-cover" />
@@ -51,7 +51,7 @@ export default function Sidebar() {
         </div>
 
         {/* Navigation Icons */}
-        <nav className="flex md:flex-col items-center justify-around md:justify-center w-full md:w-auto md:space-y-2 shrink-0">
+        <nav className="flex flex-col items-center justify-center w-full space-y-1.5 shrink-0">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
@@ -59,42 +59,45 @@ export default function Sidebar() {
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={`relative group p-2.5 rounded-2xl transition-all ${
+                className={`relative group p-2 rounded-full transition-all duration-300 ${
                   isActive 
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40' 
-                    : 'text-slate-400 hover:text-white hover:bg-[#1E293B]/50'
+                    ? 'bg-amber-500/[0.08] text-white shadow-[0_10px_25px_rgba(245,158,11,0.12)] border border-white/15' 
+                    : 'text-white/70 hover:text-white hover:bg-white/15'
                 }`}
                 title={item.label}
               >
-                <Icon size={19} />
+                <Icon size={18} />
+                  <span className="absolute left-full ml-3 px-2 py-1 bg-[#09090B]/90 backdrop-blur-xl text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/15">
+                  {item.label}
+                </span>
               </NavLink>
             );
           })}
         </nav>
 
         {/* Bottom Spacer */}
-        <div className="hidden md:block h-4"></div>
+        <div className="h-1"></div>
 
       </aside>
 
       {/* Enlarged Logo Lightbox Modal */}
       {isLogoModalOpen && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-[#111827] border border-[#1E293B] rounded-3xl p-8 max-w-sm w-full shadow-2xl text-center space-y-6 relative">
+          <div className="bg-[#09090B]/75 backdrop-blur-2xl border border-white/15 rounded-3xl p-8 max-w-sm w-full shadow-2xl text-center space-y-6 relative">
             <button 
               onClick={() => setIsLogoModalOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl bg-[#0B0F17] border border-[#1E293B] transition-colors cursor-pointer"
+              className="absolute top-4 right-4 text-white/70 hover:text-white p-2 rounded-xl bg-black/30 border border-white/15 transition-colors cursor-pointer"
             >
               <X size={16} />
             </button>
-            <div className="w-36 h-36 mx-auto rounded-3xl overflow-hidden border-2 border-[#1E293B] shadow-2xl bg-[#0B0F17]">
+            <div className="w-36 h-36 mx-auto rounded-3xl overflow-hidden border-2 border-white/15 shadow-2xl bg-black/30">
               <img src={logoUrl} alt="TripMate Logo" className="w-full h-full object-cover" />
             </div>
             <div className="space-y-1">
-              <h2 className="text-xl font-serif font-bold text-white tracking-widest">TRIPMATE</h2>
+              <h2 className="text-xl font-sans font-bold text-white tracking-widest">TRIPMATE</h2>
               <p className="text-[10px] font-bold text-amber-500 uppercase tracking-widest">SINCE 2026</p>
             </div>
-            <p className="text-xs text-[#94A3B8] leading-relaxed px-2">
+            <p className="text-xs text-white/70 leading-relaxed px-2">
               Your verified platform for curated Himalayan expeditions and secure traveler squad workspaces.
             </p>
           </div>
