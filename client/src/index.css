@@ -49,4 +49,20 @@ body {
 
 .animate-page-enter {
   animation: pageFadeIn 450ms ease-out forwards;
+}/* Prevent horizontal scroll & mobile overflow globally */
+html, body, #root {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: #09090B;
+}
+
+/* Clean Print Stylesheet for Itineraries */
+@media print {
+  .no-print, nav, footer, button {
+    display: none !important;
+  }
+  body, #root {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
 }

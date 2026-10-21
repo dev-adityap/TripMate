@@ -3,6 +3,8 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 // Import Components
 import Sidebar from './components/Sidebar';
+import GlobalUXEnhancer from './components/GlobalUXEnhancer';
+import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Import Pages
@@ -25,6 +27,7 @@ import WishlistPage from './pages/WishlistPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ReviewsPage from './pages/ReviewsPage';
+import NotFoundPage from './pages/NotFoundPage';
 import { mockDestinations } from './data/mockDatabase';
 
 export default function App() {
@@ -62,6 +65,7 @@ export default function App() {
 
       {/* Main container with proper dark styling and responsive margin */}
       <div className="relative z-10 flex-1 w-full pb-20 md:pb-0 transition-all">
+        <GlobalUXEnhancer />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Navigate to="/home" replace />} />
@@ -84,14 +88,17 @@ export default function App() {
           <Route path="/profile" element={<ProtectedRoute><ProfilePage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/create" element={<ProtectedRoute><CreateTripPage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/messages" element={<ProtectedRoute><MessagesPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/workspaces" element={<ProtectedRoute><MessagesPage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/notifications" element={<ProtectedRoute><NotificationsPage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/checkout/:id" element={<ProtectedRoute><CheckoutPage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/settings" element={<ProtectedRoute><SettingsPage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/reviews" element={<ReviewsPage updateBackground={updateBackground} />} />
 
-          {/* Catch-all route placed correctly at the bottom */}
-          <Route path="*" element={<Navigate to="/home" replace />} />
+          {/* Custom 404 Catch-all Route */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
+
+        {pathname !== '/map' && <Footer />}
       </div>
 
     </div>

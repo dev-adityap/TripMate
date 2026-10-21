@@ -1,120 +1,80 @@
-# 🌍 TripMate
+# 🏔️ TripMate V2 — Indian Expedition & Group Travel SaaS Platform
 
-TripMate is a full-stack travel planning web application designed to help users discover destinations, plan trips, connect with fellow travelers, and manage their travel experiences in one place.
-
-The project is built using the MERN stack with AI-powered features integrated through the Gemini API.
-
-TRY NOW :
-
-https://tripmate-phi-ebon.vercel.app/
+TripMate V2 is a full-stack, dark-glassmorphic expedition discovery and group coordination platform engineered for Indian trekkers, backpackers, and squad organizers. It unifies geospatial route discovery, batch bookings, real-time group workspaces, and automated UPI expense splitting into a single interface.
 
 ---
 
-## ✨ Features
+## ✨ Key Architectural Highlights
 
-- 🔐 User Registration & Login
-- 👤 User Profiles
-- 🌍 Explore Travel Destinations
-- 📍 Destination Details
-- 🗺️ Interactive Map
-- 🤖 AI-powered travel assistance
-- 👥 Travel Groups
-- 🧳 Trip planning
-- ➕ Add new destinations
-- 💬 Travel-focused community features
-- 📱 Responsive user interface
+### 1. 🗺️ Interactive 100-Destination India Map Explorer (`/map`)
+- **Geospatial Engine:** Powered by **Mapbox GL JS** (`react-map-gl`) with custom dark vector styling and strict Indian subcontinent boundary locks (`maxBounds`).
+- **Dynamic Camera FlyTo:** State-level filter pills (Himachal Pradesh, Uttarakhand, Ladakh, Kashmir, Sikkim, Meghalaya, Rajasthan, Kerala, Goa) smoothly animate camera pitch and bearing directly to regional centroids.
+- **Deterministic Coordinate Resolver:** Plots 100+ verified peaks, valleys, and coastal circuits with interactive hover labels and instant glassmorphic preview cards.
+
+### 2. 👥 Squad Workspaces & Expense Splitting (`/workspaces`)
+- **Post-Booking Coordination:** Unlocks dedicated squad rooms for each expedition batch.
+- **Equal Split & UPI Settlement:** Tracks shared cab, stay, and cafe expenses with automated per-member split calculations.
+- **TripCaptain Gear Checklists:** Interactive packing and permit verification boards.
+
+### 3. ⚙️ 8-Tab Enterprise Control Center (`/settings`)
+- Persistent local & cloud-synced configuration across **Profile**, **Travel Documents (DigiLocker / Inner-Line Permits)**, **High-Altitude Medical & SOS**, **Wallets & Splitwise UPI**, **Connected Apps**, **Map Engines**, **Notifications**, and **Security**.
+
+### 4. ⚡ Production UX & Accessibility
+- **Command-K (`Ctrl+K`) Global Site Search:** Instant modal search across all 100+ Indian destinations.
+- **24/7 SOS Dispatch Widget:** Floating basecamp support desk with one-click call (`tel:`), email (`mailto:`), and emergency code copy.
+- **Print-Optimized Itineraries:** Dedicated `@media print` stylesheet that strips navigation chrome for clean physical trip dossiers.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-
-- React.js
-- JavaScript
-- HTML5
-- CSS3
-- Vite
-
-### Backend
-
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-
-### Authentication
-
-- JWT / Token-based authentication
-
-### AI
-
-- Google Gemini API
-
-### Development Tools
-
-- Git
-- GitHub
-- VS Code
-- MongoDB Atlas
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | React 18, Vite, Tailwind CSS, React Router v6, Lucide React |
+| **Geospatial** | Mapbox GL JS, `react-map-gl` |
+| **Authentication** | Firebase Authentication (Google OAuth 2.0) |
+| **Backend & Database** | Node.js, Express.js, MongoDB, Mongoose |
+| **Deployment** | Vercel (Frontend SPA), GitHub Actions / Push Protection |
 
 ---
 
-## 📁 Project Structure
+## 🚀 Local Development Setup
 
-```text
-TripMate/
-│
-├── client/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   └── package.json
-│
-├── server/
-│   ├── models/
-│   ├── routes/
-│   ├── node_modules/
-│   ├── .env
-│   ├── .env.example
-│   ├── package.json
-│   ├── seed.js
-│   └── server.js
-│
-├── .gitignore
-└── README.md
+### 1. Clone the Repository
+```bash
+git clone https://github.com/dev-adityap/TripMate.git
+cd TripMate
+```
 
+### 2. Configure Frontend Environment
+Create a `.env` file in the `client/` directory:
+```env
+VITE_MAPBOX_TOKEN=your_mapbox_public_token_here
+```
 
-🤖 AI Integration
-TripMate integrates Google's Gemini API to provide AI-powered travel assistance.
-The API key is loaded securely from environment variables:
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-This keeps the API key outside the source code and prevents it from being committed to the repository.
-🗄️ Database
-TripMate uses MongoDB for storing application data.
-MongoDB Atlas can be used as the cloud database provider.
-The application connects to MongoDB using Mongoose:
-mongoose.connect(MONGO_URI);
-🌱 Seed Data
-The backend includes a seed.js file for populating the database with initial destination/application data.
-Run it according to the project's seed script configuration.
-🔮 Future Improvements
-Some planned improvements include:
-- 🗓️ Advanced trip itinerary generation
-- 💰 Trip budget management
-- 🌦️ Weather information for destinations
-- ✈️ Flight and hotel integrations
-- 🧭 Personalized destination recommendations
-- ⭐ Destination reviews and ratings
-- 📸 Travel photo sharing
-- 🔔 Trip notifications
-- 🤝 Improved travel group collaboration
-👨‍💻 Developer
-Aditya Panna
-B.Tech Computer Science & Engineering
-📜 License
-This project is currently developed as a personal/academic project.
-More details about licensing can be added as the project evolves.
+### 3. Install Dependencies & Run
+```bash
+# Start Frontend
+cd client
+npm install
+npm run dev
+
+# Start Backend (Optional API Server)
+cd ../server
+npm install
+npm run dev
+```
+
+---
+
+## 📂 Engineering Documentation (`/docs`)
+- [`docs/PRD.md`](docs/PRD.md) — Product Requirements & Core Modules
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — Full-Stack System Architecture
+- [`docs/DESIGN.md`](docs/DESIGN.md) — Obsidian (`#09090B`) & Expedition Amber (`#F59E0B`) Design System
+- [`docs/RULES.md`](docs/RULES.md) — Code Standards & Security Protocols
+
+---
+
+## 👨‍💻 Author
+**Aditya Panna**  
+GitHub: [@dev-adityap](https://github.com/dev-adityap)

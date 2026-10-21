@@ -11,7 +11,7 @@ const DEFAULT_SETTINGS = {
   profile: {
     fullName: 'Aditya Panna',
     handle: '@dev-adityap',
-    phone: '+91 98765 43210',
+    phone: '+91 123456789',
     city: 'Kolkata, WB',
     bio: 'Full-stack builder & mountain explorer. Always down for high-altitude passes.',
     vibes: ['Mountain Treks', 'Photography']
