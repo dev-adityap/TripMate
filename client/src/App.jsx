@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 // Import Pages
 import HomePage from './pages/HomePage';
 import DiscoverPage from './pages/DiscoverPage';
+import MapPage from './pages/MapPage';
 import DestinationPage from './pages/DestinationPage';
 import MyTripsPage from './pages/MyTripsPage';
 import TripDetailsPage from './pages/TripDetailsPage';
@@ -68,6 +69,7 @@ export default function App() {
           {/* Public Discovery & Info Pages */}
           <Route path="/home" element={<HomePage updateBackground={updateBackground} />} />
           <Route path="/discover" element={<DiscoverPage updateBackground={updateBackground} />} />
+          <Route path="/map" element={<MapPage updateBackground={updateBackground} />} />
           <Route path="/destination/:id" element={<DestinationPage updateBackground={updateBackground} />} />
           <Route path="/about" element={<AboutPage updateBackground={updateBackground} />} />
           <Route path="/contact" element={<ContactPage updateBackground={updateBackground} />} />

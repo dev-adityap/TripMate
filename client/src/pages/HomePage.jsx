@@ -73,6 +73,7 @@ export default function HomePage({ updateBackground }) {
   const navLinks = [
     { path: '/home', label: 'Home' },
     { path: '/discover', label: 'Discover' },
+    { path: '/map', label: 'Map' },
     { path: '/trips', label: 'Trips' },
     { path: '/wishlist', label: 'Wishlist' },
     { path: '/create', label: 'Create' },
@@ -216,7 +217,7 @@ export default function HomePage({ updateBackground }) {
                     className={`transition-all duration-700 ease-out cursor-pointer ${
                       Math.abs(offset) > 2 ? 'hidden' : ''
                     } ${isActive ? 'scale-100' : offset === 1 ? 'scale-[0.9] mt-6' : offset === -1 ? 'scale-[0.9] mt-6' : 'scale-[0.85] mt-10 opacity-70'}`}
-                    onClick={() => goToSlide(index)}
+                    onClick={() => navigate(`/destination/${destination.id}`)}
                   >
                     <div className={`rounded-2xl overflow-hidden relative shadow-2xl group ${isActive ? 'w-[250px] h-[360px]' : 'w-[225px] h-[320px]'}`}>
                       <div className="absolute top-0 left-0 right-0 z-20 px-4 pt-4 bg-gradient-to-b from-black/60 to-transparent">
