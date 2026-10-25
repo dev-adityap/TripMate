@@ -19,7 +19,7 @@ export default function TripsPage({ updateBackground }) {
   }, []);
 
   return (
-    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
+    <div className="min-h-dvh w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-10">
           <div className="inline-flex items-center gap-2 bg-white/[0.04] backdrop-blur-2xl border border-white/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3 shadow-xs">

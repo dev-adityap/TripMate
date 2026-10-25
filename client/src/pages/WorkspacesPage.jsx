@@ -315,7 +315,7 @@ export default function WorkspacesPage() {
   const squadTotal = expenses.reduce((sum, row) => sum + row.amount, 0);
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-zinc-100 pt-6 md:pt-8 pb-24 px-6 md:px-10 font-sans">
+    <div className="min-h-dvh bg-[#09090B] text-zinc-100 pt-6 md:pt-8 pb-24 px-6 md:px-10 font-sans">
       <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
         <div className="mb-8">

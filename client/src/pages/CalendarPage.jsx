@@ -15,7 +15,7 @@ const CalendarPage = () => {
   const joinedDestinations = destinationsData.filter(d => joinedIds.includes(d.id));
 
   return (
-    <div className="pl-28 pr-10 py-10 min-h-screen bg-[#f8fafc]">
+    <div className="pl-28 pr-10 py-10 min-h-dvh bg-[#f8fafc]">
       
       {/* Header */}
       <div className="mb-10">

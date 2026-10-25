@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import GlobalUXEnhancer from './components/GlobalUXEnhancer';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
+import Navbar from './components/Navbar';
 import { ToastProvider } from './components/Toast';
 
 // Import Pages
@@ -67,6 +68,7 @@ export default function App() {
       {/* Main container with proper dark styling and responsive margin */}
       <div className="relative z-10 flex-1 w-full pb-20 md:pb-0 transition-all">
         <GlobalUXEnhancer />
+        <Navbar />
         <ToastProvider>
           <Routes>
           <Route path="/login" element={<LoginPage />} />

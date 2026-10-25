@@ -6,7 +6,7 @@ export default function NotFoundPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen w-full bg-[#09090B] text-white flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
+    <div className="min-h-dvh w-full bg-[#09090B] text-white flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
       <div className="w-20 h-20 rounded-3xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-6 shadow-[0_0_40px_rgba(245,158,11,0.2)]">
         <Compass size={40} />
       </div>

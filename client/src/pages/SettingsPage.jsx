@@ -147,7 +147,7 @@ export default function SettingsPage() {
   );
 
   return (
-    <div className="min-h-screen w-full bg-[#09090B] text-zinc-100 font-sans pt-28 md:pt-32 pb-20 px-6 lg:px-14 overflow-hidden relative">
+    <div className="min-h-dvh w-full bg-[#09090B] text-zinc-100 font-sans pt-28 md:pt-32 pb-20 px-6 lg:px-14 overflow-hidden relative">
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-cover opacity-15" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b')" }} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-[#09090B]/90 to-[#09090B] backdrop-blur-[2px]" />

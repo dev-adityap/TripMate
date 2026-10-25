@@ -84,7 +84,7 @@ export default function HomePage({ updateBackground }) {
   ];
 
   return (
-    <div className="min-h-screen h-screen w-full relative overflow-hidden text-white font-sans select-none">
+    <div className="min-h-dvh h-dvh w-full relative overflow-hidden text-white font-sans select-none">
       {/* Top Floating Navigation Header */}
       <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 md:px-12 py-5 bg-gradient-to-b from-black/75 via-black/30 to-transparent backdrop-blur-[2px]">
         <button onClick={() => setIsLogoModalOpen(true)} className="flex items-center gap-3 cursor-pointer group">

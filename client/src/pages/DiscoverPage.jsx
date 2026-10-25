@@ -51,7 +51,7 @@ export default function DiscoverPage({ updateBackground }) {
   };
 
   return (
-    <div className="min-h-screen w-full relative text-white font-sans select-none pt-32 pb-24 px-6 md:px-24">
+    <div className="min-h-dvh w-full relative text-white font-sans select-none pt-32 pb-24 px-6 md:px-24">
       {/* Top Floating Navigation Header */}
       <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 md:px-14 py-6 bg-gradient-to-b from-black/60 to-transparent backdrop-blur-[2px]">
         <Link to="/home" className="flex items-center gap-3 cursor-pointer group">

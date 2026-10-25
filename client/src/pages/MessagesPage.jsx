@@ -168,7 +168,7 @@ export default function MessagesPage() {
   const currentWorkspaceData = activeWorkspace ? squadMembers[activeWorkspace] : null;
 
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans flex flex-col">
+    <div className="min-h-dvh bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans flex flex-col">
       
       {/* Header */}
       <div className="max-w-7xl mx-auto w-full mb-8">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Briefcase, MapPin, MessageCircle, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { MapPin, MessageCircle, ArrowRight, CheckCircle2, Sparkles, Compass } from 'lucide-react';
 import { mockDestinations } from '../data/mockDatabase';
 
 export default function MyTripsPage() {
@@ -14,7 +14,7 @@ export default function MyTripsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans">
+    <div className="min-h-dvh bg-[#0B0F17] text-[#F1F5F9] pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans">
       
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-10">
@@ -26,12 +26,16 @@ export default function MyTripsPage() {
       </div>
 
       {purchasedTrips.length === 0 ? (
-        <div className="max-w-md mx-auto text-center py-24 bg-[#111827] border border-[#1E293B] rounded-3xl p-8 shadow-xl mt-12">
-          <Briefcase size={48} className="text-slate-600 mx-auto mb-4" />
-          <h3 className="text-xl font-sans text-white mb-2">No booked trips yet</h3>
-          <p className="text-[#94A3B8] text-xs mb-6">Complete a checkout on any destination to unlock your squad workspace.</p>
-          <Link to="/discover" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-2xl text-xs uppercase tracking-wider transition-all">
-            Browse Expeditions
+        <div className="pt-32 pb-16 px-6 max-w-7xl mx-auto flex flex-col items-center justify-center text-center min-h-[70vh]">
+          <div className="w-24 h-24 bg-white/[0.02] border border-white/10 rounded-full flex items-center justify-center mb-6 shadow-2xl">
+            <Compass className="text-amber-400 opacity-50" size={40} />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-3">No Expeditions Logged</h2>
+          <p className="text-white/50 text-sm max-w-md mb-8">
+            Your travel dossier is currently empty. Head over to the interactive map to discover and unlock new basecamps across the Himalayas.
+          </p>
+          <Link className="px-6 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black text-xs uppercase tracking-wider transition-all shadow-[0_10px_30px_rgba(245,158,11,0.2)]" to="/map">
+            Open Map Explorer
           </Link>
         </div>
       ) : (

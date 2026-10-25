@@ -18,7 +18,7 @@ export default function AboutPage({ updateBackground }) {
   ];
 
   return (
-    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
+    <div className="min-h-dvh w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center">
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-[#09090B] backdrop-blur-[2px]" />
       </div>

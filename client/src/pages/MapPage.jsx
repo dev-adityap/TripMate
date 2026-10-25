@@ -408,7 +408,7 @@ export default function MapPage() {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col bg-[#09090B] text-zinc-100 font-sans pt-20 overflow-hidden">
+    <div className="h-dvh w-full flex flex-col bg-[#09090B] text-zinc-100 font-sans pt-20 overflow-hidden">
       {/* TOP SEARCH & REGION PILLS BAR */}
       <div className="px-6 md:px-10 py-4 z-20 flex flex-col lg:flex-row items-center justify-between gap-4 border-b border-white/10 bg-[#09090B]/90 backdrop-blur-2xl shrink-0">
         <div className="flex items-center gap-3 w-full lg:w-auto">

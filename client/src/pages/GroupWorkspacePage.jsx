@@ -19,7 +19,7 @@ export default function GroupWorkspacePage() {
 
     if (foundDest) {
       const destName = foundDest.name || foundDest.title;
-      resolvedTitle = ${destName} Trip Workspace;
+      resolvedTitle = `${destName} Trip Workspace`;
       
       resolvedItinerary = foundDest.itinerary || [
         { day: 1, title: 'Arrival & Base Camp Briefing', description: 'Meet the team, check gear, and prepare for the expedition.' },
@@ -29,7 +29,7 @@ export default function GroupWorkspacePage() {
     } else {
       const foundMockTrip = mockTrips.find((t) => t.id === id || t.destinationId === cleanId);
       if (foundMockTrip) {
-        resolvedTitle = ${foundMockTrip.title} Workspace;
+        resolvedTitle = `${foundMockTrip.title} Workspace`;
         resolvedItinerary = foundMockTrip.itinerary || [];
       } else {
         resolvedTitle = 'Expedition Trip Workspace';
@@ -45,7 +45,7 @@ export default function GroupWorkspacePage() {
   }, [id]);
 
   return (
-    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
+    <div className="min-h-dvh w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
       <div className="relative z-10 max-w-6xl mx-auto space-y-6">
         <div className="bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-3xl p-6 shadow-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
@@ -69,7 +69,7 @@ export default function GroupWorkspacePage() {
                   <div className="bg-amber-500/10 text-amber-300 border border-amber-400/50 font-bold h-10 w-10 rounded-full flex items-center justify-center backdrop-blur-2xl">TP</div>
                   <div>
                     <p className="text-sm font-bold text-white">Tanuj</p>
-                    <p className="text-xs text-white/60">22 • Male</p>
+                    <p className="text-xs text-white/60">22 â€¢ Male</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3 p-3 bg-white/[0.05] border border-white/10 rounded-xl backdrop-blur-2xl">

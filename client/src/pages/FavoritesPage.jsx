@@ -21,7 +21,7 @@ export default function FavoritesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 p-6 md:p-8 pl-28">
+    <div className="min-h-dvh bg-zinc-50 p-6 md:p-8 pl-28">
       <div className="max-w-7xl mx-auto mb-8">
         <h1 className="text-3xl font-extrabold text-zinc-950">Your Wishlist</h1>
         <p className="text-zinc-500 mt-1">Trips you're dreaming of. Book them when you're ready!</p>

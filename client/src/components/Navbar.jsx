@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import SiteSearchModal from './SiteSearchModal';
-import { Menu, X, Search, Sun, Moon, Home, Map, Compass, Heart, Settings, Bell, LogOut, ChevronRight } from 'lucide-react';
+import { Menu, X, Search, Sun, Moon, Home, Map, Compass, Heart, Settings, Bell, LogOut, ChevronRight, ArrowLeft } from 'lucide-react';
 
 const NAV_LINKS = [
   { path: '/home', label: 'Home', icon: Home },
@@ -21,6 +21,9 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+
+  // Check if we are on the root or home page — hide back button there
+  const isHome = location.pathname === '/' || location.pathname === '/home';
 
   // Ctrl+K to open search
   useEffect(() => {
@@ -56,13 +59,29 @@ export default function Navbar() {
 
       {/* Top Navbar */}
       <div className="sticky top-0 z-40 flex items-center justify-between px-6 py-4 bg-[#09090B]/90 backdrop-blur-2xl border-b border-white/10">
-        {/* Logo - clickable, routes to /home */}
-        <Link to="/home" className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-black/30 flex items-center justify-center group-hover:border-amber-400/50 transition-all">
-            <img src="/TripMate.png" alt="TripMate Logo" className="w-full h-full object-cover" />
-          </div>
-          <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-amber-300 transition-colors">TripMate</span>
-        </Link>
+        {/* LEFT ALIGNED NAVBAR BRANDING & BACK BUTTON */}
+        <div className="flex items-center gap-3 md:gap-5">
+
+          {/* Universal Go Back Button (Hidden on Home) */}
+          {!isHome && (
+            <button
+              type="button"
+              onClick={() => (window.history.length > 2 ? navigate(-1) : navigate('/home'))}
+              title="Go Back"
+              className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/[0.05] hover:bg-white/[0.12] border border-white/10 text-white transition-all cursor-pointer shadow-lg"
+            >
+              <ArrowLeft className="text-amber-400" size={18} />
+            </button>
+          )}
+
+          {/* Existing TripMate Logo (Acting as Home Link) */}
+          <Link to="/home" className="flex items-center gap-3 cursor-pointer group">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-black/30 flex items-center justify-center group-hover:border-amber-400/50 transition-all">
+              <img src="/TripMate.png" alt="TripMate Logo" className="w-full h-full object-cover" />
+            </div>
+            <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-amber-300 transition-colors">TripMate</span>
+          </Link>
+        </div>
 
         {/* Desktop Nav Links */}
         <nav className="hidden lg:flex items-center gap-6">

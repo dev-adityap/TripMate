@@ -52,7 +52,7 @@ const LandingPage = () => {
   }, [heroImages.length]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col font-sans">
+    <div className="min-h-dvh bg-background flex flex-col font-sans">
       <Navbar />
 
       {/* HERO SECTION - Added pt-28 to clear the navbar completely */}

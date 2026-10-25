@@ -108,7 +108,7 @@ export default function WorkspacePage() {
     setGear((prev) => prev.map((item, i) => (i === index ? { ...item, done: !item.done } : item)));
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-zinc-100 pb-24 p-6 md:p-10 font-sans">
+    <div className="min-h-dvh bg-[#09090B] text-zinc-100 pb-24 p-6 md:p-10 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">

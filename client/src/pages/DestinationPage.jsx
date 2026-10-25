@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { MapPin, Calendar, ShieldCheck, Heart, Sparkles, ArrowRight, RefreshCw, Compass, CheckCircle, User, Users, Home, Utensils, Car, Mountain, Sun, Cloud, ArrowLeft } from 'lucide-react';
 import { mockDestinations } from '../data/mockDatabase';
@@ -51,7 +51,7 @@ export default function DestinationPage() {
       name: 'Himalayan Expedition',
       state: 'Mountain Region, India',
       image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
-      approximateBudget: '₹14,500',
+      approximateBudget: '?14,500',
       shortDescription: 'An immersive group expedition crafted for young travelers seeking adventure, culture, and deep connections.'
     };
 
@@ -76,7 +76,7 @@ export default function DestinationPage() {
       title: destination.name,
       location: destination.state,
       image: destination.image,
-      price: destination.approximateBudget || '₹14,500'
+      price: destination.approximateBudget || '?14,500'
     };
 
     const alreadyExists = existingWishlist.some(item => String(item.id) === currentId);
@@ -97,7 +97,7 @@ export default function DestinationPage() {
   const DEFAULT_SPECS = {
     captain: 'Verified Expedition Captain',
     captainSub: 'First-Aid & Trail Certified',
-    rating: '4.9 ★',
+    rating: '4.9 ?',
     accommodation: 'Boutique Stays & Camps',
     meals: 'Breakfast & Dinner',
     transport: 'Private AC SUV / Coach',
@@ -122,11 +122,11 @@ export default function DestinationPage() {
 
     // Per-destination unique specs (exact-name match, case-insensitive).
     const SPEC_MAP = {
-      // 🏔️ Mountain / High-Altitude
+      // ??? Mountain / High-Altitude
       manali: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Rohtang Pass & Solang Valley specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Alpine Cottages & Apple-Orchard Stays',
         meals: 'Hot Buffet Breakfast & Bonfire Dinner',
         transport: '4x4 Expedition SUV / Tempo Traveller',
@@ -144,7 +144,7 @@ export default function DestinationPage() {
       kasol: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Parvati Valley & Kheerganga specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Riverside Camps & Backpacker Hostels',
         meals: 'Israeli Breakfast & Parvati Trout Dinner',
         transport: 'Private SUV & Local Transfers',
@@ -162,7 +162,7 @@ export default function DestinationPage() {
       spiti: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Cold desert & monastery circuit specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'High-Altitude Homestays & Monastery Guesthouses',
         meals: 'Butter Tea & Thukpa Dinner',
         transport: '4x4 Expedition SUV / Tempo Traveller',
@@ -180,7 +180,7 @@ export default function DestinationPage() {
       ladakh: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Leh & Nubra Valley acclimatization specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Luxury Desert Camps & Leh Heritage Stays',
         meals: 'Ladakhi Thukpa & Skyu Dinner',
         transport: '4x4 Expedition SUV',
@@ -198,7 +198,7 @@ export default function DestinationPage() {
       leh: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Leh & Nubra Valley acclimatization specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Luxury Desert Camps & Leh Heritage Stays',
         meals: 'Ladakhi Thukpa & Skyu Dinner',
         transport: '4x4 Expedition SUV',
@@ -216,7 +216,7 @@ export default function DestinationPage() {
       auli: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Ski & Nanda Devi viewpoint specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Alpine Ski Lodges & Snow Camps',
         meals: 'Hot Soup & Garhwali Breakfast',
         transport: '4x4 SUV / Ropeway Transfers',
@@ -234,7 +234,7 @@ export default function DestinationPage() {
       gulmarg: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Gondola & powder-snow specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Alpine Resorts & Golf-Course Cottages',
         meals: 'Kashmiri Kahwa & Wazwan Dinner',
         transport: '4x4 SUV / Gondola Transfers',
@@ -252,7 +252,7 @@ export default function DestinationPage() {
       tawang: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Sela Pass & monastery circuit specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Monastery Guesthouses & Highland Stays',
         meals: 'Momos & Thukpa Dinner',
         transport: '4x4 Expedition SUV',
@@ -270,7 +270,7 @@ export default function DestinationPage() {
       munsiyari: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Panchachuli peaks & glacier specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Cliffside Camps & Panchachuli View Stays',
         meals: 'High-Altitude Breakfast & Kumaoni Dinner',
         transport: 'Private 4x4 SUV',
@@ -288,7 +288,7 @@ export default function DestinationPage() {
       tirthan: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Great Himalayan National Park specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Wooden Homestays & Riverside Cottages',
         meals: 'Trout Breakfast & Himalayan Dinner',
         transport: 'Private SUV / Local Transfers',
@@ -306,7 +306,7 @@ export default function DestinationPage() {
       kinnaur: {
         captain: 'High-Altitude Mountaineering & Wilderness First-Aid Certified',
         captainSub: 'Sutlej gorge & Kinnaur Kailash specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Wooden-Stone Homestays & Apple-Orchard Stays',
         meals: 'Apple Breakfast & Himachali Dinner',
         transport: '4x4 Expedition SUV',
@@ -324,7 +324,7 @@ export default function DestinationPage() {
       chopta: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Tungnath & Chandrashila specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Tungnath Base Camps & Bugyal Stays',
         meals: 'High-Altitude Breakfast & Campfire Dinner',
         transport: 'Private SUV / Local Transfers',
@@ -340,11 +340,11 @@ export default function DestinationPage() {
         ],
       },
 
-      // 🌲 Hill Stations / Forest Retreats
+      // ?? Hill Stations / Forest Retreats
       dalhousie: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Khajjiar meadow & colonial trail specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Colonial Bungalows & Pine Cottages',
         meals: 'Himachali Breakfast & Garden Dinner',
         transport: 'Private AC Coach / SUV',
@@ -362,7 +362,7 @@ export default function DestinationPage() {
       dharamshala: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Triund trek & tea-garden specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Kangra-Style Cottages & Tea-Garden Stays',
         meals: 'Tibetan Breakfast & Thukpa',
         transport: 'Private SUV / Local Transfers',
@@ -380,7 +380,7 @@ export default function DestinationPage() {
       mcleod: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Little Lhasa & Tibetan cafe specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Tibetan Guesthouses & Cafe Stays',
         meals: 'Momos & Butter Tea',
         transport: 'Private SUV / Walking Transfers',
@@ -398,7 +398,7 @@ export default function DestinationPage() {
       mussoorie: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Mall Road & Gun Hill specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Colonial Cottages & Mall-View Hotels',
         meals: 'Continental Breakfast & Garhwali Thali',
         transport: 'Private SUV / Cable Car',
@@ -416,7 +416,7 @@ export default function DestinationPage() {
       nainital: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Naini Lake & Snow View specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Lake-View Cottages & Heritage Hotels',
         meals: 'Kumaoni Breakfast & Lakeside Dinner',
         transport: 'Private SUV / Boat Transfers',
@@ -434,7 +434,7 @@ export default function DestinationPage() {
       darjeeling: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Toy Train & Tiger Hill specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Tea-Estate Bungalows & Heritage Cottages',
         meals: 'Darjeeling Tea Breakfast & Momos',
         transport: 'Toy Train / Private SUV',
@@ -452,7 +452,7 @@ export default function DestinationPage() {
       gangtok: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'MG Marg & Nathu La specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Boutique City Hotels & Mountain Lodges',
         meals: 'Sikkimese Breakfast & Thukpa',
         transport: 'Private SUV / Cable Car',
@@ -470,7 +470,7 @@ export default function DestinationPage() {
       lansdowne: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Tip-in-Top & Bhulla Lake specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Army-Cantonment Cottages & Pine Cottages',
         meals: 'Continental Breakfast & Garden Dinner',
         transport: 'Private SUV / Local Transfers',
@@ -488,7 +488,7 @@ export default function DestinationPage() {
       ranikhet: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Golf course & Chaubatia specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Golf-Course Cottages & Orchard Stays',
         meals: 'Kumaoni Breakfast & Orchard Dinner',
         transport: 'Private SUV / Local Transfers',
@@ -504,11 +504,11 @@ export default function DestinationPage() {
         ],
       },
 
-      // 🏖️ Coastal / Island / Beach
+      // ??? Coastal / Island / Beach
       goa: {
         captain: 'Certified Water-Sports & Coastal Experience Lead',
         captainSub: 'Beach safety & island hopping expert',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Beachfront Villas & Boutique Resorts',
         meals: 'Coastal Breakfast & Sunset Cafe Platter',
         transport: 'Private Ferry / AC Cab',
@@ -526,7 +526,7 @@ export default function DestinationPage() {
       kerala: {
         captain: 'Certified Water-Sports & Coastal Experience Lead',
         captainSub: 'Houseboat & backwater cruise specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Houseboats & Boutique Villas',
         meals: 'Kerala Sadya Breakfast & Seafood Dinner',
         transport: 'Houseboat / AC Cab',
@@ -544,7 +544,7 @@ export default function DestinationPage() {
       andaman: {
         captain: 'Certified Water-Sports & Coastal Experience Lead',
         captainSub: 'Coral reef & island ferry specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Beachfront Cottages & Eco-Resorts',
         meals: 'Coastal Breakfast & Sunset Seafood Platter',
         transport: 'Private Ferry / Coastal Cruiser',
@@ -562,7 +562,7 @@ export default function DestinationPage() {
       gokarna: {
         captain: 'Certified Water-Sports & Coastal Experience Lead',
         captainSub: 'Om Beach & sunset trek specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Beachside Huts & Boutique Resorts',
         meals: 'Coastal Breakfast & Sunset Cafe Platter',
         transport: 'Private Ferry / AC Cab',
@@ -578,11 +578,11 @@ export default function DestinationPage() {
         ],
       },
 
-      // 👑 Royal Heritage / Desert / Cultural
+      // ?? Royal Heritage / Desert / Cultural
       udaipur: {
         captain: 'Cultural Historian & Royal Architecture Curator',
         captainSub: 'Lake Palace & heritage trail specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Heritage Haveli & Lake-View Palace Rooms',
         meals: 'Royal Thali Breakfast & Rooftop Dinner',
         transport: 'Private AC Cruiser / Old-City Rickshaw',
@@ -600,7 +600,7 @@ export default function DestinationPage() {
       jaipur: {
         captain: 'Cultural Historian & Royal Architecture Curator',
         captainSub: 'Amber Fort & bazaar trail specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Heritage Haveli & Luxury Palace Stays',
         meals: 'Rajasthani Breakfast & Thali Dinner',
         transport: 'Private AC Cruiser / Rickshaw Hop',
@@ -618,7 +618,7 @@ export default function DestinationPage() {
       jaisalmer: {
         captain: 'Cultural Historian & Royal Architecture Curator',
         captainSub: 'Golden Fort & camel safari specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Luxury Desert Swiss Tents & Haveli Stays',
         meals: 'Rajasthani Thali & Rooftop Breakfast',
         transport: 'Private AC Cruiser / Camel Cart',
@@ -636,7 +636,7 @@ export default function DestinationPage() {
       varanasi: {
         captain: 'Cultural Historian & Royal Architecture Curator',
         captainSub: 'Ganga ghat & dawn boat specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Riverside Heritage Stays & Ghat-View Hotels',
         meals: 'Kashi Breakfast & Ganga Aarti Thali',
         transport: 'Private AC Cruiser / Old-City Rickshaw',
@@ -654,7 +654,7 @@ export default function DestinationPage() {
       agra: {
         captain: 'Cultural Historian & Royal Architecture Curator',
         captainSub: 'Taj Mahal & Mughal heritage specialist',
-        rating: '4.9 ★',
+        rating: '4.9 ?',
         accommodation: 'Mughal-Style Heritage Stays & Taj-View Hotels',
         meals: 'Mughlai Breakfast & Rooftop Dinner',
         transport: 'Private AC Cruiser / Rickshaw Hop',
@@ -670,11 +670,11 @@ export default function DestinationPage() {
         ],
       },
 
-      // 🏞️ River / Adventure
+      // ??? River / Adventure
       rishikesh: {
         captain: 'White-Water & Aero-Sports Certified Instructor',
         captainSub: 'Ganga rapids & yoga valley specialist',
-        rating: '5.0 ★',
+        rating: '5.0 ?',
         accommodation: 'Riverside Glamping & Cliffside Camps',
         meals: 'High-Energy Breakfast & Riverside Buffet',
         transport: 'Adventure Support Vehicle',
@@ -692,7 +692,7 @@ export default function DestinationPage() {
       bir: {
         captain: 'White-Water & Aero-Sports Certified Instructor',
         captainSub: 'Paragliding & Dhauladhar specialist',
-        rating: '5.0 ★',
+        rating: '5.0 ?',
         accommodation: 'Cliffside Camps & Paragliding Lodges',
         meals: 'Mountain Breakfast & Campfire Dinner',
         transport: 'Adventure Support Vehicle',
@@ -710,7 +710,7 @@ export default function DestinationPage() {
       meghalaya: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Living root bridge & caving specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Living-Root Village Homestays & Eco-Cottages',
         meals: 'Khasi Breakfast & Forest Dinner',
         transport: 'Private SUV / Local Transfers',
@@ -728,7 +728,7 @@ export default function DestinationPage() {
       cherrapunji: {
         captain: 'Local Heritage Storyteller & Trail Naturalist',
         captainSub: 'Waterfall & cave exploration specialist',
-        rating: '4.8 ★',
+        rating: '4.8 ?',
         accommodation: 'Cliff-Edge Cottages & Cave-View Stays',
         meals: 'Khasi Breakfast & Forest Buffet',
         transport: 'Private SUV / Local Transfers',
@@ -746,7 +746,7 @@ export default function DestinationPage() {
       pahalgam: {
         captain: 'White-Water & Aero-Sports Certified Instructor',
         captainSub: 'Lidder River & pony ride specialist',
-        rating: '5.0 ★',
+        rating: '5.0 ?',
         accommodation: 'Riverside Glamping & Pine-Forest Camps',
         meals: 'High-Energy Breakfast & Riverside Buffet',
         transport: 'Private 4x4 SUV',
@@ -794,7 +794,7 @@ export default function DestinationPage() {
   const activeBatch = batches[selectedBatchIndex] || batches[0];
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-zinc-100 pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans overflow-x-hidden relative">
+    <div className="min-h-dvh bg-[#09090B] text-zinc-100 pb-24 pl-0 md:pl-24 p-6 md:p-10 font-sans overflow-x-hidden relative">
       
       {/* Hero Banner */}
       <div className="max-w-7xl mx-auto rounded-3xl overflow-hidden relative h-[380px] md:h-[450px] shadow-2xl border border-white/10 bg-black/40">
@@ -941,7 +941,7 @@ export default function DestinationPage() {
             
             <div className="border-b border-white/10 pb-5">
               <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Package Price</span>
-              <div className="text-2xl md:text-3xl font-sans text-white mt-1">{destination.approximateBudget || '₹14,500'}</div>
+              <div className="text-2xl md:text-3xl font-sans text-white mt-1">{destination.approximateBudget || '?14,500'}</div>
               <p className="text-[11px] text-amber-300/90 mt-1 font-medium">Selected Slot: {activeBatch?.dateRange}</p>
             </div>
 
@@ -1000,7 +1000,7 @@ export default function DestinationPage() {
                   {activeBatch?.totalJoined} Travelers Joined · {Math.max(0, 18 - (activeBatch?.totalJoined || 0))} Slots Left
                 </div>
                 <div className="text-[10px] text-white/60 flex items-center gap-1">
-                  🔒 Private Squad Workspace & Group Chat unlocks instantly after booking.
+                  ?? Private Squad Workspace & Group Chat unlocks instantly after booking.
                 </div>
               </div>
             </div>
@@ -1072,11 +1072,11 @@ export default function DestinationPage() {
             </div>
             <div className="space-y-2">
               <div className="flex items-start gap-2">
-                <span className="text-emerald-400 text-[10px] shrink-0 mt-0.5">🔄</span>
+                <span className="text-emerald-400 text-[10px] shrink-0 mt-0.5">??</span>
                 <span className="text-xs text-white/80 leading-relaxed">Free Batch Switching up to 7 days before departure</span>
               </div>
               <div className="flex items-start gap-2">
-                <span className="text-emerald-400 text-[10px] shrink-0 mt-0.5">🛡️</span>
+                <span className="text-emerald-400 text-[10px] shrink-0 mt-0.5">???</span>
                 <span className="text-xs text-white/80 leading-relaxed">100% Verified Solo & Female-Friendly Squads</span>
               </div>
             </div>

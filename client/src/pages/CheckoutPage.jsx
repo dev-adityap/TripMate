@@ -141,7 +141,7 @@ export default function CheckoutPage() {
 
   if (!destination) {
     return (
-      <div className="min-h-screen bg-[#09090B] text-zinc-100 flex items-center justify-center p-6">
+      <div className="min-h-dvh bg-[#09090B] text-zinc-100 flex items-center justify-center p-6">
         <div className="bg-white/[0.04] backdrop-blur-2xl border border-white/10 p-8 rounded-3xl text-center shadow-2xl">
           <Sparkles size={24} className="text-amber-300 mx-auto mb-4" />
           <p className="text-white/70 text-sm">Loading expedition checkout...</p>
@@ -151,7 +151,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-zinc-100 pb-24 px-6 md:px-14 font-sans animate-page-enter overflow-x-hidden relative">
+    <div className="min-h-dvh bg-[#09090B] text-zinc-100 pb-24 px-6 md:px-14 font-sans animate-page-enter overflow-x-hidden relative">
       <div className="max-w-6xl mx-auto mb-10">
         <div className="inline-flex items-center gap-2 bg-white/[0.04] backdrop-blur-2xl border border-white/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-amber-300 mb-3 shadow-xs">
           <ShieldCheck size={12} /> Secure Encrypted Checkout

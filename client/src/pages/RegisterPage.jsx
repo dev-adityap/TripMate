@@ -50,7 +50,7 @@ const RegisterPage = ({ updateBackground }) => {
   };
 
   return (
-    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14 flex items-center justify-center">
+    <div className="min-h-dvh w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14 flex items-center justify-center">
       <div className="relative z-10 w-full max-w-md mx-auto">
         <div className="text-center mb-8 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/[0.04] backdrop-blur-2xl border border-white/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-amber-300 shadow-xs">

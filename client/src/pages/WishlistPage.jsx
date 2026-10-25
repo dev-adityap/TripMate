@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heart, MapPin, Trash2, ArrowRight, Sparkles, ArrowUpRightFromSquare } from 'lucide-react';
+import { Heart, MapPin, Trash2, ArrowRight, Sparkles, ArrowUpRightFromSquare, Compass } from 'lucide-react';
 import { useToast } from '../components/Toast';
 
 export default function WishlistPage({ updateBackground }) {
@@ -31,7 +31,7 @@ export default function WishlistPage({ updateBackground }) {
   };
 
   return (
-    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
+    <div className="min-h-dvh w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-10">
           <div className="inline-flex items-center gap-2 bg-white/[0.04] backdrop-blur-2xl border border-white/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-amber-300 mb-3 shadow-xs">
@@ -42,18 +42,19 @@ export default function WishlistPage({ updateBackground }) {
         </div>
 
         {wishlist.length === 0 ? (
-          <div className="bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-3xl p-12 max-w-lg mx-auto text-center space-y-4 shadow-2xl">
-            <Heart size={48} className="text-white/40 mx-auto" />
-            <h3 className="text-lg font-bold text-white">Your wishlist is empty</h3>
-            <p className="text-xs text-white/60 max-w-sm mx-auto">Explore destinations and save the ones that catch your eye!</p>
-            <Link
-              to="/discover"
-              className="bg-white hover:bg-amber-400 text-zinc-950 font-bold px-6 py-3 rounded-xl text-xs transition-all cursor-pointer shadow-[0_10px_25px_rgba(255,255,255,0.1)] border border-white/10 inline-flex items-center gap-2"
-            >
-              Explore Destinations <ArrowRight size={14} />
-            </Link>
+        <div className="pt-32 pb-16 px-6 max-w-7xl mx-auto flex flex-col items-center justify-center text-center min-h-[70vh]">
+          <div className="w-24 h-24 bg-white/[0.02] border border-white/10 rounded-full flex items-center justify-center mb-6 shadow-2xl">
+            <Compass className="text-amber-400 opacity-50" size={40} />
           </div>
-        ) : (
+          <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-3">No Saved Expeditions</h2>
+          <p className="text-white/50 text-sm max-w-md mb-8">
+            Your wishlist is currently empty. Explore destinations and save the ones that catch your eye.
+          </p>
+          <Link className="px-6 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-zinc-950 font-black text-xs uppercase tracking-wider transition-all shadow-[0_10px_30px_rgba(245,158,11,0.2)]" to="/discover">
+            Browse Expeditions
+          </Link>
+        </div>
+      ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {wishlist.map((item) => (
               <div

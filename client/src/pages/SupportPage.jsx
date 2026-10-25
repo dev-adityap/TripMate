@@ -31,7 +31,7 @@ const SupportPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col font-sans">
+    <div className="min-h-dvh bg-background flex flex-col font-sans">
       <Navbar />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 w-full">

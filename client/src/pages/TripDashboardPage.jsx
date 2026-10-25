@@ -118,7 +118,7 @@ const TripDashboardPage = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-slate-50 overflow-hidden font-sans text-slate-900">
+    <div className="h-dvh flex flex-col bg-slate-50 overflow-hidden font-sans text-slate-900">
       <TopHeader />
       
       {/* Header */}

@@ -27,7 +27,7 @@ export default function NotificationsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
+    <div className="min-h-dvh w-full relative text-white font-sans select-none pt-28 md:pt-32 pb-16 px-6 md:px-14">
       <div className="relative z-10 max-w-4xl mx-auto space-y-8">
         <div className="flex justify-between items-end flex-wrap gap-4">
           <div>
