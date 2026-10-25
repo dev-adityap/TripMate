@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { CreditCard, ShieldCheck, Sparkles, CheckCircle2, ArrowRight, MapPin, Users, Mail, User } from 'lucide-react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { CreditCard, ShieldCheck, Sparkles, CheckCircle2, ArrowRight, MapPin, Users, Mail, User, AlertCircle } from 'lucide-react';
 import { mockDestinations } from '../data/mockDatabase';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../components/Toast';
 
 const BATCH_DATE_POOLS = [
   'Oct 12 - Oct 18, 2026',
@@ -25,10 +26,13 @@ function ClockIcon({ size = 16 }) {
 export default function CheckoutPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useAuth();
+  const { addToast } = useToast();
   const [destination, setDestination] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
 
   const [travelers, setTravelers] = useState([
     { name: user?.name || '', email: user?.email || '', age: '' }
@@ -46,11 +50,9 @@ export default function CheckoutPage() {
     }
   }, [id]);
 
-  const rawPriceString = destination?.approximateBudget || destination?.price || "0";
-  const basePriceString = rawPriceString.split('-')[0];
-  const basePrice = parseInt(basePriceString.replace(/\D/g, ''), 10) || 0;
-  const totalPrice = basePrice * travelers.length;
-  const selectedBatch = BATCH_DATE_POOLS[Math.floor(Math.random() * BATCH_DATE_POOLS.length)];
+  // Accept selected batch from route state (passed from DestinationPage) or fallback to random
+  const batchFromState = location.state?.selectedBatch;
+  const selectedBatch = batchFromState || BATCH_DATE_POOLS[Math.floor(Math.random() * BATCH_DATE_POOLS.length)];
   const bookingRefId = `TM-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
 
   const handleTravelerChange = (index, field, value) => {
@@ -73,7 +75,25 @@ export default function CheckoutPage() {
     }
   };
 
+  const validateForm = () => {
+    const errors = {};
+    travelers.forEach((t, idx) => {
+      if (!t.name.trim()) errors[`name${idx}`] = 'Full name is required';
+      if (!t.email.trim()) errors[`email${idx}`] = 'Email/Phone is required';
+      else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(t.email) && !/^\d{10}$/.test(t.email)) {
+        errors[`email${idx}`] = 'Enter a valid email or 10-digit phone';
+      }
+      if (!t.age.trim()) errors[`age${idx}`] = 'Age is required';
+      else if (parseInt(t.age, 10) < 1 || parseInt(t.age, 10) > 100) {
+        errors[`age${idx}`] = 'Enter a valid age';
+      }
+    });
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleConfirm = () => {
+    if (!validateForm()) return;
     setIsProcessing(true);
     setBookingRef(bookingRefId);
     setTimeout(() => {
@@ -86,8 +106,19 @@ export default function CheckoutPage() {
       if (!unlocked.includes(workspaceName)) {
         localStorage.setItem('tripMate_unlockedWorkspaces', JSON.stringify([...unlocked, workspaceName]));
       }
+      // Persist booking reference
+      const bookings = JSON.parse(localStorage.getItem('tripMate_bookings') || '[]');
+      bookings.push({
+        id: bookingRefId,
+        destination: destination?.name || 'Unknown',
+        batch: selectedBatch,
+        date: new Date().toISOString(),
+        total: totalPrice,
+      });
+      localStorage.setItem('tripMate_bookings', JSON.stringify(bookings));
       setIsProcessing(false);
       setSuccess(true);
+      addToast('Booking confirmed! Workspace unlocked.', 'success', 4000);
 
       // Auto-route to trips after user sees the success checkmark
       setTimeout(() => {
@@ -147,7 +178,7 @@ export default function CheckoutPage() {
           <p className="text-xs text-white/50 mb-10">Your private group chat and itinerary checklist are now live.</p>
           <div className="space-y-3">
             <button
-              onClick={() => navigate('/messages')}
+              onClick={() => navigate('/workspaces')}
               className="w-full bg-white hover:bg-amber-400 text-zinc-950 font-bold py-4 rounded-2xl shadow-[0_12px_30px_rgba(255,255,255,0.15)] transition-all duration-300 flex items-center justify-center gap-2"
             >
               <ArrowRight size={16} /> Open Squad Workspace
@@ -166,6 +197,7 @@ export default function CheckoutPage() {
             <img
               src={destination.image}
               alt={destination.name}
+              onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80'; }}
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/30 p-6 md:p-10 flex flex-col justify-between" />
@@ -234,9 +266,12 @@ export default function CheckoutPage() {
                           type="text"
                           value={traveler.name}
                           onChange={(e) => handleTravelerChange(index, 'name', e.target.value)}
-                          className="w-full bg-white/[0.05] border border-white/10 focus:border-amber-400/50 rounded-2xl px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all"
+                          className={`w-full bg-white/[0.05] border border-white/10 focus:border-amber-400/50 rounded-2xl px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all ${formErrors[`name${index}`] ? 'border-rose-400/50 bg-rose-500/5' : ''}`}
                           placeholder="Enter name"
                         />
+                        {formErrors[`name${index}`] && (
+                          <p className="text-[10px] text-rose-400 mt-1">{formErrors[`name${index}`]}</p>
+                        )}
                       </div>
 
                       <div>
@@ -247,10 +282,13 @@ export default function CheckoutPage() {
                           type="number"
                           value={traveler.age}
                           onChange={(e) => handleTravelerChange(index, 'age', e.target.value)}
-                          className="w-full bg-white/[0.05] border border-white/10 focus:border-amber-400/50 rounded-2xl px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all"
+                          className={`w-full bg-white/[0.05] border border-white/10 focus:border-amber-400/50 rounded-2xl px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all ${formErrors[`age${index}`] ? 'border-rose-400/50 bg-rose-500/5' : ''}`}
                           placeholder="Age"
                           min="1"
                         />
+                        {formErrors[`age${index}`] && (
+                          <p className="text-[10px] text-rose-400 mt-1">{formErrors[`age${index}`]}</p>
+                        )}
                       </div>
 
                       <div className="sm:col-span-2">
@@ -261,9 +299,12 @@ export default function CheckoutPage() {
                           type="text"
                           value={traveler.email}
                           onChange={(e) => handleTravelerChange(index, 'email', e.target.value)}
-                          className="w-full bg-white/[0.05] border border-white/10 focus:border-amber-400/50 rounded-2xl px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all"
+                          className={`w-full bg-white/[0.05] border border-white/10 focus:border-amber-400/50 rounded-2xl px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all ${formErrors[`email${index}`] ? 'border-rose-400/50 bg-rose-500/5' : ''}`}
                           placeholder={index === 0 ? 'adityapanna009@gmail.com' : 'Optional for squad members'}
                         />
+                        {formErrors[`email${index}`] && (
+                          <p className="text-[10px] text-rose-400 mt-1">{formErrors[`email${index}`]}</p>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -45,7 +45,7 @@ export default function TripsPage({ updateBackground }) {
                 key={trip.id}
                 className="h-[380px] rounded-3xl overflow-hidden relative group border border-white/10 shadow-2xl cursor-pointer"
               >
-                <img src={trip.image} alt={trip.name || trip.title} className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700" />
+                <img src={trip.image} alt={trip.name || trip.title} onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80'; }} className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute top-4 left-4 bg-emerald-500/90 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-2xl border border-white/10 flex items-center gap-1 shadow-md">
                   <CheckCircle2 size={12} /> Confirmed
@@ -60,7 +60,7 @@ export default function TripsPage({ updateBackground }) {
                       </p>
                     </div>
                     <Link
-                      to="/messages"
+                      to="/workspaces"
                       onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center justify-center gap-2 w-full bg-white/[0.08] backdrop-blur-2xl border border-white/10 text-white hover:bg-white hover:text-zinc-950 font-bold py-3 px-4 rounded-xl transition-all text-xs"
                     >

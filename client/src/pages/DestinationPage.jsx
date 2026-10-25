@@ -1,11 +1,12 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, Calendar, ShieldCheck, Heart, Sparkles, ArrowRight, RefreshCw, Compass, CheckCircle, User, Users, Home, Utensils, Car, Mountain, Sun, Cloud } from 'lucide-react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { MapPin, Calendar, ShieldCheck, Heart, Sparkles, ArrowRight, RefreshCw, Compass, CheckCircle, User, Users, Home, Utensils, Car, Mountain, Sun, Cloud, ArrowLeft } from 'lucide-react';
 import { mockDestinations } from '../data/mockDatabase';
 
 export default function DestinationPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [destination, setDestination] = useState(null);
   const [batches, setBatches] = useState([]);
@@ -797,9 +798,15 @@ export default function DestinationPage() {
       
       {/* Hero Banner */}
       <div className="max-w-7xl mx-auto rounded-3xl overflow-hidden relative h-[380px] md:h-[450px] shadow-2xl border border-white/10 bg-black/40">
-        <img src={destination.image} alt={destination.name} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/40 to-transparent flex flex-col justify-end p-6 md:p-10">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-amber-300 w-fit mb-3">
+        <img src={destination.image} alt={destination.name} className="w-full h-full object-cover" onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80'; }} />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/40 to-transparent flex flex-col justify-end p-6 md:p-10">
+              <button
+                onClick={() => navigate(-1)}
+                className="mb-4 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold text-amber-300 w-fit hover:bg-white/20 transition-all"
+              >
+                <ArrowLeft size={14} /> Back
+              </button>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-amber-300 w-fit mb-3">
             <Sparkles size={12} /> Verified Group Leader Included
           </div>
           <h1 className="text-3xl md:text-5xl font-sans text-white">{destination.name}</h1>
@@ -940,7 +947,7 @@ export default function DestinationPage() {
 
             <div className="space-y-3 pt-2">
               <button 
-                onClick={() => navigate(`/checkout/${id || '1'}`)}
+                onClick={() => navigate(`/checkout/${id || '1'}`, { state: { selectedBatch: activeBatch?.dateRange } })}
                 className="w-full bg-white hover:bg-amber-400 text-zinc-950 font-bold py-4 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 Proceed to Checkout <ArrowRight size={16} />

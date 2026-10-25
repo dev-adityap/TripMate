@@ -9,9 +9,8 @@ const NAV_LINKS = [
   { path: '/discover', label: 'Discover', icon: Compass },
   { path: '/map', label: 'Map Explorer', icon: Map },
   { path: '/trips', label: 'Trips', icon: Compass },
-  { path: '/wishlist', label: 'Wishlist', icon: Heart },
+  { path: '/wishlist', label: 'Wishlist', icon: Heart, secondary: true },
   { path: '/create', label: 'Create', icon: Compass },
-  { path: '/messages', label: 'Workspaces', icon: Compass },
   { path: '/settings', label: 'Settings', icon: Settings },
 ];
 
@@ -40,15 +39,16 @@ export default function Navbar() {
     setMobileOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when mobile menu is open
+  // Unified body scroll lock: lock when mobile menu OR search modal is open.
   useEffect(() => {
-    if (mobileOpen) {
+    const bodyLocked = mobileOpen || searchOpen;
+    if (bodyLocked) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
     return () => { document.body.style.overflow = ''; };
-  }, [mobileOpen]);
+  }, [mobileOpen, searchOpen]);
 
   return (
     <>
@@ -72,7 +72,8 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-all duration-300 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-amber-400 after:transition-all ${
+                onClick={() => setMobileOpen(false)}
+                className={`text-sm font-medium transition-all duration-300 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-amber-400 after:transition-all ${link.secondary ? 'hidden lg:block' : ''} ${
                   isActive
                     ? 'text-amber-300 font-bold after:w-full'
                     : 'text-white/70 hover:text-white after:w-0 hover:after:w-full'
@@ -91,6 +92,8 @@ export default function Navbar() {
             type="button"
             onClick={() => setSearchOpen(true)}
             title="Search (Ctrl+K)"
+            aria-label="Open search"
+            aria-expanded={searchOpen}
             className="w-9 h-9 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
           >
             <Search size={16} />
@@ -101,6 +104,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setDarkMode(!darkMode)}
             title="Toggle Theme"
+            aria-label="Toggle dark mode"
             className="w-9 h-9 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
           >
             {darkMode ? <Moon size={16} /> : <Sun size={16} />}
@@ -109,6 +113,7 @@ export default function Navbar() {
           {/* Notifications */}
           <Link
             to="/notifications"
+            aria-label="View notifications"
             className="w-9 h-9 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
           >
             <Bell size={16} />
@@ -139,6 +144,7 @@ export default function Navbar() {
               type="button"
               onClick={logout}
               title="Sign Out"
+              aria-label="Sign out"
               className="w-9 h-9 rounded-full bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 flex items-center justify-center text-rose-400 transition-all cursor-pointer"
             >
               <LogOut size={16} />
@@ -149,6 +155,8 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
             className="lg:hidden w-9 h-9 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -184,7 +192,8 @@ export default function Navbar() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all ${
+                    onClick={() => setMobileOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all ${link.secondary ? 'hidden lg:block' : ''} ${
                       isActive
                         ? 'bg-amber-400/10 text-amber-300 border border-amber-400/30'
                         : 'text-white/70 hover:bg-white/[0.05] hover:text-white'

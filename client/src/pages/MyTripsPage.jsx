@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Briefcase, MapPin, MessageCircle, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 import { mockDestinations } from '../data/mockDatabase';
 
 export default function MyTripsPage() {
+  const navigate = useNavigate();
   const [purchasedTrips, setPurchasedTrips] = useState([]);
 
   useEffect(() => {
@@ -39,27 +40,32 @@ export default function MyTripsPage() {
             <div key={trip.id} className="bg-[#111827] border border-[#1E293B] rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between">
               <div>
                 <div className="h-52 overflow-hidden relative bg-[#1F2937]">
-                  <img src={trip.image} alt={trip.name} className="w-full h-full object-cover opacity-90" />
+                  <img src={trip.image} alt={trip.name} onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80'; }} className="w-full h-full object-cover opacity-90" />
                   <div className="absolute top-4 left-4 bg-emerald-500/90 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md flex items-center gap-1 shadow-md">
                     <CheckCircle2 size={12} /> Confirmed
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-sans text-white">{trip.name || trip.title}</h3>
-                  <p className="text-xs text-[#94A3B8] flex items-center gap-1.5 font-medium mt-2">
-                    <MapPin size={14} className="text-[#38BDF8]" /> {trip.location || trip.state}
-                  </p>
+                  <div className="text-[10px] font-black tracking-widest text-white/50 uppercase mb-1">
+                    {trip.bestTimeToVisit || 'UPCOMING BATCH'} • {trip.difficulty || 'MODERATE'}
+                  </div>
+                  <h3 className="text-2xl font-black text-white mb-2">{trip.name || trip.title}</h3>
+                  <div className="flex items-center gap-1.5 text-xs text-white/70 mb-4">
+                    <MapPin size={14} className="text-[#38BDF8]" />
+                    <span>{trip.location || trip.state || 'Himachal Pradesh'}</span>
+                  </div>
                 </div>
               </div>
 
               <div className="p-6 pt-0">
-                <Link 
-                  to="/messages" 
-                  className="w-full bg-[#131B2E] hover:bg-blue-600 border border-[#1E293B] hover:border-blue-600 text-sky-400 hover:text-white font-bold py-3.5 px-4 rounded-2xl transition-all flex items-center justify-center gap-2 text-xs shadow-inner"
+                <button
+                  type="button"
+                  onClick={() => navigate(`/workspaces?active=${encodeURIComponent(trip.name || trip.title)}`)}
+                  className="w-full bg-[#131B2E] hover:bg-blue-600 border border-[#1E293B] hover:border-blue-600 text-sky-400 hover:text-white font-bold py-3.5 px-4 rounded-2xl transition-all flex items-center justify-center gap-2 text-xs shadow-inner cursor-pointer"
                 >
                   <MessageCircle size={16} /> Open Group Chat Workspace <ArrowRight size={14} />
-                </Link>
+                </button>
               </div>
             </div>
           ))}

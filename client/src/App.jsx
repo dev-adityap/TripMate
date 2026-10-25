@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import GlobalUXEnhancer from './components/GlobalUXEnhancer';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
+import { ToastProvider } from './components/Toast';
 
 // Import Pages
 import HomePage from './pages/HomePage';
@@ -19,7 +20,7 @@ import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import CheckoutPage from './pages/CheckoutPage';
 import CreateTripPage from './pages/CreateTripPage';
-import MessagesPage from './pages/MessagesPage';
+import WorkspacesPage from './pages/WorkspacesPage';
 import NotificationsPage from './pages/NotificationsPage';
 import SettingsPage from './pages/SettingsPage';
 import TripsPage from './pages/TripsPage';
@@ -48,7 +49,7 @@ export default function App() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen w-full relative overflow-x-hidden bg-[#09090B] text-white font-sans select-none">
+    <div className="min-h-screen w-full relative overflow-x-hidden bg-[#09090B] text-white font-sans">
       {/* Dynamic Background Layer */}
       <div
         className="fixed inset-0 z-0 transition-all duration-1000 ease-out transform scale-105"
@@ -66,7 +67,8 @@ export default function App() {
       {/* Main container with proper dark styling and responsive margin */}
       <div className="relative z-10 flex-1 w-full pb-20 md:pb-0 transition-all">
         <GlobalUXEnhancer />
-        <Routes>
+        <ToastProvider>
+          <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Navigate to="/home" replace />} />
 
@@ -87,8 +89,9 @@ export default function App() {
 
           <Route path="/profile" element={<ProtectedRoute><ProfilePage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/create" element={<ProtectedRoute><CreateTripPage updateBackground={updateBackground} /></ProtectedRoute>} />
-          <Route path="/messages" element={<ProtectedRoute><MessagesPage updateBackground={updateBackground} /></ProtectedRoute>} />
-          <Route path="/workspaces" element={<ProtectedRoute><MessagesPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/messages" element={<Navigate to="/workspaces" replace />} />
+          <Route path="/workspaces" element={<ProtectedRoute><WorkspacesPage updateBackground={updateBackground} /></ProtectedRoute>} />
+          <Route path="/workspace/:id" element={<ProtectedRoute><WorkspacesPage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/notifications" element={<ProtectedRoute><NotificationsPage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/checkout/:id" element={<ProtectedRoute><CheckoutPage updateBackground={updateBackground} /></ProtectedRoute>} />
           <Route path="/settings" element={<ProtectedRoute><SettingsPage updateBackground={updateBackground} /></ProtectedRoute>} />
@@ -97,6 +100,7 @@ export default function App() {
           {/* Custom 404 Catch-all Route */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </ToastProvider>
 
         {pathname !== '/map' && <Footer />}
       </div>

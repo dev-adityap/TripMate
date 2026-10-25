@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, MapPin, ArrowRight, Sparkles, Heart } from 'lucide-react';
 import { mockDestinations } from '../data/mockDatabase';
+import { useToast } from '../components/Toast';
 
 export default function DiscoverPage({ updateBackground }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const { addToast } = useToast();
 
   useEffect(() => {
     if (updateBackground) {
@@ -35,9 +37,11 @@ export default function DiscoverPage({ updateBackground }) {
     if (exists) {
       const updated = wishlist.filter((item) => item.id !== destination.id);
       localStorage.setItem('tripMate_wishlist', JSON.stringify(updated));
+      addToast(`"${destination.name}" removed from wishlist`, 'info', 3000);
     } else {
       wishlist.push(destination);
       localStorage.setItem('tripMate_wishlist', JSON.stringify(wishlist));
+      addToast(`"${destination.name}" added to wishlist!`, 'success', 3000);
     }
   };
 
@@ -135,6 +139,7 @@ export default function DiscoverPage({ updateBackground }) {
                 <img 
                   src={trip.image} 
                   alt={trip.name} 
+                  onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80'; }}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
                 />
                 {/* Rating Dots - Top Left */}

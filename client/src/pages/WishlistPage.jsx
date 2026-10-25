@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heart, MapPin, Trash2, ArrowRight, Sparkles } from 'lucide-react';
+import { Heart, MapPin, Trash2, ArrowRight, Sparkles, ArrowUpRightFromSquare } from 'lucide-react';
+import { useToast } from '../components/Toast';
 
 export default function WishlistPage({ updateBackground }) {
   const [wishlist, setWishlist] = useState([]);
   const navigate = useNavigate();
+  const { addToast } = useToast();
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('tripMate_wishlist') || '[]');
@@ -18,12 +20,14 @@ export default function WishlistPage({ updateBackground }) {
 
   const removeItem = (id, e) => {
     e.stopPropagation();
+    const item = wishlist.find(i => i.id === id);
     const updated = wishlist.filter(item => item.id !== id);
     setWishlist(updated);
     localStorage.setItem('tripMate_wishlist', JSON.stringify(updated));
     if (updateBackground && updated.length > 0) {
       updateBackground(updated[0].image);
     }
+    addToast(`"${item?.name || 'Item'}" removed from wishlist`, 'info', 3000);
   };
 
   return (
@@ -54,16 +58,25 @@ export default function WishlistPage({ updateBackground }) {
             {wishlist.map((item) => (
               <div
                 key={item.id}
-                onClick={() => navigate(/destination/)}
                 className="h-[380px] rounded-3xl overflow-hidden relative group border border-white/10 shadow-2xl cursor-pointer"
+                onClick={() => navigate(`/destination/${item.id || '1'}`)}
               >
-                <img src={item.image} alt={item.name || item.title} className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700" />
-                <button
-                  onClick={(e) => removeItem(item.id, e)}
-                  className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white text-zinc-950 shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
-                >
-                  <Trash2 size={18} />
-                </button>
+                <img src={item.image} alt={item.name || item.title} onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80'; }} className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute top-4 right-4 z-20 flex gap-2">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); removeItem(item.id, e); }}
+                    className="w-10 h-10 rounded-full bg-white text-zinc-950 shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); navigate(`/checkout/${item.id || '1'}`); }}
+                    className="w-10 h-10 rounded-full bg-amber-400 text-zinc-950 shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+                    title="Book this trip"
+                  >
+                    <ArrowUpRightFromSquare size={16} />
+                  </button>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="flex items-end justify-between gap-3">
