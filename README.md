@@ -1,5 +1,9 @@
 # 🏔️ TripMate V2 — Indian Expedition & Group Travel SaaS Platform
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://tripmate-phi-ebon.vercel.app)
+
+🌐 **Live Platform:** [https://tripmate-phi-ebon.vercel.app](https://tripmate-phi-ebon.vercel.app)
+
 TripMate V2 is a full-stack, dark-glassmorphic expedition discovery and group coordination platform engineered for Indian trekkers, backpackers, and squad organizers. It unifies geospatial route discovery, batch bookings, real-time group workspaces, and automated UPI expense splitting into a single interface.
 
 ---
@@ -34,7 +38,7 @@ TripMate V2 is a full-stack, dark-glassmorphic expedition discovery and group co
 | **Geospatial** | Mapbox GL JS, `react-map-gl` |
 | **Authentication** | Firebase Authentication (Google OAuth 2.0) |
 | **Backend & Database** | Node.js, Express.js, MongoDB, Mongoose |
-| **Deployment** | Vercel (Frontend SPA), GitHub Actions / Push Protection |
+| **Deployment** | [Vercel](https://tripmate-phi-ebon.vercel.app) (Frontend SPA), GitHub Actions / Push Protection |
 
 ---
 
@@ -42,7 +46,7 @@ TripMate V2 is a full-stack, dark-glassmorphic expedition discovery and group co
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/dev-adityap/TripMate.git
+git clone [https://github.com/dev-adityap/TripMate.git](https://github.com/dev-adityap/TripMate.git)
 cd TripMate
 ```
 
@@ -77,4 +81,5 @@ npm run dev
 
 ## 👨‍💻 Author
 **Aditya Panna**  
+Live Demo: [tripmate-phi-ebon.vercel.app](https://tripmate-phi-ebon.vercel.app)  
 GitHub: [@dev-adityap](https://github.com/dev-adityap)
