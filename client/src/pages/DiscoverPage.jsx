@@ -52,40 +52,6 @@ export default function DiscoverPage({ updateBackground }) {
 
   return (
     <div className="min-h-dvh w-full relative text-white font-sans select-none pt-32 pb-24 px-6 md:px-24">
-      {/* Top Floating Navigation Header */}
-      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 md:px-14 py-6 bg-gradient-to-b from-black/60 to-transparent backdrop-blur-[2px]">
-        <Link to="/home" className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-black/30 flex items-center justify-center">
-            <img src="/TripMate.png" alt="TripMate Logo" className="w-full h-full object-cover" />
-          </div>
-          <span className="text-xl md:text-2xl font-extrabold tracking-tight text-white">TripMate</span>
-        </Link>
-        <nav className="hidden md:flex items-center gap-8">
-          <Link to="/home" className="text-xs md:text-sm font-medium text-white/75 hover:text-white transition-all duration-300 tracking-wide relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-white after:transition-all">
-            Home
-          </Link>
-          <Link to="/discover" className="text-xs md:text-sm font-medium text-white hover:text-white transition-all duration-300 tracking-wide relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-white after:transition-all">
-            Discover
-          </Link>
-          <Link to="/trips" className="text-xs md:text-sm font-medium text-white/75 hover:text-white transition-all duration-300 tracking-wide relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-white after:transition-all">
-            Trips
-          </Link>
-          <Link to="/reviews" className="text-xs md:text-sm font-medium text-white/75 hover:text-white transition-all duration-300 tracking-wide relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-white after:transition-all">
-            Reviews
-          </Link>
-          <Link to="/about" className="text-xs md:text-sm font-medium text-white/75 hover:text-white transition-all duration-300 tracking-wide relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-white after:transition-all">
-            About
-          </Link>
-          <Link to="/contact" className="text-xs md:text-sm font-medium text-white/75 hover:text-white transition-all duration-300 tracking-wide relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-white after:transition-all">
-            Contact Us
-          </Link>
-        </nav>
-        <div className="flex items-center gap-4">
-          <Link to="/login" className="text-xs md:text-sm font-medium px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/15 rounded-full text-white hover:bg-white/15 transition-all">
-            Sign In
-          </Link>
-        </div>
-      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-10">
@@ -166,11 +132,11 @@ export default function DiscoverPage({ updateBackground }) {
                   <div className="flex items-end justify-between gap-3">
                     <h2 className="text-2xl font-extrabold text-white tracking-tight leading-none drop-shadow-md">{trip.name}</h2>
                     <div className="bg-white/15 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-bold text-white shrink-0">
-                      {trip.approximateBudget || '₹14,500'}
+                      {trip.approximateBudget || 'Ã¢â€šÂ¹14,500'}
                     </div>
                   </div>
                   <span className="text-xs font-semibold text-white/80 group-hover:text-white mt-3 flex items-center gap-1.5 opacity-85 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
-                    Explore Expedition → <ArrowRight size={14} />
+                    Explore Expedition Ã¢â€ â€™ <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>

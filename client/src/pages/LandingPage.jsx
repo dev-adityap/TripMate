@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Map, Calendar, Shield, MapPin, ChevronRight, ChevronLeft } from 'lucide-react';
 import Button from '../components/Button';
-import Navbar from '../components/Navbar';
 
 const LandingPage = () => {
   const [currentImg, setCurrentImg] = useState(0);
@@ -53,7 +52,6 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-dvh bg-background flex flex-col font-sans">
-      <Navbar />
 
       {/* HERO SECTION - Added pt-28 to clear the navbar completely */}
       <main className="flex-grow flex items-center pt-28 pb-12 px-6 sm:px-12 lg:px-20 max-w-[1500px] mx-auto w-full">
@@ -184,7 +182,7 @@ const LandingPage = () => {
       
       {/* FOOTER */}
       <footer className="py-8 text-center text-textSecondary text-sm border-t border-gray-100 bg-white">
-        © 2026 TripMate Inc. All rights reserved. Built for travelers.
+        Â© 2026 TripMate Inc. All rights reserved. Built for travelers.
       </footer>
     </div>
   );

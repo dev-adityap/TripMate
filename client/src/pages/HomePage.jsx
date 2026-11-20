@@ -85,61 +85,6 @@ export default function HomePage({ updateBackground }) {
 
   return (
     <div className="min-h-dvh h-dvh w-full relative overflow-hidden text-white font-sans select-none">
-      {/* Top Floating Navigation Header */}
-      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 md:px-12 py-5 bg-gradient-to-b from-black/75 via-black/30 to-transparent backdrop-blur-[2px]">
-        <button onClick={() => setIsLogoModalOpen(true)} className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-black/30 flex items-center justify-center">
-            <img src="/TripMate.png" alt="TripMate Logo" className="w-full h-full object-cover" />
-          </div>
-          <span className="text-xl md:text-2xl font-extrabold tracking-tight text-white">TripMate</span>
-        </button>
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-          {navLinks.map((link) => {
-            const isActive = location.pathname === link.path;
-            return (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-xs lg:text-sm font-medium whitespace-nowrap transition-all duration-300 tracking-wide relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-white after:transition-all ${
-                  isActive
-                    ? 'text-white font-semibold after:w-full'
-                    : 'text-white/75 hover:text-white after:w-0 hover:after:w-full'
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="flex items-center gap-3">
-          <Link to="/wishlist" className="relative w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 flex items-center justify-center text-white transition-all cursor-pointer">
-            <Heart size={16} />
-            {wishlistCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[9px] font-bold flex items-center justify-center">
-                {wishlistCount}
-              </span>
-            )}
-          </Link>
-          <Link to="/notifications" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 flex items-center justify-center text-white transition-all cursor-pointer">
-            <Bell size={16} />
-          </Link>
-          <Link to="/settings" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 flex items-center justify-center text-white transition-all cursor-pointer">
-            <Settings size={16} />
-          </Link>
-          <button className="w-9 h-9 rounded-full bg-white text-zinc-950 flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
-            <Search size={16} />
-          </button>
-          {user ? (
-            <span className="hidden md:block text-xs md:text-sm font-semibold text-white tracking-wide">
-              Hello, {user.name ? user.name.split(' ')[0] : 'User'}!
-            </span>
-          ) : (
-            <Link to="/login" className="text-xs md:text-sm font-medium px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/15 rounded-full text-white hover:bg-white/15 transition-all">
-              Sign In
-            </Link>
-          )}
-        </div>
-      </div>
 
       {/* Left Vertical Timeline */}
       <div className="fixed left-8 md:left-12 top-1/2 -translate-y-1/2 z-20 hidden xl:flex flex-col items-center">
@@ -199,7 +144,7 @@ export default function HomePage({ updateBackground }) {
                   onClick={handleExplore}
                   className="bg-white/15 hover:bg-white hover:text-zinc-950 backdrop-blur-xl border border-white/30 text-white font-semibold px-8 py-3.5 rounded-xl shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer"
                 >
-                  Explore →
+                  Explore â†’
                 </button>
               </div>
             )}

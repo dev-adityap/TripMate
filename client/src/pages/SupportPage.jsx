@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { HelpCircle, MessageSquare, Mail, Phone, ChevronDown, Send } from 'lucide-react';
-import Navbar from '../components/Navbar';
 
 const SupportPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -32,7 +31,6 @@ const SupportPage = () => {
 
   return (
     <div className="min-h-dvh bg-background flex flex-col font-sans">
-      <Navbar />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 w-full">
         <div className="text-center max-w-xl mx-auto mb-16">
@@ -118,7 +116,7 @@ const SupportPage = () => {
       </main>
 
       <footer className="py-8 text-center text-textSecondary text-sm border-t border-gray-100 bg-white">
-        © 2026 TripMate Inc. All rights reserved. Built for travelers.
+        Â© 2026 TripMate Inc. All rights reserved. Built for travelers.
       </footer>
     </div>
   );
